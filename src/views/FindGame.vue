@@ -28,14 +28,14 @@
           <div class="dropdown relative">
            
 
-              <select v-model="filteredByCategory" class="py-2 px-6 border-0 font-bold bg-orange-300 text-center focus:outline-none hover:inner-shadow shadow rounded">
+              <!-- <select v-model="filteredByCategory" class="py-2 px-6 border-0 font-bold bg-orange-300 text-center focus:outline-none hover:inner-shadow shadow rounded">
                 <option value="" >Toutes les Catégories</option>
                 <option  v-for="category in getAllCategories.Category" :key="category._id" :value="category.name"
                   class="font-bold bg-orange-300"
                  
                   >{{category.name}}</option>
                 
-              </select>
+              </select> -->
               
             
           </div>
@@ -80,7 +80,7 @@
                  <router-link class="font-bold text-orange-500" :to="'/reviews/'+games.userId._id">{{ games.userId.username }}</router-link>
                 </p>
                 <p class="text-blue-600 text-center font-bold p-1 bg-blue-200 rounded-full m-2 shadow">
-                  {{games.categoryId}}
+                  categorie
                 </p>
                             </div>
 
@@ -114,23 +114,23 @@ export default {
   data() {
     return {
       search:"",
-      filteredByCategory:"",
+      
       filteredByAge:"",
     };
   },
   methods: {
-    ...mapActions(["fetchAllGames", "fetchAllCategories"]),
+    ...mapActions(["fetchAllGames"]),
   
   },
   created() {
     this.fetchAllGames();
-    this.fetchAllCategories();
+    
   },
   computed: {
-    ...mapGetters(["getAllGames", "getAllCategories"]),
+    ...mapGetters(["getAllGames"]),
       filtredGames(){
        
-          return this.getAllGames.games.filter(game => game.name.toLowerCase().includes(this.search.toLowerCase()) &&  game.categoryId.toLowerCase().includes(this.filteredByCategory.toLowerCase()) && game.minAge.toLowerCase().includes(this.filteredByAge.toLowerCase()));
+          return this.getAllGames.games.filter(game => game.name.toLowerCase().includes(this.search.toLowerCase()) && game.minAge.toLowerCase().includes(this.filteredByAge.toLowerCase()));
 
           
     

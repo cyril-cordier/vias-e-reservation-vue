@@ -12,8 +12,8 @@
               (user_toggle = true),
                 (update_toggle = false),
                 (password_toggle = false),
-                (ludo_toggle = false),
-                (favorites_toggle = false)
+                (appart_toggle = false)
+                
             "
             >
               <span class="mr-1">Mes Informations</span>
@@ -33,8 +33,8 @@
               (user_toggle = true),
                 (update_toggle = false),
                 (password_toggle = false),
-                (ludo_toggle = false),
-                (favorites_toggle = false)
+                (appart_toggle = false)
+                
             ">
                 <a
                   class="rounded-none bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
@@ -47,8 +47,8 @@
                 (user_toggle = false),
                 (update_toggle = true),
                 (password_toggle = false),
-                (ludo_toggle = false),
-                (favorites_toggle = false)
+                (appart_toggle = false)
+                
             ">
                 <a
                   class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
@@ -61,8 +61,8 @@
                 (user_toggle = false),
                 (update_toggle = false),
                 (password_toggle = true),
-                (ludo_toggle = false),
-                (favorites_toggle = false)
+                (appart_toggle = false)
+                
             ">
                 <a
                   class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
@@ -81,26 +81,13 @@
               (update_toggle = false),
                 (user_toggle = false),
                 (password_toggle = false),
-                (ludo_toggle = true),
-                (favorites_toggle = false)
+                (appart_toggle = true)           
 
             "
           >
-            Ma Ludothèque
+            Gestion des informations Appartement
           </button>
-          <button
-            class="px-4 py-2 m-4 text-gray-700 font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-gray-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
-            @click="
-              (update_toggle = false),
-                (user_toggle = false),
-                (password_toggle = false),
-                (ludo_toggle = false),
-                (favorites_toggle = true)
-                
-            "
-          >
-            Mes jeux favoris
-          </button>
+          
           <router-link to="/admin"
             v-if="this.getUserMe.profile.is_admin == true"
             class="px-4 py-2 m-4 text-gray-700 text-center font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-yellow-100 hover:bg-yellow-500 focus:scale-105 focus:bg-yellow-500 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
@@ -116,8 +103,8 @@
       <UserInfo v-show="user_toggle" />
       <EditUser v-show="update_toggle" />
       <EditPassword v-show="password_toggle" />
-      <Ludotheque v-show="ludo_toggle" />
-      <FavoritesGames v-show="favorites_toggle" />
+      <Appartement v-show="appart_toggle" />
+      
       
     </div>
   </div>
@@ -129,8 +116,8 @@ import Navbar from "../components/Navbar";
 import UserInfo from "../components/user/UserInfo";
 import EditUser from "../components/user/EditUser";
 import EditPassword from "../components/user/EditPassword";
-import Ludotheque from "../components/user/Ludotheque";
-import FavoritesGames from "../components/user/FavoritesGames";
+import Appartement from "../components/user/Appartement";
+
 import { mapActions, mapGetters } from "vuex";
 // import jwt_decode from 'jwt-decode';
 
@@ -142,8 +129,8 @@ export default {
     UserInfo,
     EditUser, 
     EditPassword, 
-    Ludotheque,
-    FavoritesGames,
+    Appartement,
+    
   },
 
   data() {
@@ -153,10 +140,10 @@ export default {
       user_toggle: true,
       update_toggle: false,
       password_toggle: false,
-      ludo_toggle: false,
+      appart_toggle: false,
       AddGame_modal: false,
       EditGame_modal: false,
-      favorites_toggle: false,
+      
       token: null,
 
       

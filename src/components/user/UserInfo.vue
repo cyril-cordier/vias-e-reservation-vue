@@ -3,10 +3,10 @@
   <!-- toggle user Info -->
   <div>
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-gray-300 flex flex-wrap">
-      <div class="p-5 w-1/4 rounded-l-lg bg-gray-200 shadow-lg">
+      <div class="p-5 w-0.3 rounded-l-lg bg-gray-200 shadow-lg">
         <img class="w-64 rounded-full mx-10" :src="getUserMe.profile.avatar" alt="" />
         <div class="text-center font-bold text-xl text-gray-800 my-3">
-          Bienvenue dans ta ludothèque<br>
+          Espace Profil de<br>
           {{ getUserMe.profile.username }}<br />
         </div>
       </div>
@@ -21,15 +21,11 @@
           <p class="m-10 font-semibold text-l text-gray-800 mt-3">
             Email : {{ getUserMe.profile.email }}
           </p>
-          <p class="m-10 font-semibold text-l text-gray-800 mt-3">
-            Adresse : {{ getUserMe.profile.number }}
-            {{ getUserMe.profile.street }}
+          <p class="m-10 font-semibold text-l text-gray-800 mt-3" v-if="getUserMe.profile.who_is == 'ND'">
+            Statut : Compte en attente de validation par le gestionnaire
           </p>
-          <p class="m-10 font-semibold text-l text-gray-800 mt-3">
-            CP : {{ getUserMe.profile.zip }}
-          </p>
-          <p class="m-10 font-semibold text-l text-gray-800 mt-3">
-            Ville : {{ getUserMe.profile.city }}
+          <p class="m-10 font-semibold text-l text-gray-800 mt-3" v-if="getUserMe.profile.who_is != 'ND'">
+            Statut : {{getUserMe.profile.who_is}}
           </p>
         </div>
       </div>
@@ -54,10 +50,7 @@ export default {
       //USER
       username: "",
       email: "",
-      street: "",
-      zip: "",
-      number: "",
-      city: "",
+      who_is: "",
       error: "",
       avatar: "",
       lat: "",

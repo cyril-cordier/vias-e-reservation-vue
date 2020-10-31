@@ -3,14 +3,13 @@
 <!-- attention des bugs sur firefox a cause des shadows box -->
 <div class="pb-20 m-4 ">
     <div class="lg:flex justify-center mt-20 border-black hidden">
+        <router-link to="/recherchejeux">
         <ul id="menu">
-        <li> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://www.espritjeu.com/upload/image/rush-hour-p-image-64205-grande.jpg');">Item 1</a> </li>
-        <li> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://www.cdiscount.com/pdt2/3/1/9/1/700x700/edu8412668185319/rw/educa-jeux-de-societe-le-lynx-70-images.jpg');">Item 2</a> </li>
-        <li class="highlighted"> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://www.carrefour.fr/media/1500x1500/Photosite/BAZAR/JOUET_SPORT/5010993414277_PHOTOSITE_20191019_163922_0.jpg?placeholder=1');">Item 3</a> </li>
-        <li> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://www.carrefour.fr/media/1500x1500/Photosite/BAZAR/JOUET_SPORT/3181860750247_PHOTOSITE_20191024_123658_1.jpg?placeholder=1');">Item 4</a> </li>
-        <li> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://www.espritjeu.com/upload/image/dixit-p-image-53777-grande.jpg');">Item 5</a> </li>
-        <li> <a href="/recherchejeux" style="background-size:cover;background-image: url('https://lagranderecre-lagranderecre-fr-storage.omn.proximis.com/Imagestorage/images/0/0/5d2c6b284c1a7_230269.jpg');">Item 6</a> </li>
+        <li> <img style="background-size:cover" src= '../../assets/loginPlage.jpg'> </li>
+        <li class="highlighted"> <img style="background-size:cover" src= '../../assets/logo_vias-e-reservation.png'> </li>
+        <li> <img style="background-size:cover" src= '../../assets/registerPlage.jpg'> </li>
         </ul>
+        </router-link>
     </div>
 </div>
 </template>

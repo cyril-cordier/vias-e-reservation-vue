@@ -2,7 +2,7 @@
   <div class="login">
     <div class="w-full h-screen flex">
       <img
-        src="../assets/loginGame.jpg"
+        src="../assets/loginPlage.jpg"
         alt="background"
         class="object-cover object-center h-screen w-0 overflow-hidden md:w-7/12"
       />
@@ -10,7 +10,7 @@
       <div
         class="bg-white flex flex-col justify-center items-center md:w-5/12 w-full"
       >
-      <router-link to="/"><img class="h-32" src="../assets/logoGame_ssfond2.png" alt="Logo"></router-link>
+      <router-link to="/"><img class="h-32" src="../assets/logo_vias-e-reservation.png" alt="Logo"></router-link>
         <!-- MESSAGE CONNEXION SUCCESS  -->
         <div
           v-if="success != null "
@@ -79,11 +79,11 @@
             </button>
           </form>
          <br>  
-         <div class="w-full border-t pt-1 text-xs text-gray-600">Nouveau chez jeu de société</div>
+         <div class="w-full border-t pt-1 text-xs text-gray-600">Nouveau sur Vias e-Réservation</div>
                    
         <router-link to='/register'>
         <button  type="submit" class="w-full bg-gray-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-4 shadow">
-          Créer mon compte jeu de société
+          Créer mon compte
         </button>
       </router-link>
       <br><br>

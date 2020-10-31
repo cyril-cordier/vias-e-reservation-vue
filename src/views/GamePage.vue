@@ -109,39 +109,7 @@
               :src="getGameById.game.images[0]"
             />
             <div  class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <svg
-                v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
-                v-show="like"
-                @click="addFavorite(), (like = false), (liked = true)"
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                class="bi bi-heart"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-                />
-              </svg>
-
-              <svg
-               v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
-                v-show="liked"
-                @click="deleteFav(), (like = true), (liked = false)"
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                class="bi bi-heart-fill"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                />
-              </svg>
+              
 
                <div class=" p-3 W-1/3">
 
@@ -162,7 +130,7 @@
               </div>
 
               <h2 class="text-sm title-font text-gray-500 mt-2 tracking-widest">
-                {{getGameById.game.categoryId}}
+                categorie
               </h2>
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                 {{ getGameById.game.name }}
@@ -449,10 +417,6 @@ export default {
     ...mapActions([
       "fetchGameById",
       "fetchUserMe",
-      "fetchAllFavorites",
-      "fetchFavoriteById",
-      "createFavorite",
-      "deleteFavorite",
       "createReservation",
       "createWarning",
       "fetchAllReservations",
@@ -460,25 +424,7 @@ export default {
         "createReview",
         "deleteReview"
     ]),
-    addFavorite() {
-      var obj = {
-        userId: this.getUserMe.profile._id,
-        gameId: this.getGameById.game._id,
-      };
-
-      this.createFavorite(obj);
-    },
-
-    deleteFav() {
-      this.getAllFavorites.favorites.forEach((element) => {
-        if (
-          element.userId._id == this.getUserMe.profile._id &&
-          element.gameId._id == this.getGameById.game._id
-        ) {
-          this.deleteFavorite(element._id);
-        }
-      });
-    },
+    
     reservationForm(){
 
       this.getAllReservations.Reservation.forEach((element)=>{
@@ -555,23 +501,11 @@ export default {
 
      
     },
-    checkfavorite() {
-      this.getAllFavorites.favorites.forEach((element) => {
-       
-        if (
-          this.getUserMe.profile != null &&
-          element.userId._id == this.getUserMe.profile._id &&
-          element.gameId._id == this.getGameById.game._id
-        ) {
-          this.liked = true;
-          this.like = false;
-        }
-      });
-    },
+    
   
     getEvents() {
       axios
-        .get("https://gameproject-api.herokuapp.com/reservations")
+        .get("https://vias-e-reservation.herokuapp.com/reservations")
         .then((resp) => {
        
           this.calendarOptions.events = resp.data.Reservation.filter(
@@ -632,14 +566,7 @@ export default {
 
       },
 
-      markCalc() {
-        var count = 0;
-        this.reviewOfGame.forEach(element => {
-          count += parseInt(element.mark);
-        });
-        this.markResult = Math.round(count / this.reviewOfGame.length);
-
-      },
+      
 
   },
   created() {
@@ -650,8 +577,7 @@ export default {
 
       this.fetchUserMe();
     }
-    this.fetchAllFavorites();
-    this.checkfavorite();
+    
     this.fetchAllReservations();
     this.getEvents();
     this.createSuccess = null;
@@ -660,7 +586,7 @@ export default {
       this.getCreateReservationResponse.success = null;
       this.getCreateReservationResponse.error = null;
  
-        this.markCalc();
+        
          
   
     
@@ -669,8 +595,6 @@ export default {
       ...mapGetters([
         "getGameById",
         "getUserMe",
-        "getAllFavorites",
-        "getFavoriteById",
         "getAllReviews",
         "getCreateReservationResponse",
         "getAllReservations",

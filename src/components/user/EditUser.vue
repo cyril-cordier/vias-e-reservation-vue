@@ -38,7 +38,7 @@
 
 
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-gray-300 flex flex-wrap">
-            <div class="p-5 w-1/4 rounded-lg bg-gray-200 shadow-lg text-center">
+            <div class="p-5 w-0.3 rounded-lg bg-gray-200 shadow-lg text-center">
 
       <img class="w-64 rounded-full mx-10" :src="userToEdit.avatar" alt="" />
       <div class="mt-5 font-semibold text-gray-700">
@@ -50,7 +50,7 @@
         required
         id="avatar"
       >
-        <option>Modifier mon avatar</option>
+        <option value="null" disabled>Modifier mon avatar</option>
         <option value="https://i.imgur.com/Iy4cKcy.jpg">Biberon</option>
         <option value="https://i.imgur.com/agitBxt.jpg">
           Chapeau Monopoly
@@ -105,54 +105,11 @@
           </div>
           <div class="form-group w-3/12 inline-block p-auto m-auto row">
             <label for="InputNumber" class="font-semibold text-gray-800 text-l ml-2"
-              >Numéro :</label
+              >Statut : {{userToEdit.who_is}}</label
             >
-            <input
-              type="text"
-              v-model="userToEdit.number"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
-              id="InputNumber"
-              placeholder="Numéro"
-              required
-            />
+            
           </div>
-          <div class="form-group w-9/12 inline-block p-auto m-auto row">
-            <label for="InputStreet" class="font-semibold text-gray-800 text-l ml-2"
-              >Rue :</label
-            >
-            <input
-              type="text"
-              v-model="userToEdit.street"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
-              id="InputStreet"
-              placeholder="Rue"
-              required
-            />
-          </div>
-          <div class="form-group w-2/12 inline-block p-auto m-auto row">
-            <label for="InputZip" class="font-semibold text-gray-800 text-l ml-2">CP :</label>
-            <input
-              type="text"
-              v-model="userToEdit.zip"
-              class="fform-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
-              id="InputZip"
-              placeholder="CP"
-              required
-            />
-          </div>
-          <div class="form-group w-10/12 inline-block p-auto m-auto row">
-            <label for="InputCity" class="font-semibold text-gray-800 text-l ml-2"
-              >Ville :</label
-            >
-            <input
-              type="text"
-              v-model="userToEdit.city"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
-              id="InputCity"
-              placeholder="Ville"
-              required
-            />
-          </div>
+         
 
           <br />
           <button
@@ -191,65 +148,28 @@ export default {
     //EDIT D'UN USER
 
     editUser() {
-      if (isNaN(this.userToEdit.zip)) {
-        this.error = "Le code postal doit être un nombre";
-      } else if (isNaN(this.userToEdit.number)) {
-        this.error = "Le numero de rue doit être un nombre";
-      } else {
-        var requestOptions = {
-          method: "GET",
-          redirect: "follow",
-        };
-        // FETCH GOOGLE API POUR RECUPERER LA LNG et LAT
+  
+          var obj = {
+            email: this.userToEdit.email,
+            username: this.userToEdit.username,
+            who_is: this.userToEdit.who_is,
+            id: this.userToEdit._id,
+            avatar: this.userToEdit.avatar,
+            is_admin: this.userToEdit.is_admin,
+          };
 
-          fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${
-              this.userToEdit.street +
-              this.userToEdit.zip +
-              this.userToEdit.city
-            }&key=${process.env.VUE_APP_ENV_GOOGLE_API}`,
-            requestOptions
-          )
-          .then((response) => response.json())
-          .then((result) => {
-            if (
-              result.status === "ZERO_RESULTS" ||
-              result.status === "INVALID_REQUEST"
-            ) {
-              this.error = "Message de renseigner une adresse valide";
-            } else {
-              this.lat = result.results[0].geometry.location.lat;
-              this.lng = result.results[0].geometry.location.lng;
-              var obj = {
-                email: this.userToEdit.email,
-                username: this.userToEdit.username,
-                street: this.userToEdit.street,
-                zip: this.userToEdit.zip,
-                number: this.userToEdit.number,
-                city: this.userToEdit.city,
-                lat: this.lat,
-                lng: this.lng,
-                id: this.userToEdit._id,
-                avatar: this.userToEdit.avatar,
-                is_admin: this.userToEdit.is_admin,
-              };
-
-              this.modifyUser(obj);
-              console.log(this.getModifyResponse.success);
-              if (this.getModifyResponse.success) {
-                this.modifySuccess = this.getModifyResponse.success;
-                this.fetchUserMe();
-              this.userToEdit = this.getUserMe.profile;
-                 setTimeout(function () {
-          location.reload();
-        }, 1200);
-            }
-            }
-          })
-          .catch((error) => console.log("error", error));
+          this.modifyUser(obj);
+          console.log(this.getModifyResponse.success);
+          if (this.getModifyResponse.success) {
+            this.modifySuccess = this.getModifyResponse.success;
+            this.fetchUserMe();
+          this.userToEdit = this.getUserMe.profile;
+              setTimeout(function () {
+      location.reload();
+    }, 1200);
+        }
         
-      }
-    },
+  },
   },
 
   mounted() {
@@ -265,7 +185,7 @@ export default {
     this.userToEdit = this.getUserMe.profile;
     this.modifySuccess = null;
   },
-};
+}
 </script>
 
 <style>

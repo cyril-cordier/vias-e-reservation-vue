@@ -1,5 +1,5 @@
  // const token = window.localStorage.getItem('token') || ""; 
- const url = "https://gameproject-api.herokuapp.com";
+ const url = "https://vias-e-reservation.herokuapp.com";
 
  const state = {
     
