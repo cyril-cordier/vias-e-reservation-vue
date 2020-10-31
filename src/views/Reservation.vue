@@ -1,0 +1,60 @@
+<template>
+    <div class="Reservation">
+       <Navbar/>
+       <div class=" mt-4">
+            <div class="p-3 m-5 w-85 mx-auto">
+        <div class="grid grid-flow-col grid-rows-2 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-2">
+<button
+            class="px-2 py-2 m-4 text-gray-700 font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-gray-200 hover:bg-orange-400  focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
+            @click="
+            (pret_toggle = true),
+                (emprunt_toggle = false)
+            "
+          >
+            Mes prêts
+          </button>
+          <button
+            class="px-2 py-2 m-4 text-gray-700 font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-gray-200 hover:bg-orange-400  focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
+            @click="
+              (pret_toggle = false),
+                (emprunt_toggle = true)
+            "
+          >
+            Mes Emprunts
+          </button>
+        </div>
+            </div>
+
+
+           <Borrower v-show="pret_toggle"/>
+           <Lender v-show="emprunt_toggle"/>
+       </div>
+        <Footer/>
+    </div>
+</template>
+
+<script>
+import Navbar from "../components/Navbar.vue"
+import Footer from "../components/Footer.vue"
+import Borrower from "../components/reservation/Borrower.vue"
+import Lender from "../components/reservation/Lender.vue"
+
+export default {
+    name:"Reservation",
+    components:{
+        Navbar,
+        Footer,
+        Borrower,
+        Lender
+    },
+    data() {
+    return {
+      
+      pret_toggle: true,
+      emprunt_toggle: false,
+
+      
+    };
+}
+}
+</script>

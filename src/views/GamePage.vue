@@ -1,0 +1,716 @@
+<template>
+  <div class="gamePage">
+    <Navbar />
+    <div class="">
+      <div class="text-gray-700 body-font overflow-hidden bg-white">
+        <div class="container px-5 py-10 mx-auto">
+            <!-- MODAL  -->     
+        <button v-if="getUserMe.profile != null"
+            class="  hover:text-red-400  text-xs text-red-600 sm:font-bold lg:w-2/4 mx-auto rounded mb-3 text-center"
+            @click="Modal = !Modal"
+            >Signaler un contenu inapproprié
+        </button>
+        <div 
+        class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
+        v-if="Modal"
+        >
+        <div class="relative mx-auto w-1/2 max-w-5xl">
+
+       <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+
+         <div class="text-2xl font-bold text-center mt-2"> Signalement
+                      <button class="rounded bg-red-600 hover:bg-red-400 text-white text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modal=false">X</button> 
+                    </div>
+         
+         <form 
+          @submit.prevent="createWarningSubmit()"
+          class="bg-white shadow-md rounded px-8 pt-6 pb-8 m-2 " >
+          <!-- MESSAGE SIGNALEMENT SUCCESS  -->
+                <div
+                v-if="createSuccess != null"
+                class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+                role="alert"
+                >
+                <div class="flex">
+                    <div class="py-1">
+                    <svg
+                        class="fill-current h-6 w-6 text-teal-500 mr-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                        d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                        />
+                    </svg>
+                    </div>
+                    <div>
+                    <p class="font-bold">Signalement envoyé au modérateur</p>
+                    </div>
+                </div>
+                </div>
+            <div class="mb-4 ">
+                <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="warning">
+                Signalement d'un contenu de jeu inapproprié
+                </label>
+                <textarea   
+                v-model="content"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                id="warning" 
+                type="text"
+                required 
+                placeholder="Saisir ici le contenu">
+                </textarea>
+            </div>
+            
+              <button 
+              class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 w-full rounded focus:outline-none focus:shadow-outline" 
+              type="submit">
+              Envoyer le signalement au modérateur
+            </button>
+
+         </form>       
+         </div>
+      </div>
+    </div>
+    <div v-if="Modal" class= "absolute inset-0 z-40  opacity-25 bg-black"></div>
+    <!-- MODAL FINISH -->
+    
+
+          <div class="lg:w-4/5 mx-auto flex flex-wrap" >
+               <div class=" w-1/6"  >
+                      <!-- MODAL IMAGE -->
+                              <div v-for="image in getGameById.game.images.slice(1,getGameById.game.images.length)" :key="image.id">
+              <img :src="image" alt="" class=" w-1/2 border mx-auto m-1 " @click="Modalimg = !Modalimg">
+              </div>
+                          <div 
+                            class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
+                            v-if="Modalimg"
+                          >
+                              <div class="relative mx-auto w-3/4 max-w-full max-h-full">
+
+                            <div class=" bg-opacity-25 bg-gray-900 w-full rounded shadow-2xl flex flex-col">
+
+                              <div class="text-2xl font-bold text-center m-2"> 
+                                <button class="rounded  hover:bg-gray-700 text-white font-bold text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modalimg=false">X</button> 
+                              </div >
+                                <div v-for="image in getGameById.game.images.slice(1,length)" :key="image.id">
+                                <img :src="image" alt="" class=" w-1/2 border mx-auto m-1 " >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div v-if="Modalimg" class= "absolute inset-0 z-40  opacity-25 bg-black"></div> 
+                      <!-- MODAL IMAGE -->
+             
+            </div>
+            
+            <img
+              class=" lg:w-1/3 w-full object-cover object-center rounded border border-gray-200"
+              :src="getGameById.game.images[0]"
+            />
+            <div  class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <svg
+                v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
+                v-show="like"
+                @click="addFavorite(), (like = false), (liked = true)"
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-heart"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                />
+              </svg>
+
+              <svg
+               v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
+                v-show="liked"
+                @click="deleteFav(), (like = true), (liked = false)"
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-heart-fill"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                />
+              </svg>
+
+               <div class=" p-3 W-1/3">
+
+                <div class="flex items-center">
+
+
+                  <div class="text-gray-600 ml-3">{{reviewOfGame.length}} Avis</div>
+
+                </div>
+                <div v-if="markResult >= 3"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg">
+                  Note Moyenne : {{markResult}} </div>
+                <div v-if="markResult < 3 && markResult != 0"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-red-800 px-6 py-2 shadow-lg">
+                  Note Moyenne : {{markResult}} </div>
+                <!-- STAR REVIEWS FINISH -->
+
+              </div>
+
+              <h2 class="text-sm title-font text-gray-500 mt-2 tracking-widest">
+                {{getGameById.game.categoryId}}
+              </h2>
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+                {{ getGameById.game.name }}
+              </h1>
+              <div class="flex mb-4">
+                
+                  
+              
+                  <div class="text-gray-600 ">
+                    Proprietaire du jeu: <router-link class="font-bold text-orange-500" :to="'/reviews/'+getGameById.game.userId._id">{{ getGameById.game.userId.username }}</router-link>
+                  </div>
+                
+              </div>
+              <div
+                v-html="getGameById.game.description"
+                class="leading-relaxed"
+              ></div>
+              <div
+                class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"
+              ></div>
+              <div class="flex content-around items-center">
+                <div
+                  class="flex-1 title-font font-medium text-md text-gray-900 m-2 border-r-2 border-orange-300"
+                >
+                  {{ getGameById.game.status }}
+                </div>
+                <div
+                  class="flex-1 title-font font-medium text-md text-gray-900 m-2 border-r-2 border-orange-300"
+                >
+                  Joueur(s) : {{ getGameById.game.nbPlayers }}
+                </div>
+                <div
+                  class="flex-1 title-font font-medium text-md text-gray-900 m-2"
+                >
+                  {{ getGameById.game.minAge }} Ans
+                </div>
+
+                <button
+                 v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
+                  @click="isClick = !isClick"
+                  class="flex ml-auto text-white font-bold bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-500 hover:inner-shadow shadow rounded"
+                >
+                  Reservation
+                </button>
+                  <button @click="isClickAvis = !isClickAvis, isClick=false"
+                  class="flex mr-auto text-orange-500 hover:text-white font-bold  border-0 ml-1 py-2 px-6 focus:outline-none hover:bg-orange-400 hover:inner-shadow rounded">
+                  Avis
+                </button>
+              </div>
+              
+            </div>
+           <!-- MESSAGE CREATE SUCCESS  -->
+                        <div v-if="getCreateReservationResponse.success"
+                            class="bg-teal-100 border-t-4 mt-5 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+                            role="alert">
+                            <div class="flex">
+                                <div class="py-1">
+                                    <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Votre demande de reservation vient d'etre transmise au propriétaire. Celui ci prendra une decision dans les plus brefs delais !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MESSAGE GAME ERROR  -->
+
+                        <div v-if="getCreateReservationResponse.error" role="alert">
+                            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Erreur
+                            </div>
+                            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p>Merci de verifier les informations</p>
+                            </div>
+                        </div>
+                         <div v-if="this.error == true" role="alert" class="w-full m-5">
+                            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Erreur
+                            </div>
+                            <div class="text-center border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p>Une demande est en attente pour cette date merci de bien vouloir choisir une autre date. </p>
+                            </div>
+                        </div>
+            <div v-if="getUserMe.profile != null"
+              v-show="isClick"
+              class="w-full flex content-between items-center rounded p-2 my-3"
+            >
+                  
+              <form @submit.prevent="reservationForm()" class="w-1/2 border p-3 bg-gray-200 mx-auto">
+                <label
+                  class="block text-gray-700 text-lg font-bold mb-2 text-center"
+                  for="nomdujeu"
+                >
+                  J'aimerai emprunter votre jeu: {{getGameById.game.name}} </label
+                ><label
+                  class="block bg-white text-gray-700 text-sm font-bold text-center h-12 mb-2"
+                  for="nomdujeu"
+                >
+                  Mon pseudo: {{ getUserMe.profile.username }} <br />
+                  Mon Email: {{ getUserMe.profile.email }}
+                </label>
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2 text-center"
+                  for=""
+                >
+                  selection de la date de début:
+                  <input
+                    type="date"
+                    id="start"
+                    name="date-début"
+                    value="2020-07-22"
+                    min="2020-01-01"
+                    max=""
+                    v-model="start"
+                  />
+                </label>
+                 <label
+                  class="block text-gray-700 text-sm font-bold mb-2 text-center"
+                  for=""
+                >
+                  selection de la date de fin:
+                  <input
+                    type="date"
+                    id="start"
+                    name="date-début"
+                    value="2020-07-22"
+                    min="2020-01-01"
+                    max=""
+                    v-model="end"
+                  />
+                </label>
+               
+                <button
+                  class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-2 mt-2 rounded text-center w-full"
+                  type="submit"
+                >
+                  Envoyer
+                </button>
+              </form>
+            </div>
+             <!-- AVIS -->
+
+            <div v-show="isClickAvis" 
+              class="w-full flex content-between items-center rounded p-2 my-3">
+              <div class="flex flex-col w-full bg-gray-200">
+
+                <form @submit.prevent="postReview" v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"  class="border p-3 m-4 bg-white" action="">
+
+                  <!-- MESSAGE CREATE SUCCESS  -->
+                  <div v-if="createReviewSuccess != null"
+                    class="bg-teal-100 border-t-4 mt-5 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+                    role="alert">
+                    <div class="flex">
+                      <div class="py-1">
+                        <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20">
+                          <path
+                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="font-bold">Votre avis vient d'etre publié avec succès </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- MESSAGE REVIEW ERROR  -->
+
+                  <div v-if="createReviewError != null" role="alert">
+                    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                      Erreur
+                    </div>
+                    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                      <p>Merci de verifier les informations</p>
+                    </div>
+                  </div>
+
+                  <textarea v-model="comment" required name="" id="" cols="30" rows="10" class="border w-full h-20"
+                    placeholder="Saisir ici votre commentaire sur le jeu"></textarea>
+                  <div class="flex flex-row">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2" class="w-4 h-4 text-orange-400 my-auto" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                      </path>
+                    </svg>
+                    <select v-model="mark" required name=" " id="" class=" bg-white m-4">
+                      <option class="p-4" value=" 1 "> 1 </option>
+                      <option value=" 2 "> 2 </option>
+                      <option value=" 3 "> 3 </option>
+                      <option value=" 4 "> 4 </option>
+                      <option value=" 5 "> 5 </option>
+                    </select>
+                    <button type="submit"
+                      class=" bg-orange-200 hover:bg-orange-500 hover:text-white px-3 my-auto h-8 rounded text-lg focus:outline-none shadow">
+                      Donnez votre avis sur le jeu
+                    </button>
+                  </div>
+                </form>
+
+                <!-- COMMENTS  -->
+                <div class="text-center ">
+                  <h2>Les avis</h2>
+                </div>
+                <div v-for="review in reviewOfGame" :key="review._id" class="border p-3 mt-3">
+
+                  <div>{{review.mark}}/ 5</div>
+                  <div>{{review.userId.username}} </div>
+                  <div class=" mt-3">{{review.comment}}</div>
+                  <button
+                    class=" bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center mt-5 cursor-pointer"
+                    v-if="getUserMe.profile != null && getUserMe.profile._id == review.userId._id" @click="deleteReviewButton(review._id)">
+                    Supprimer votre avis
+                  </button>
+                </div>
+              </div>
+            </div>
+
+               <!-- CALENDAR -->
+
+              <div class="Calendar w-full h-full">
+                <h1 class="text-center m-5 font-bold "> Calendrier de disponibilité </h1>
+                <Fullcalendar :options="calendarOptions" />
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Footer/>
+  </div>
+</template>
+
+<script>
+import { mapActions, mapGetters } from "vuex";
+// @ is an alias to /src
+import Footer from "../components/Footer";
+import Fullcalendar from "@fullcalendar/vue";
+import dayGridPlugin from "@fullcalendar/daygrid";
+
+
+import axios from "axios";
+import Navbar from "../components/Navbar";
+
+export default {
+  name: "GamePage",
+  components: {
+    Navbar,
+     Footer,
+    Fullcalendar,
+  },
+  data() {
+    return {
+      Modalimg:"",
+      Modal:"",
+      error:false,
+      search: "",
+      start:"",
+      end:"",
+      isClick: false,
+      isClickAvis: false,
+      like: true,
+      liked: false,
+      content:"",
+      createSuccess:null,
+      createReviewSuccess: null,
+      createReviewError: null,
+           mark: "",
+        comment: "",
+        markResult: "",
+      calendarOptions: {
+        plugins: [dayGridPlugin],
+        initialView: "dayGridMonth",
+        events: "",
+        eventClick: this.showEvent,
+        locale: "en",
+      },
+    };
+  },
+  methods: {
+    ...mapActions([
+      "fetchGameById",
+      "fetchUserMe",
+      "fetchAllFavorites",
+      "fetchFavoriteById",
+      "createFavorite",
+      "deleteFavorite",
+      "createReservation",
+      "createWarning",
+      "fetchAllReservations",
+              "fetchAllReviews",
+        "createReview",
+        "deleteReview"
+    ]),
+    addFavorite() {
+      var obj = {
+        userId: this.getUserMe.profile._id,
+        gameId: this.getGameById.game._id,
+      };
+
+      this.createFavorite(obj);
+    },
+
+    deleteFav() {
+      this.getAllFavorites.favorites.forEach((element) => {
+        if (
+          element.userId._id == this.getUserMe.profile._id &&
+          element.gameId._id == this.getGameById.game._id
+        ) {
+          this.deleteFavorite(element._id);
+        }
+      });
+    },
+    reservationForm(){
+
+      this.getAllReservations.Reservation.forEach((element)=>{
+        if(element.gameId._id == this.$route.params.id){
+
+          // CHECK START 
+          var dateFrom = element.start;
+          var dateTo = element.end;
+          var dateCheck = this.start;
+
+          // CHECK END 
+          
+          var dateFrom2 = element.start;
+          var dateTo2 = element.end;
+          var dateCheck2 = this.end;
+
+
+        // CONVERT START 
+
+          var d1 = dateFrom.split("-");
+          var d2 = dateTo.split("-");
+          var c = dateCheck.split("-");
+
+          //CONVERT END 
+
+          var d1End = dateFrom2.split("-");
+          var d2End = dateTo2.split("-");
+          var cEnd = dateCheck2.split("-");
+
+
+        // PARSE INT START
+
+          var from = new Date(d1[2], parseInt(d1[1])-1, d1[0]); 
+          var to   = new Date(d2[2], parseInt(d2[1])-1, d2[0]);
+          var check = new Date(c[2], parseInt(c[1])-1, c[0]);
+
+
+        // PARSE IN END 
+
+
+          var from2 = new Date(d1End[2], parseInt(d1End[1])-1, d1End[0]); 
+          var to2   = new Date(d2End[2], parseInt(d2End[1])-1, d2End[0]);
+          var check2 = new Date(cEnd[2], parseInt(cEnd[1])-1, cEnd[0]);
+
+        // ERROR 
+          if(check >= from && check <= to ){
+            this.error = true;
+          }else if (check2 >= from2 && check2 <= to2 ){
+             this.error = true;
+          }
+
+          
+                  
+          
+      
+    
+          
+        }
+      })
+
+    if(this.error == false){
+      var obj = {
+                "ownerId":this.getGameById.game.userId._id,
+                "borrowerId":this.getUserMe.profile._id,
+                "start":this.start,
+                "end":this.end,
+                "title":this.getUserMe.profile.username,
+                "status": "0",
+                "gameId":this.getGameById.game._id
+                }
+                this.createReservation(obj);
+}
+     
+
+     
+    },
+    checkfavorite() {
+      this.getAllFavorites.favorites.forEach((element) => {
+       
+        if (
+          this.getUserMe.profile != null &&
+          element.userId._id == this.getUserMe.profile._id &&
+          element.gameId._id == this.getGameById.game._id
+        ) {
+          this.liked = true;
+          this.like = false;
+        }
+      });
+    },
+  
+    getEvents() {
+      axios
+        .get("https://gameproject-api.herokuapp.com/reservations")
+        .then((resp) => {
+       
+          this.calendarOptions.events = resp.data.Reservation.filter(
+            (reservation) =>
+              reservation.gameId._id.includes(this.$route.params.id) && 
+              (reservation.status == "2" || reservation.status == "0")
+          );
+
+        
+        })
+        .catch((err) => console.log(err.response.data));
+    },
+    resetForm() {
+      Object.keys(this.newEvent).forEach((key) => {
+        return (this.newEvent[key] = "");
+      });
+    },
+    createWarningSubmit(){
+          var obj = {
+        userId: this.getUserMe.profile._id,
+        targetId: this.getGameById.game.userId._id,
+        content: this.content,
+        subject: "Jeu inapproprié",
+        
+      };
+      
+      this.createWarning(obj);
+      if (this.getCreateWarningResponse.success) {
+        this.createSuccess = this.getCreateWarningResponse.success;
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+      }
+    },
+      deleteReviewButton(id) {
+        this.fetchAllReviews();
+        this.deleteReview(id);
+        this.fetchAllReviews();
+      },
+        postReview() {
+        var obj = {
+          "comment": this.comment,
+          "mark": this.mark,
+          "userId": this.getUserMe.profile._id,
+          "gameId": this.$route.params.id,
+          "profileId": null
+        }
+        this.createReview(obj);
+
+        if (this.getCreateReviewResponse.success) {
+          this.createReviewError = null;
+          this.createReviewSuccess = this.getCreateReviewResponse.success;
+          setTimeout(function () {
+            location.reload();
+          }, 1200);
+        }
+
+
+      },
+
+      markCalc() {
+        var count = 0;
+        this.reviewOfGame.forEach(element => {
+          count += parseInt(element.mark);
+        });
+        this.markResult = Math.round(count / this.reviewOfGame.length);
+
+      },
+
+  },
+  created() {
+    this.fetchAllReviews();
+
+    this.fetchGameById(this.$route.params.id);
+    if(window.localStorage.getItem(this.token)){
+
+      this.fetchUserMe();
+    }
+    this.fetchAllFavorites();
+    this.checkfavorite();
+    this.fetchAllReservations();
+    this.getEvents();
+    this.createSuccess = null;
+      this.createReviewSuccess = null;
+    this.createReviewError = null;
+      this.getCreateReservationResponse.success = null;
+      this.getCreateReservationResponse.error = null;
+ 
+        this.markCalc();
+         
+  
+    
+  },
+   computed: {
+      ...mapGetters([
+        "getGameById",
+        "getUserMe",
+        "getAllFavorites",
+        "getFavoriteById",
+        "getAllReviews",
+        "getCreateReservationResponse",
+        "getAllReservations",
+        "getCreateWarningResponse",
+        "getCreateReviewResponse"
+
+      ]),
+      reviewOfGame() {
+        //console.log(this.$route.params.id);
+
+        return this.getAllReviews.Review.filter((review) => {
+            if(review.profileId == null && review.gameId != null){
+            return review.gameId._id
+          .toLowerCase()
+          .includes(this.$route.params.id.toLowerCase())
+            }
+        }  
+        );
+        
+
+      },
+    },
+  };
+</script>
+
+<style >
+
+
+
+.img{
+  border-color: aquamarine;
+}
+.img:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(3); 
+  
+}
+
+
+
+
+</style>
