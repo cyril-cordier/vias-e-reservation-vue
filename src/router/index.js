@@ -7,8 +7,6 @@ import Admin from '../views/Admin.vue'
 import Profile from '../views/Profile.vue'
 import FindGame from '../views/FindGame.vue'
 import Jeux from '../views/GamePage.vue'
-import GameMap from '../views/GameMap.vue'
-import Dice from '../views/DiceGame.vue'
 import Reservation from '../views/Reservation.vue'
 import Review from '../views/Review.vue'
 
@@ -55,18 +53,6 @@ const routes = [
     path: '/jeux/:id',
     name: 'Jeux',
     component: Jeux,
-    meta:{requiresVisitor: true},
-  },
-  {
-    path:'/gameMap',
-    name:'GameMap',
-    component:GameMap,
-    meta:{requiresVisitor: true},
-  },
-  {
-    path:'/dice',
-    name:'Dice',
-    component:Dice,
     meta:{requiresVisitor: true},
   },
   {

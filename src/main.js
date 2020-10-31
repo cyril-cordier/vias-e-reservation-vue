@@ -6,15 +6,6 @@ import './assets/tailwind.css'
 import jwt_decode from 'jwt-decode';
 
 
-import * as VueGoogleMaps from "vue2-google-maps";
-
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: process.env.VUE_APP_ENV_GOOGLE_API
-      //key: "AIzaSyAs3BJtjP6MMUmpkRMPrMvHFq0_YaotfjM"
-  }
-});
-
 
 router.beforeEach((to, from, next) => {
   const isLogged = localStorage.getItem('token');
