@@ -76,13 +76,19 @@
             </div>
             <div class="flex items-center">
               <div class="text-sm">
-                <p class="text-blue-600 m-2 mb-4">Proprietaire du jeu:
-                 <router-link class="font-bold text-orange-500" :to="'/reviews/'+apparts.userId._id">{{ apparts.userId.username }}</router-link>
-                </p>
-                <p class="text-blue-600 text-center font-bold p-1 bg-blue-200 rounded-full m-2 shadow">
-                  categorie
-                </p>
-                            </div>
+                <div class="text-blue-600  ">Gestionnaires de l'appartement :</div>
+                 <div class="font-bold text-orange-500 m-2 mb-4" >Christel PRAVDA-STAROV / Mireille PUGIN</div>
+                
+                <!-- <p class="text-blue-600 text-center font-bold p-1 bg-blue-200 rounded-full m-2 shadow">
+                  categories
+                </p> -->
+                <p 
+                  class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-green-300 text-green-800 "
+                  v-if= "apparts.available == true">Disponible pour la réservation</p>
+                  <p 
+                  class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-red-300 text-red-800 "
+                  v-if= "apparts.available != true">Non disponible à la réservation</p>
+              </div>
 
                    <router-link :to="'/appartements/'+apparts._id"  class="flex ml-auto text-white font-bold bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-500 hover:inner-shadow shadow rounded mt-5">Details</router-link>
               </div>

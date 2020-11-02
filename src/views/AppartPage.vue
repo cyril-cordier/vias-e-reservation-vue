@@ -115,18 +115,21 @@
 
                 <div class="flex items-center">
 
-
+                  <button @click="isClickAvis = !isClickAvis, isClick=false">
                   <div class="text-blue-600 ml-3">{{reviewOfAppart.length}} Avis</div>
-
+                  </button>
                 </div>
                 
                 <!-- STAR REVIEWS FINISH -->
 
               </div>
 
-              <h2 class="text-sm title-font text-blue-500 mt-2 tracking-widest">
-                categorie
-              </h2>
+              <p 
+                  class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-green-300 text-green-800 "
+                  v-if= "getAppartById.appart.available == true">Disponible pour la réservation</p>
+                  <p 
+                  class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-red-300 text-red-800 "
+                  v-if= "getAppartById.appart.available != true">Non disponible à la réservation</p>
               <h1 class="text-blue-900 text-3xl title-font font-medium mb-1">
                 {{ getAppartById.appart.name }}
               </h1>
@@ -134,9 +137,8 @@
                 
                   
               
-                  <div class="text-blue-600 ">
-                    Proprietaire du jeu: <router-link class="font-bold text-orange-500" :to="'/reviews/'+getAppartById.appart.userId._id">{{ getAppartById.appart.userId.username }}</router-link>
-                  </div>
+                  <div class="text-blue-600  ">Gestionnaires de l'appartement :</div>
+                 <div class="font-bold text-orange-500 m-2 mb-4" >Christel PRAVDA-STAROV / Mireille PUGIN</div>
                 
               </div>
               <div
@@ -147,24 +149,15 @@
                 class="flex mt-6 items-center pb-5 border-b-2 border-blue-200 mb-5"
               ></div>
               <div class="flex content-around items-center">
+                
                 <div
                   class="flex-1 title-font font-medium text-md text-blue-900 m-2 border-r-2 border-orange-300"
                 >
-                  {{ getAppartById.appart.status }}
+                  Nb de couchages : {{ getAppartById.appart.nbPlayers }}
                 </div>
-                <div
-                  class="flex-1 title-font font-medium text-md text-blue-900 m-2 border-r-2 border-orange-300"
-                >
-                  Joueur(s) : {{ getAppartById.appart.nbPlayers }}
-                </div>
-                <div
-                  class="flex-1 title-font font-medium text-md text-blue-900 m-2"
-                >
-                  {{ getAppartById.appart.minAge }} Ans
-                </div>
-
+                
                 <button
-                 v-if="getUserMe.profile != null && getAppartById.appart.userId._id != getUserMe.profile._id"
+                 v-if="getUserMe.profile != null && getAppartById.appart.available == true"
                   @click="isClick = !isClick"
                   class="flex ml-auto text-white font-bold bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-500 hover:inner-shadow shadow rounded"
                 >
@@ -190,7 +183,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold">Votre demande de reservation vient d'etre transmise au propriétaire. Celui ci prendra une decision dans les plus brefs delais !</p>
+                                    <p class="font-bold">Votre demande de reservation vient d'etre transmise au gestionnaire. Celui ci prendra une decision dans les plus brefs delais !</p>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +216,7 @@
                   class="block text-blue-700 text-lg font-bold mb-2 text-center"
                   for="nomdujeu"
                 >
-                  J'aimerai emprunter votre jeu: {{getAppartById.appart.name}} </label
+                  J'aimerai louer l'appartement : {{getAppartById.appart.name}} </label
                 ><label
                   class="block bg-white text-blue-700 text-sm font-bold text-center h-12 mb-2"
                   for="nomdujeu"
@@ -276,7 +269,7 @@
               class="w-full flex content-between items-center rounded p-2 my-3">
               <div class="flex flex-col w-full bg-blue-200">
 
-                <form @submit.prevent="postReview" v-if="getUserMe.profile != null && getAppartById.appart.userId._id != getUserMe.profile._id"  class="border p-3 m-4 bg-white" action="">
+                <form @submit.prevent="postReview" v-if="getUserMe.profile != null"  class="border p-3 m-4 bg-white" action="">
 
                   <!-- MESSAGE CREATE SUCCESS  -->
                   <div v-if="createReviewSuccess != null"
@@ -308,40 +301,29 @@
                   </div>
 
                   <textarea v-model="comment" required name="" id="" cols="30" rows="10" class="border w-full h-20"
-                    placeholder="Saisir ici votre commentaire sur le jeu"></textarea>
+                    placeholder="Saisir ici votre commentaire"></textarea>
                   <div class="flex flex-row">
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                      stroke-width="2" class="w-4 h-4 text-orange-400 my-auto" viewBox="0 0 24 24">
-                      <path
-                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
-                      </path>
-                    </svg>
-                    <select v-model="mark" required name=" " id="" class=" bg-white m-4">
-                      <option class="p-4" value=" 1 "> 1 </option>
-                      <option value=" 2 "> 2 </option>
-                      <option value=" 3 "> 3 </option>
-                      <option value=" 4 "> 4 </option>
-                      <option value=" 5 "> 5 </option>
-                    </select>
+                    
                     <button type="submit"
-                      class=" bg-orange-200 hover:bg-orange-500 hover:text-white px-3 my-auto h-8 rounded text-lg focus:outline-none shadow">
-                      Donnez votre avis sur le jeu
+                      class=" bg-orange-300 hover:bg-orange-500 hover:text-white px-3 my-auto h-8 rounded text-lg focus:outline-none shadow">
+                      Donnez votre avis sur l'appartement
                     </button>
                   </div>
                 </form>
 
                 <!-- COMMENTS  -->
                 <div class="text-center ">
-                  <h2>Les avis</h2>
+                  <h2>Les avis sur l'appartement</h2>
                 </div>
-                <div v-for="review in reviewOfAppart" :key="review._id" class="border p-3 mt-3">
+                <div v-for="review in reviewOfAppart" :key="review._id" class="border p-3 ">
 
-                  <div>{{review.mark}}/ 5</div>
-                  <div>{{review.userId.username}} </div>
+                  
+                  <div class="text-m title-font text-gray-600">Commentaire de : {{review.userId.username}}</div>
+                  <div class="text-xs title-font text-gray-600">Publié le : </div>
                   <div class=" mt-3">{{review.comment}}</div>
                   <button
-                    class=" bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center mt-5 cursor-pointer"
-                    v-if="getUserMe.profile != null && getUserMe.profile._id == review.userId._id" @click="deleteReviewButton(review._id)">
+                    class="text-xs bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center mt-5 cursor-pointer"
+                    v-if="getUserMe.profile._id == review.userId._id" @click="deleteReviewButton(review._id)">
                     Supprimer votre avis
                   </button>
                 </div>
@@ -396,9 +378,7 @@ export default {
       createSuccess:null,
       createReviewSuccess: null,
       createReviewError: null,
-           mark: "",
         comment: "",
-        markResult: "",
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: "dayGridMonth",
@@ -543,7 +523,6 @@ export default {
         postReview() {
         var obj = {
           "comment": this.comment,
-          "mark": this.mark,
           "userId": this.getUserMe.profile._id,
           "appartId": this.$route.params.id,
           "profileId": null

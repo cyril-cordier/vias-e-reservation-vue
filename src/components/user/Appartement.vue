@@ -30,14 +30,14 @@
                             </div>
                             <div class="flex items-center">
                                 <div class="text-sm">
-                                    <p class="pl-6 text-blue-900 leading-none">
+                                    <!-- <p class="pl-6 text-blue-900 leading-none">
                                         Catégorie
-                                    </p>
+                                    </p> -->
                                     <p 
-                                    class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-green-100 text-green-800 "
+                                    class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-green-300 text-green-800 "
                                     v-if= "appart.available == true">Disponible pour la réservation</p>
                                     <p 
-                                    class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-red-100 text-red-800 "
+                                    class=" m-5 px-2 inline-flex text-l leading-5 font-semibold rounded-full bg-red-300 text-red-800 "
                                     v-if= "appart.available != true">Non disponible à la réservation</p>
                                 </div>
                             </div>
