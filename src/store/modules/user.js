@@ -1,4 +1,4 @@
-const token = window.localStorage.getItem('token') || ""; 
+const viastoken = window.localStorage.getItem('viastoken') || ""; 
 const url = "https://vias-e-reservation.herokuapp.com";
 
 const state = {
@@ -79,7 +79,7 @@ login({commit},obj){
         .then(result => {
             commit('loginMutation',result)
             if(result.success){
-                localStorage.setItem('token',result.token);
+                localStorage.setItem('viastoken',result.viastoken);
 
                 setTimeout(function () {
     window.location.href="/"
@@ -110,7 +110,7 @@ fetchAllUsers({commit}){
     
 fetchUserMe({commit}){
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Authorization", `Bearer ${viastoken}`);
 
     var requestOptions = {
     method: 'GET',

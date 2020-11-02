@@ -4,8 +4,8 @@
  const state = {
     
     createResponse:'',
-    allGames:[],
-    gameById:"",
+    allApparts:[],
+    appartById:"",
     deleteResponse:'',
     modifyResponse:'',
     
@@ -16,31 +16,28 @@
  }
  const getters = {
 
-    getCreateGameResponse:(state)=>(state.createResponse),
-    getAllGames:(state)=>(state.allGames),
-    getGameById:(state) => (state.gameById),
-    getDeleteGameResponse:(state)=>(state.deleteResponse),
-    getModifyGameResponse:(state)=>(state.modifyResponse),
+    getCreateAppartResponse:(state)=>(state.createResponse),
+    getAllApparts:(state)=>(state.allApparts),
+    getAppartById:(state) => (state.appartById),
+    getDeleteAppartResponse:(state)=>(state.deleteResponse),
+    getModifyAppartResponse:(state)=>(state.modifyResponse),
 
    
  }
  const actions = {
 
-    createGame({commit},obj){
+    createAppart({commit},obj){
         var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify(
         {"name":obj.name,
-        "categoryId":obj.categoryId,
         "description":obj.description,
         "inventory":obj.inventory,
         "images":obj.images,
         "nbPlayers":obj.nbPlayers,
-        "minAge":obj.minAge,
         "userId":obj.userId,
         "available":obj.available,
-        "status":obj.status
     });
 
     var requestOptions = {
@@ -50,58 +47,55 @@ myHeaders.append("Content-Type", "application/json");
     redirect: 'follow'
     };
 
-    fetch(url + "/games", requestOptions)
+    fetch(url + "/appartements", requestOptions)
     .then(response => response.json())
-    .then(result => commit('createGameMutation',result))
+    .then(result => commit('createAppartMutation',result))
     .catch(error => console.log('error', error));
     },
 
-    // GET ALL GAMES 
+    // GET ALL APPARTS 
 
-    fetchAllGames({commit}){
+    fetchAllApparts({commit}){
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
           };
           
-          fetch(url + "/games", requestOptions)
+          fetch(url + "/appartements", requestOptions)
           .then(response => response.json())
-          .then(result => commit('allGamesMutation',result))
+          .then(result => commit('allAppartsMutation',result))
           .catch(error => console.log('error', error));
     },
 
-    // GET GAME BY ID 
+    // GET APPART BY ID 
 
-    fetchGameById({commit},id){
+    fetchAppartById({commit},id){
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
           };
           
-          fetch(`${url}/games/${id}`, requestOptions)
+          fetch(`${url}/appartements/${id}`, requestOptions)
           .then(response => response.json())
-          .then(result => commit('gameByIdMutation',result))
+          .then(result => commit('appartByIdMutation',result))
           .catch(error => console.log('error', error));
     },
 
-    //MODIFY GAME
+    //MODIFY APPART
 
-    modifyGame({commit},obj){
+    modifyAppart({commit},obj){
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify(
             [
             {"propName":"name","value":obj.name},
-            {"propName":"categoryId","value":obj.categoryId},
             {"propName":"description","value":obj.description},
             {"propName":"inventory","value":obj.inventory},
             {"propName":"images","value":obj.images},
             {"propName":"nbPlayers","value":obj.nbPlayers},
-            {"propName":"minAge","value":obj.minAge},
             {"propName":"userId","value":obj.userId},
             {"propName":"available","value":obj.available},
-            {"propName":"status","value":obj.status},
 
 
             ]);
@@ -113,20 +107,20 @@ myHeaders.append("Content-Type", "application/json");
         redirect: 'follow'
         };
 
-        fetch(`${url}/games/${obj.id}`, requestOptions)
+        fetch(`${url}/appartements/${obj.id}`, requestOptions)
         .then(response => response.json())
-        .then(result => commit('modifyGameMutation',result))
+        .then(result => commit('modifyAppartMutation',result))
         .catch(error => console.log('error', error));
     },
-    deleteGame({commit},id){
+    deleteAppart({commit},id){
         var requestOptions = {
             method: 'DELETE',
             redirect: 'follow'
           };
           
-          fetch(`${url}/games/${id}`, requestOptions)
+          fetch(`${url}/appartements/${id}`, requestOptions)
           .then(response => response.json())
-          .then(result => commit('deleteGameMutation',result))
+          .then(result => commit('deleteAppartMutation',result))
           .catch(error => console.log('error', error));
     }
 
@@ -135,22 +129,22 @@ myHeaders.append("Content-Type", "application/json");
  }
 
  const mutations = {
-     // CREATE GAME 
+     // CREATE APPART 
 
-     createGameMutation:(state,createResponse) =>(state.createResponse = createResponse),
+     createAppartMutation:(state,createResponse) =>(state.createResponse = createResponse),
 
-    // FETCH GAMES 
+    // FETCH APPARTS 
 
-     allGamesMutation:(state,allGames) => (state.allGames = allGames),
-     gameByIdMutation:(state,gameById) => (state.gameById = gameById),
+     allAppartsMutation:(state,allApparts) => (state.allApparts = allApparts),
+     appartByIdMutation:(state,appartById) => (state.appartById = appartById),
 
-     // DELETE GAME 
+     // DELETE APPART 
 
-    deleteGameMutation:(state,deleteResponse) => (state.deleteResponse = deleteResponse),
+    deleteAppartMutation:(state,deleteResponse) => (state.deleteResponse = deleteResponse),
 
-    //MODIFY GAME
+    //MODIFY APPART
 
-    modifyGameMutation:(state,modifyResponse) => (state.modifyResponse = modifyResponse),
+    modifyAppartMutation:(state,modifyResponse) => (state.modifyResponse = modifyResponse),
  }
  
  

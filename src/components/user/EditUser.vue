@@ -37,15 +37,15 @@
     </div>
 
 
-    <div class="rounded-lg text-light w-85 mx-auto p-10 bg-gray-300 flex flex-wrap">
-            <div class="p-5 w-0.3 rounded-lg bg-gray-200 shadow-lg text-center">
+    <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
+            <div class="p-5 w-0.3 rounded-lg bg-blue-200 shadow-lg text-center">
 
       <img class="w-64 rounded-full mx-10" :src="userToEdit.avatar" alt="" />
-      <div class="mt-5 font-semibold text-gray-700">
+      <div class="mt-5 font-semibold text-blue-700">
       Modifier mon avatar
       </div>
       <select
-        class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-gray-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow text-gray-800 hover:text-gray-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
+        class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
         v-model="userToEdit.avatar"
         required
         id="avatar"
@@ -68,35 +68,35 @@
 </div>
       
 
-      <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-gray-200">
-        <div class="mb-4 mx-8 border-b-2 border-gray-400">
-          <h3 class="text-center text-gray-800 font-bold text-xl">
+      <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-blue-200">
+        <div class="mb-4 mx-8 border-b-2 border-blue-400">
+          <h3 class="text-center text-blue-800 font-bold text-xl">
             Modifier mes Informations
           </h3>
         </div>
 
         <form @submit.prevent="editUser">
           <div class="form-group w-6/12 inline-block p-auto m-auto row">
-            <label for="InputUsername" class="font-semibold text-gray-800 text-l ml-2"
+            <label for="InputUsername" class="font-semibold text-blue-800 text-l ml-2"
               >Nom d'utilisateur :
             </label>
             <input
               type="text"
               v-model="userToEdit.username"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
+              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
               id="InputUsername"
               placeholder="Nom d'utilisateur"
               required
             />
           </div>
           <div class="form-group w-6/12 inline-block p-auto m-auto row">
-            <label for="InputEmail" class="font-semibold text-gray-800 text-l ml-2"
+            <label for="InputEmail" class="font-semibold text-blue-800 text-l ml-2"
               >Email :</label
             >
             <input
               type="email"
               v-model="userToEdit.email"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
+              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
               id="InputEmail"
               aria-describedby="emailHelp"
               placeholder="Email"
@@ -104,7 +104,7 @@
             />
           </div>
           <div class="form-group w-3/12 inline-block p-auto m-auto row">
-            <label for="InputNumber" class="font-semibold text-gray-800 text-l ml-2"
+            <label for="InputNumber" class="font-semibold text-blue-800 text-l ml-2"
               >Statut : {{userToEdit.who_is}}</label
             >
             
@@ -113,7 +113,7 @@
 
           <br />
           <button
-            class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-gray-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow text-gray-800 hover:text-gray-100 rounded text-lg focus:outline-none shadow-md"
+            class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow-md"
             type="submit"
           >
             <span>Enregistrer</span>
@@ -132,7 +132,7 @@ export default {
   data() {
     return {
       user: "",
-      modifySuccess: "",
+      modifySuccess: null,
 
       //USER
 
@@ -140,7 +140,7 @@ export default {
       lat: "",
       lng: "",
       userToEdit: "",
-      successUpdate: "",
+      successUpdate: null,
     };
   },
   methods: {

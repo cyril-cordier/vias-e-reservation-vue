@@ -5,8 +5,8 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Admin from '../views/Admin.vue'
 import Profile from '../views/Profile.vue'
-import FindGame from '../views/FindGame.vue'
-import Jeux from '../views/GamePage.vue'
+import FindAppart from '../views/FindAppart.vue'
+import Jeux from '../views/AppartPage.vue'
 import Reservation from '../views/Reservation.vue'
 import Review from '../views/Review.vue'
 
@@ -26,9 +26,9 @@ const routes = [
     meta:{requiresVisitor: true},
   },
   {
-    path: '/recherchejeux',
-    name: 'FindGame',
-    component: FindGame,
+    path: '/rechercheappart',
+    name: 'FindAppart',
+    component: FindAppart,
     meta:{requiresVisitor: true},
   },
   {
@@ -50,10 +50,10 @@ const routes = [
     meta:{requiresVisitor: false},
   },
   {
-    path: '/jeux/:id',
+    path: '/appartements/:id',
     name: 'Jeux',
     component: Jeux,
-    meta:{requiresVisitor: true},
+    meta:{requiresVisitor: false},
   },
   {
     path:'/reservation',

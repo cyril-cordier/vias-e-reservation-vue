@@ -3,53 +3,53 @@
 <h6 class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-12 m-2 rounded w-64">Contenu signalé</h6>
         <div class="flex flex-col m-2 shadow-lg">
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-blue-200">
           <table class="min-w-full">
             <thead>
               <tr>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Nom de l'utilisateur</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Utilisateur signalé</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Sujet</th>
               <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Statut</th>
                   
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="warning in getAllWarnings.Warning" :key="warning._id">
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10"><img
                         :src="warning.userId.avatar"
                         alt="" class="h-10 w-10 rounded-full"></div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{warning.userId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{warning.userId.username}}</div>
 
                     </div>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10"><img
                         :src="warning.targetId.avatar"
                         alt="" class="h-10 w-10 rounded-full"></div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{warning.targetId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{warning.targetId.username}}</div>
 
                     </div>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{warning.subject}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{warning.subject}}</div>
 
                     </div>
                   </div>
@@ -58,7 +58,7 @@
                 
                 <td
                   v-if="warning.status == 'Traité'"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
@@ -67,7 +67,7 @@
                 </td>
                 <td
                   v-if="warning.status == 'En attente'"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
@@ -79,7 +79,7 @@
                 
 
                 <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-sm leading-5 font-medium"
                 >
                   <button
                     class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
@@ -95,7 +95,7 @@
                   >
                     <div class="relative mx-auto w-auto max-w-2xl">
                       <div
-                        class="bg-gray-500 w-full rounded shadow-2xl flex flex-col"
+                        class="bg-blue-500 w-full rounded shadow-2xl flex flex-col"
                       >
                         <div class="text-2xl font-bold text-center mt-2">
 
@@ -150,14 +150,14 @@
                           
                           <div class="mb-4">
                             <label
-                              class="block text-gray-700 text-sm font-bold mb-2"
+                              class="block text-blue-700 text-sm font-bold mb-2"
                               for="status"
                             >
                               Statut du signalement
                             </label>
                                 <select
                                   v-model="warningToEdit.status"
-                                  class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                  class="block appearance-none w-full bg-blue-200 border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                                   id="status"
                               >
                                   <option value="En attente">En attente</option>
@@ -185,7 +185,7 @@
                 </td>
                 
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium">
                   <div class= "bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-1 rounded-full text-center w-20" style="cursor:pointer;" @click="deleteWarningButton(warning._id)">Supprimer
                   </div>
                 </td>
@@ -209,8 +209,8 @@ export default {
       avatar:"",
       editModal: false,
       warningToEdit: "",
-      modifySuccess:"",
-      modifyError:"",
+      modifySuccess:null,
+      modifyError:null,
       
 
       

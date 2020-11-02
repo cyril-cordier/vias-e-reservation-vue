@@ -39,7 +39,7 @@ var raw = JSON.stringify(
             "end":obj.end,
             "title":obj.title,
             "status": obj.status,
-            "gameId":obj.gameId
+            "appartId":obj.appartId
     });
 
 
@@ -99,7 +99,7 @@ var raw = JSON.stringify(
             {"propName":"borrowerId","value":obj.borrowerId},
             {"propName":"start","value":obj.start},
             {"propName":"end","value":obj.end},
-            {"propName":"gameId","value":obj.gameId},
+            {"propName":"appartId","value":obj.appartId},
             {"propName":"status","value":obj.status},
             {"propName":"title","value":obj.title},
 

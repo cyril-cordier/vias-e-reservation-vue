@@ -36,8 +36,8 @@
         <p v-if="error">{{ error }}</p>
       </div>
     </div>
-        <div class="rounded-lg text-light w-85 mx-auto p-10 bg-gray-300 flex flex-wrap">
-          <div class="p-5 w-1/4 rounded-lg bg-gray-200 shadow-lg text-center">
+        <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
+          <div class="p-5 w-1/4 rounded-lg bg-blue-200 shadow-lg text-center">
 
           <img
             class="w-64 rounded-full mx-10"
@@ -46,22 +46,22 @@
           />
           </div>
 
-          <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-gray-200">
-            <div class="mb-4 mx-8 border-b-2 border-gray-400">
-              <h3 class="text-center text-gray-800 font-bold text-xl">
+          <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-blue-200">
+            <div class="mb-4 mx-8 border-b-2 border-blue-400">
+              <h3 class="text-center text-blue-800 font-bold text-xl">
                 Modifier mon mot de passe
               </h3>
             </div>
            
             <form @submit.prevent="editPassword()">
               <div class="form-group w-full inline-block p-auto m-auto row">
-                <label for="InputPassword" class="font-semibold text-l text-gray-800 ml-2"
+                <label for="InputPassword" class="font-semibold text-l text-blue-800 ml-2"
                   >Mot de passe :</label
                 >
                 <input
                   type="password"
                   v-model="password"
-                  class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
+                  class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
                   id="InputPassword"
                   required
                   placeholder="Mot de passe"
@@ -70,13 +70,13 @@
               <div class="form-group w-full inline-block p-auto m-auto row">
                 <label
                   for="InputPasswordConfirmation"
-                  class="font-semibold text-gray-800 text-l ml-2"
+                  class="font-semibold text-blue-800 text-l ml-2"
                   >Confirmez le mot de passe :</label
                 >
                 <input
                   type="password"
                   v-model="c_password"
-                  class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-gray-700"
+                  class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
                   id="InputPasswordConfirmation"
                   required
                   placeholder="Confirmez le mot de passe"
@@ -85,7 +85,7 @@
 
               <br />
               <button
-                class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-gray-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow text-gray-800 hover:text-gray-100 rounded text-lg focus:outline-none shadow-md"
+                class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow-md"
                 type="submit"
                 
               >
@@ -108,8 +108,8 @@ export default {
   data() {
     return {
       user: "",
-      success: "",
-      error:"",
+      success: null,
+      error: null,
       
 
       //USER
@@ -117,7 +117,7 @@ export default {
       password: "",
       c_password: "",
       
-      successUpdate: "",
+      successUpdate: null,
 
     };
   },

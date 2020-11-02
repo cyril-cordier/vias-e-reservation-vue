@@ -9,7 +9,7 @@
     <div class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
       v-if="createModal">
       <div class="relative mx-auto w-auto max-w-2xl">
-        <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+        <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
           <div class="text-2xl font-bold text-center mt-2">
             Création nouveau contenu
             <button class="rounded bg-red-500 text-white text-center px-2 py-1 text-sm absolute top-0 right-0 m-3"
@@ -47,28 +47,28 @@
               </div>
             </div>
             <div class="mb-3">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="title">
                 Titre
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="title" type="text" placeholder="Titre" required v-model="title" />
             </div>
             <div class="mb-2">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="content">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="content">
                 Contenu
               </label>
               <vue-editor v-model="content"
-                class="shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-1 px-2 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="content" type="text" required placeholder="Contenu"></vue-editor>
 
             </div>
             <div class="mb-3">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="visible">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="visible">
                 Visible
               </label>
               <select v-model="visible" required
-                class="bg-white block shadow appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                 id="visible">
 
                 <option value=true>Oui</option>
@@ -89,33 +89,33 @@
 
     <div class="flex flex-col m-2 shadow-lg">
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-blue-200">
           <table class="min-w-full">
             <thead>
               <tr>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Titre
                 </th>
                 
 
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Visible
                 </th>
 
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="content in getAllContents.Content" :key="content._id">
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
 
                     </div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">
+                      <div class="text-sm leading-5 font-medium text-blue-900">
                         {{ content.title }}
                       </div>
                     </div>
@@ -125,22 +125,22 @@
                 
 
                 <td v-if="content.visible == true"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center">
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center">
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Visible</span>
                 </td>
 
                 <td v-if="content.visible == false"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center">
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center">
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Masqué</span>
                 </td>
 
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900 text-center"></div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900 text-center"></div>
                 </td>
 
-                <td class="px-1 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                <td class="px-1 py-4 whitespace-no-wrap border-b border-blue-200 text-sm leading-5 font-medium">
                   <button
                     class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
                     @click="toggleModal = !toggleModal, contentToEdit = content ">
@@ -151,7 +151,7 @@
                   <div class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
                     v-if="toggleModal">
                     <div class="relative mx-auto w-auto max-w-2xl">
-                      <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col ">
+                      <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col ">
                         <div class="text-2xl font-bold text-center mt-2 m-1">
 
                           Modifier un contenu
@@ -193,30 +193,30 @@
                             </div>
                           </div>
                           <div class="mb-3 mt-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                            <label class="block text-blue-700 text-sm font-bold mb-2" for="title">
                               Titre
                             </label>
                             <input
-                              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="title" type="text" placeholder="Titre" required v-model="contentToEdit.title" />
                           </div>
                           <div class="mb-3">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="content">
+                            <label class="block text-blue-700 text-sm font-bold mb-2" for="content">
                               Contenu
                             </label>
                             <vue-editor
-                              class="shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              class="shadow appearance-none border rounded w-full py-1 px-2 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="content" type="text" placeholder="Contenu" required v-model="contentToEdit.content">
                             </vue-editor>
                           </div>
 
 
                           <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="visible">
+                            <label class="block text-blue-700 text-sm font-bold mb-2" for="visible">
                               Visible
                             </label>
                             <select v-model="contentToEdit.visible" required
-                              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="block appearance-none w-full bg-blue-200 border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                               id="visible">
                               <option :value="null" disabled>Contenu visible ?</option>
                               <option value="true">Oui</option>
@@ -236,7 +236,7 @@
                   <div v-if="toggleModal" class="absolute inset-0 z-40 opacity-25 bg-black"></div>
                 </td>
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium">
                   <div class="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-1 rounded-full text-center w-20"
                     style="cursor: pointer" @click="deleteContentButton(content._id)">
                     Supprimer
@@ -275,10 +275,10 @@
         content: "",
         visible: "",
         createModal: false,
-        createSuccess: "",
-        createError: "",
-        modifySuccess: "",
-        modifyError: "",
+        createSuccess: null,
+        createError: null,
+        modifySuccess: null,
+        modifyError: null,
       };
     },
     methods: {

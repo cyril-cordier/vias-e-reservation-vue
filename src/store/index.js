@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import user from './modules/user.js'
-import game from './modules/game'
+import appart from './modules/appart'
 import reservation from './modules/reservations'
 import reviews from './modules/reviews'
 import contents from './modules/contents'
@@ -14,7 +14,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules:{
     user,
-    game,
+    appart,
     reservation,
     reviews,
     contents,

@@ -14,7 +14,7 @@
       <div class="relative mx-auto w-auto max-w-2xl">
        
 
-        <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+        <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
           <div class="text-2xl font-bold text-center mt-2" >
             Création utilisateur
             <button
@@ -83,13 +83,13 @@
             
             <div class="mb-4">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-blue-700 text-sm font-bold mb-2"
                 for="username"
               >
                 Nom utilisateur
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 type="text"
                 placeholder="Nom utilisateur"
@@ -99,13 +99,13 @@
             </div>
             <div class="mb-4">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-blue-700 text-sm font-bold mb-2"
                 for="username"
               >
                 Email
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -115,13 +115,13 @@
             </div>
             <div class="mb-4">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-blue-700 text-sm font-bold mb-2"
                 for="pasword"
               >
                 Mot de passe
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
                 placeholder="Mot de passe"
@@ -131,13 +131,13 @@
             </div>
             <div class="mb-4">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                class="block text-blue-700 text-sm font-bold mb-2"
                 for="pasword"
               >
                 Confirmez votre Mot de passe
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="c_password"
                 type="password"
                 placeholder="Mot de passe"
@@ -148,13 +148,13 @@
             <div class="flex flex-row">
               <div class="mb-4">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  class="block text-blue-700 text-sm font-bold mb-2"
                   for="number"
                 >
                   Numéro
                 </label>
                 <input
-                  class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="number"
                   type="text"
                   placeholder="N°"
@@ -164,13 +164,13 @@
               </div>
               <div class="mb-4 w-full">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  class="block text-blue-700 text-sm font-bold mb-2"
                   for="streetname"
                 >
                  Avenue, Rue
                 </label>
                 <input
-                  class="shadow appearance-none border w-full rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="shadow appearance-none border w-full rounded py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="street"
                   type="text"
                   placeholder="Nom de rue"
@@ -182,13 +182,13 @@
             <div class="flex flex-row">
               <div class="mb-4">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  class="block text-blue-700 text-sm font-bold mb-2"
                   for="zip"
                 >
                   Code postal
                 </label>
                 <input
-                  class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="zip"
                   type="text"
                   placeholder="Code postal"
@@ -198,13 +198,13 @@
               </div>
               <div class="mb-4">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  class="block text-blue-700 text-sm font-bold mb-2"
                   for="city"
                 >
-                  Ville
+                  Statut
                 </label>
                 <input
-                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="city"
                   type="text"
                   placeholder="Ville"
@@ -233,85 +233,64 @@
     <div class="flex flex-col m-2 shadow-lg">
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div
-          class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
+          class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-blue-200"
         >
           <table class="min-w-full">
             <thead>
               <tr>
+                
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center"
-                >
-                  Id
-                </th>
-                <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center"
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center"
                 >
                   Nom utilisateur
                 </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center"
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center"
                 >
                   Email
                 </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center"
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center"
                 >
-                  Ville
+                  Statut
                 </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center"
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center"
                 >
                   Droits Admin
                 </th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
+                <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="user in getAllUsers.users" :key="user._id">
+                
                 <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"
                 >
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img
-                        :src="user.avatar"
-                        alt=""
-                        class="h-10 w-10 rounded-full"
-                      />
-                    </div>
-                    <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">
-                        {{ user._id }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                >
-                  <div class="text-sm leading-5 text-gray-900">
+                  <div class="text-sm leading-5 text-blue-900">
                     {{ user.username }}
                   </div>
                 </td>
                 <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"
                 >
-                  <div class="text-sm leading-5 text-gray-900">
+                  <div class="text-sm leading-5 text-blue-900">
                     {{ user.email }}
                   </div>
                 </td>
 
                 <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"
                 >
-                  <div class="text-sm leading-5 text-gray-900">
-                    {{ user.city }}
+                  <div class="text-sm leading-5 text-blue-900">
+                    {{ user.who_is }}
                   </div>
                 </td>
                 <td
                   v-if="user.is_admin == true"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
@@ -320,7 +299,7 @@
                 </td>
                 <td
                   v-if="user.is_admin == false"
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-center"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
@@ -329,13 +308,13 @@
                 </td>
 <!-- début du modal edit -->
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium"
                 >
                   <!-- début du modal edit -->
                 </td>
 
                 <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium"
+                  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-sm leading-5 font-medium"
                 >
                   <button
                     class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
@@ -351,7 +330,7 @@
                   >
                     <div class="relative mx-auto w-auto max-w-2xl">
                       <div
-                        class="bg-gray-500 w-full rounded shadow-2xl flex flex-col"
+                        class="bg-blue-500 w-full rounded shadow-2xl flex flex-col"
                       >
                         <div class="text-2xl font-bold text-center mt-2">
 
@@ -396,14 +375,14 @@
                           
                           <div class="mb-4">
                             <label
-                              class="block text-gray-700 text-sm font-bold mb-2"
+                              class="block text-blue-700 text-sm font-bold mb-2"
                               for="username"
                             >
                               Nom utilisateur
                             </label>
                             <input
                               v-model="userToEdit.username"
-                              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="username"
                               type="text"
                               required
@@ -412,14 +391,14 @@
                           </div>
                           <div class="mb-4">
                             <label
-                              class="block text-gray-700 text-sm font-bold mb-2"
+                              class="block text-blue-700 text-sm font-bold mb-2"
                               for="username"
                             >
                               Email
                             </label>
                             <input
                               v-model="userToEdit.email"
-                              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="Email"
                               type="text"
                               required
@@ -430,14 +409,14 @@
                           <div class="flex flex-row">
                             <div class="mb-4">
                               <label
-                                class="block text-gray-700 text-sm font-bold mb-2"
+                                class="block text-blue-700 text-sm font-bold mb-2"
                                 for="number"
                               >
                                 Numéro
                               </label>
                               <input
                                 v-model="userToEdit.number"
-                                class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="number"
                                 type="text"
                                 required
@@ -446,14 +425,14 @@
                             </div>
                             <div class="mb-4 w-full">
                               <label
-                                class="block text-gray-700 text-sm font-bold mb-2"
+                                class="block text-blue-700 text-sm font-bold mb-2"
                                 for="streetname"
                               >
                                 Avenue, rue
                               </label>
                               <input
                                 v-model="userToEdit.street"
-                                class="shadow appearance-none border w-full rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border w-full rounded py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="Streetname"
                                 type="text"
                                 required
@@ -464,14 +443,14 @@
                           <div class="flex flex-row">
                             <div class="mb-4">
                               <label
-                                class="block text-gray-700 text-sm font-bold mb-2"
+                                class="block text-blue-700 text-sm font-bold mb-2"
                                 for="zip"
                               >
                                 Code postal
                               </label>
                               <input
                                 v-model="userToEdit.zip"
-                                class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="zip"
                                 type="text"
                                 required
@@ -480,14 +459,14 @@
                             </div>
                             <div class="mb-4">
                               <label
-                                class="block text-gray-700 text-sm font-bold mb-2"
+                                class="block text-blue-700 text-sm font-bold mb-2"
                                 for="city"
                               >
                                Ville
                               </label>
                               <input
                                 v-model="userToEdit.city"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="city"
                                 type="text"
                                 required
@@ -497,7 +476,7 @@
                           </div>
                           <div class="mb-4">
                             <label
-                              class="block text-gray-700 text-sm font-bold mb-2"
+                              class="block text-blue-700 text-sm font-bold mb-2"
                               for="admin"
                             >
                               Admin
@@ -505,7 +484,7 @@
                             <select
                                 v-model="userToEdit.is_admin"
                                 required
-                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700  py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                class="block appearance-none w-full bg-blue-200 border border-blue-200 text-blue-700  py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                                 id="admin"
                             >
                                 <option value="null" disabled>Choisir une option</option>
@@ -531,7 +510,7 @@
                 </td>
 
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium"
                 >
                   <div
                     class="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center"
@@ -564,7 +543,8 @@ export default {
       zip: "",
       number: "",
       city: "",
-      error: "",
+      error: null,
+      success: null,
       avatar: "",
       lat: "",
       lng: "",

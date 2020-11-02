@@ -35,7 +35,7 @@ var raw = JSON.stringify(
             "mark":obj.mark,
             "userId":obj.userId,
             "profileId":obj.profileId,
-            "gameId":obj.gameId
+            "appartId":obj.appartId
     });
 
 
@@ -92,7 +92,7 @@ var raw = JSON.stringify(
             {"propName":"mark","value":obj.mark},
             {"propName":"userId","value":obj.userId},
             {"propName":"profileId","value":obj.profileId},
-            {"propName":"gameId","value":obj.gameId},
+            {"propName":"appartId","value":obj.appartId},
 
 
             ]);

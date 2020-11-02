@@ -5,7 +5,7 @@
 
     <div class="flex flex-col mx-20">
 
-<div class="mb-6 p-3 bg-orange-300 shadow rounded text-gray-700">
+<div class="mb-6 p-3 bg-orange-300 shadow rounded text-blue-700">
     <h2 class="text-center font-bold text-xl">Mes Prêts</h2>
 
     <h5 class="text-center ">Retrouvez ici tous les jeux que vous avez prêtés et les demandes en attente</h5>
@@ -16,24 +16,24 @@
 
 			<div v-for="reservation in reservationOfUser" :key="reservation._id" class="flex flex-col items-center justify-center bg-white p-4 shadow-lg rounded-lg">
 				<div class="inline-flex  overflow-hidden h-40 w-40">
-					<img :src="reservation.gameId.images[0]" class="h-full w-full">
+					<img :src="reservation.appartId.images[0]" class="h-full w-full">
 				</div>
 
 				<h2 class="mt-4 font-bold text-xl text-center">Emprunteur:<br>{{reservation.borrowerId.username}}	
-        <div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-10 w-10">
+        <div class="inline-flex shadow-lg border border-blue-200 rounded-full overflow-hidden h-10 w-10">
 					<img :src="reservation.borrowerId.avatar" class="h-full w-full">
 				</div>
         </h2>
         
-				<h6 class="mt-2 text-normal font-medium">Nom du Jeu: {{reservation.gameId.name}}</h6>
-        <router-link :to="'/jeux/'+reservation.gameId._id"  
-        class="px-3 py-1 m-5 w-2.5/6 font-semibold transform hover:scale-105 bg-gray-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow text-gray-800 hover:text-gray-100 rounded text-lg focus:outline-none shadow">
+				<h6 class="mt-2 text-normal font-medium">Nom du Jeu: {{reservation.appartId.name}}</h6>
+        <router-link :to="'/appartements/'+reservation.appartId._id"  
+        class="px-3 py-1 m-5 w-2.5/6 font-semibold transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow">
         Details du jeu</router-link>
 
-				<p class="text-sm text-gray-500 text-center mt-3">
+				<p class="text-sm text-blue-500 text-center mt-3">
 					Debut: {{reservation.start}}
 				</p>
-				<p class="text-sm text-gray-500 text-center mt-3">
+				<p class="text-sm text-blue-500 text-center mt-3">
 					Fin: {{reservation.end}}
 				</p>
 
@@ -44,7 +44,7 @@
                 >
                   <p
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg"
-                    >Vous avez accepté de prêter<br>{{reservation.gameId.name}}<br>à {{reservation.borrowerId.username}}</p>
+                    >Vous avez accepté de prêter<br>{{reservation.appartId.name}}<br>à {{reservation.borrowerId.username}}</p>
                     <h4 class="mt-4 text-normal text-center">Vous pouvez contacter l'emprunteur : <br><a :href="'mailto:'+reservation.borrowerId.email">{{reservation.borrowerId.email}}</a></h4>
 						</div>
             <div v-if="reservation.status == 1"
@@ -99,7 +99,7 @@
                     >
                     <div class="relative mx-auto w-1/2 max-w-5xl">
 
-                  <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+                  <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
 
                     <div class="text-2xl font-bold text-center mt-2"> Signalement
                       <button class="rounded bg-red-600 hover:bg-red-400 text-white text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modal=false">X</button> 
@@ -132,12 +132,12 @@
                 </div>
                 </div>
                       <div class="mb-4 ">
-                          <label class="block text-gray-700 text-sm font-bold mb-2 " for="warning">
+                          <label class="block text-blue-700 text-sm font-bold mb-2 " for="warning">
                           Signalement d'un problème avec un emprunteur
                           </label>
                           <textarea   
                           v-model="content"
-                          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                          class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                           id="warning" 
                           type="text" 
                           required
@@ -197,7 +197,7 @@ export default {
         end:reservation.end,
         title:reservation.title,
         status:"2",
-        gameId:reservation.gameId._id
+        appartId:reservation.appartId._id
       };
       
       this.modifyReservation(obj);
@@ -216,7 +216,7 @@ export default {
         end:reservation.end,
         title:reservation.title,
         status:"1",
-        gameId:reservation.gameId._id
+        appartId:reservation.appartId._id
       };
       
       this.modifyReservation(obj);

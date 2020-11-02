@@ -3,10 +3,10 @@
 <!-- attention des bugs sur firefox a cause des shadows box -->
 <div class="pb-20 m-4 ">
     <div class="lg:flex justify-center mt-20 border-black hidden">
-        <router-link to="/recherchejeux">
+        <router-link to="/rechercheappart">
         <ul id="menu">
         <li> <img style="background-size:cover" src= '../../assets/loginPlage.jpg'> </li>
-        <li class="highlighted"> <img style="background-size:cover" src= '../../assets/logo_vias-e-reservation.png'> </li>
+        <li class="highlighted"> <img style="background-size:cover" src= '../../assets/logo_vias-e-reservation.jpg'> </li>
         <li> <img style="background-size:cover" src= '../../assets/registerPlage.jpg'> </li>
         </ul>
         </router-link>

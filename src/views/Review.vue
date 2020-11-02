@@ -6,7 +6,7 @@
             <div class="border border-b-0 w-2/3 flex flex-row p-3 mx-auto lg:justify-around">
                
                 <div class="">
-                        <img src="../assets/avatar/Chuck.png" class="w-20 cover rounded-full" alt="">
+                        <img src="../assets/avatar/Speedy.png" class="w-20 cover rounded-full" alt="">
                 </div>  
                 <div class=" p-3 W-1/3 mr-3"> 
                     Nom utilisateur: {{getUserById.user[0].username}}<br>
@@ -17,7 +17,7 @@
                         <div class="flex items-center">
 
                     
-                    <div class="text-gray-600 ml-3">{{reviewOfUser.length}} Avis</div>
+                    <div class="text-blue-600 ml-3">{{reviewOfUser.length}} Avis</div>
                 
                     </div>
                         <div v-if="markResult >= 3" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg">Note Moyenne : {{markResult}} </div>
@@ -31,11 +31,11 @@
             <div class="w-2/3 mx-auto border border-t-0 mb-3 ">
                 <div class="m-3">Les autres jeux de <span class="text-orange-500">{{getUserById.user[0].username}}</span></div> 
                <div class="grid grid-cols-6 gap-4">
-                    <div v-for="game in gameOfUser" :key="game._id" class="w-32 m-3">
+                    <div v-for="appart in appartOfUser" :key="appart._id" class="w-32 m-3">
                       
-                        <router-link :to="'/jeux/'+game._id"> <img :src="game.images[0]"
+                        <router-link :to="'/appartements/'+appart._id"> <img :src="appart.images[0]"
                             class="shadow-xl"
-                            alt="game image"/></router-link>
+                            alt="appart image"/></router-link>
                        
                       </div>
                     </div>   
@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-                        <!-- MESSAGE GAME ERROR  -->
+                        <!-- MESSAGE APPART ERROR  -->
 
                         <div v-if="getCreateReviewResponse.error" role="alert">
                             <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -152,7 +152,7 @@ export default {
       "fetchUserById",
       "fetchAllReviews",
       "createReview",
-      "fetchAllGames",
+      "fetchAllApparts",
       "deleteReview"
     ]),
     postReview(){
@@ -161,7 +161,7 @@ export default {
             "mark":this.mark,
             "userId":this.getUserMe.profile._id,
             "profileId":this.$route.params.id,
-            "gameId":null,
+            "appartId":null,
     } 
     this.createReview(obj);
    
@@ -191,13 +191,13 @@ export default {
       "getUserMe",
       "getUserById",
       "getAllReviews",
-      "getAllGames",
+      "getAllApparts",
       "getCreateReviewResponse"
 
     ]),
     reviewOfUser() {
         return this.getAllReviews.Review.filter((review) => {
-            if(review.gameId == null && review.profileId){
+            if(review.appartId == null && review.profileId){
             return review.profileId._id
             .toLowerCase()
             .includes(this.$route.params.id.toLowerCase())
@@ -206,9 +206,9 @@ export default {
         );
     
     },
-     gameOfUser() {
-      return this.getAllGames.games.filter((game) =>
-        game.userId._id
+     appartOfUser() {
+      return this.getAllApparts.apparts.filter((appart) =>
+        appart.userId._id
          .toLowerCase()
           .includes(this.$route.params.id.toLowerCase())
       );
@@ -221,7 +221,7 @@ export default {
  this.fetchAllReviews();
     this.fetchUserMe();
    
-    this.fetchAllGames();
+    this.fetchAllApparts();
     this.fetchUserById(this.$route.params.id)
     this.getCreateReviewResponse.success = null;
     this.getCreateReviewResponse.error = null;

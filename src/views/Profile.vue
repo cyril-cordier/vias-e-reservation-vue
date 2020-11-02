@@ -5,9 +5,9 @@
     <div class="h-full m-10">
       <div class="p-3 m-5 w-85 mx-auto">
         <div class="grid grid-flow-col grid-rows-6 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-6">
-          <div class="dropdown relative z-50 px-4 py-2 m-4 text-gray-700 text-center transition duration-500 ease-in-out transform hover:scale-105 bg-gray-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow">
+          <div class="dropdown relative z-50 px-4 py-2 m-4 text-blue-700 text-center transition duration-500 ease-in-out transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow hover:text-blue-100 rounded text-lg focus:outline-none shadow">
             <button
-              class="text-gray-700 inline-flex items-center font-semibold focus:outline-none"
+              class="text-blue-700 inline-flex items-center font-semibold focus:outline-none"
               @click="
               (user_toggle = true),
                 (update_toggle = false),
@@ -27,7 +27,7 @@
                 />
               </svg>
             </button>
-            <ul class="dropdown-menu absolute left-0 hidden w-full text-gray-700 mt-2">
+            <ul class="dropdown-menu absolute left-0 hidden w-full text-blue-700 mt-2">
               <li class="" 
               @click="
               (user_toggle = true),
@@ -37,7 +37,7 @@
                 
             ">
                 <a
-                  class="rounded-none bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
+                  class="rounded-none bg-blue-200 hover:bg-blue-400 py-2 px-4 block border-b-2"
                   href="#"
                   >Mes Informations</a
                 >
@@ -51,7 +51,7 @@
                 
             ">
                 <a
-                  class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
+                  class="bg-blue-200 hover:bg-blue-400 py-2 px-4 block border-b-2"
                   href="#"
                   >Modifier mes informations</a
                 >
@@ -65,7 +65,7 @@
                 
             ">
                 <a
-                  class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block border-b-2"
+                  class="bg-blue-200 hover:bg-blue-400 py-2 px-4 block border-b-2"
                   href="#"
                   >Modifier mon mot de passe</a
                 >
@@ -76,7 +76,7 @@
 
           
           <button
-            class="px-4 py-2 m-4 text-gray-700 font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-gray-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
+            class="px-4 py-2 m-4 text-blue-700 font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow hover:text-blue-100 rounded text-lg focus:outline-none shadow"
             @click="
               (update_toggle = false),
                 (user_toggle = false),
@@ -90,9 +90,9 @@
           
           <router-link to="/admin"
             v-if="this.getUserMe.profile.is_admin == true"
-            class="px-4 py-2 m-4 text-gray-700 text-center font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-yellow-100 hover:bg-yellow-500 focus:scale-105 focus:bg-yellow-500 focus:text-gray-700 hover:inner-shadow hover:text-gray-100 rounded text-lg focus:outline-none shadow"
+            class="px-4 py-2 m-4 text-blue-700 text-center font-semibold transition duration-500 ease-in-out transform hover:scale-105 bg-yellow-100 hover:bg-yellow-500 focus:scale-105 focus:bg-yellow-500 focus:text-blue-700 hover:inner-shadow hover:text-blue-100 rounded text-lg focus:outline-none shadow"
           >
-            <p class="hover:text-gray-100 hover:no-underline" 
+            <p class="hover:text-blue-100 hover:no-underline" 
               >Espace Administrateur</p>
             
           </router-link>
@@ -141,10 +141,10 @@ export default {
       update_toggle: false,
       password_toggle: false,
       appart_toggle: false,
-      AddGame_modal: false,
-      EditGame_modal: false,
+      AddAppart_modal: false,
+      EditAppart_modal: false,
       
-      token: null,
+      viastoken: null,
 
       
     };
@@ -156,7 +156,7 @@ export default {
     ]),
     
     getToken() {
-        this.token = localStorage.getItem('token');
+        this.viastoken = localStorage.getItem('viastoken');
       },
   },
   

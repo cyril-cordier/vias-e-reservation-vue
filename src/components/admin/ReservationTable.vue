@@ -12,34 +12,34 @@
 
         <div class="flex flex-col m-2 shadow-lg">
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-blue-200">
           <table class="min-w-full">
             <thead>
               <tr>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Emprunteur</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Prêteur</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Date début</th>
                   <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Date fin</th>
                   <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Jeu</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider text-center">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Statut</th>
-               <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+               <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="reservation in getAllReservations.Reservation" :key="reservation._id">
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
@@ -49,11 +49,11 @@
                       />
                     </div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{reservation.borrowerId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{reservation.borrowerId.username}}</div>
                     </div>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
@@ -63,25 +63,25 @@
                       />
                     </div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{reservation.ownerId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{reservation.ownerId.username}}</div>
                     </div>
                   </div>
                 </td>
                 
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900 text-center">{{reservation.start}}</div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.start}}</div>
 
                 </td>
 
                 
-                   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900 text-center">{{reservation.end}}</div>
+                   <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.end}}</div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900 text-center">{{reservation.gameId.name}}</div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.appartId.name}}</div>
                 </td>
                 <td
-                  class="px-1 py-4 whitespace-no-wrap  border-b border-gray-200 text-sm leading-5 font-medium">
+                  class="px-1 py-4 whitespace-no-wrap  border-b border-blue-200 text-sm leading-5 font-medium">
                   
       <button 
       class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
@@ -94,7 +94,7 @@
       v-if="toggleModal"
     >
         <div class="relative mx-auto w-auto max-w-2xl">
-       <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+       <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
 
          <div class="text-2xl font-bold text-center mt-2"> Modification
 
@@ -126,13 +126,13 @@
          @submit.prevent="modifyReservationSubmit"
          class="bg-white shadow-md rounded px-8 pt-6 pb-8 m-2 " >
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="borrowerId">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="borrowerId">
                Emprunteur
               </label>
               <select
                   v-model="reservToEdit.borrowerId._id"
                   required
-                  class="bg-white block shadow appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                   id="grid-state"
                 >
                   <option :value="null" disabled>Selectionner l'emprunteur</option>
@@ -143,13 +143,13 @@
                 </select>
            </div>
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="ownerId">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="ownerId">
                 Prêteur
               </label>
               <select
                   v-model="reservToEdit.ownerId._id"
                   required
-                  class="bg-white block shadow appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                   id="grid-state"
                 >
                   <option :value="null" disabled>Selectionner le prêteur</option>
@@ -160,10 +160,10 @@
                 </select>
            </div>
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="startDate">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="startDate">
                 Date début
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                 id="startDate" 
                 type="date" 
                 placeholder="Date début"
@@ -171,10 +171,10 @@
                 v-model="reservToEdit.start"/>
            </div>
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="endDate">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="endDate">
                 Date fin
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                 id="endDate" 
                 type="date" 
                 placeholder="Date fin"
@@ -182,27 +182,27 @@
                 v-model="reservToEdit.end"/>
            </div>
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="gameId">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="appartId">
                 Jeu
               </label>
               <select
-                  v-model="reservToEdit.gameId._id"
+                  v-model="reservToEdit.appartId._id"
                   required
-                  class="bg-white block shadow appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                   id="grid-state"
                 >
                   <option :value="null" disabled>Selectionner l'emprunteur</option>
-                  <option v-for="game in getAllGames.games" :key="game._id" :value="game._id">
-                    {{game.name}}
+                  <option v-for="appart in getAllApparts.apparts" :key="appart._id" :value="appart._id">
+                    {{appart.name}}
                   </option>
               
                 </select>
            </div>
            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="status">
                 Statut
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                 id="status" 
                 type="text" 
                 placeholder="Statut"
@@ -211,10 +211,10 @@
               
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="title">
                 Titre
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                 id="title" 
                 type="text" 
                 placeholder="Title"
@@ -231,7 +231,7 @@
     </div>
     <div v-if="toggleModal" class= "absolute inset-0 z-40  opacity-25 bg-black"></div></td>
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium">
                   <div class=" bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-1 rounded-full text-center w-20" style="cursor:pointer;" @click="deleteReservationButton(reservation._id)">Supprimer
                   </div>
                 </td>
@@ -266,7 +266,7 @@ import { mapActions, mapGetters } from "vuex";
         start:"",
         end:"",
         title:"",
-        gameId:"",
+        appartId:"",
         status:"",
         
       }
@@ -278,7 +278,7 @@ import { mapActions, mapGetters } from "vuex";
       "createReservation",
       "deleteReservation",
       "modifyReservation",
-      "fetchAllGames",
+      "fetchAllApparts",
       "fetchAllUsers"
 
       
@@ -291,7 +291,7 @@ import { mapActions, mapGetters } from "vuex";
             end:this.end,
             title:this.title,
             status:this.status,
-            gameId:this.gameId
+            appartId:this.appartId
       }
       this.createReservation(obj);
       this.fetchAllReservations();
@@ -306,7 +306,7 @@ import { mapActions, mapGetters } from "vuex";
         end:this.reservToEdit.end,
         title:this.reservToEdit.title,
         status:this.reservToEdit.status,
-        gameId:this.reservToEdit.gameId._id
+        appartId:this.reservToEdit.appartId._id
       };
       
       this.modifyReservation(obj);
@@ -335,7 +335,7 @@ import { mapActions, mapGetters } from "vuex";
       "getAllReservations",
       "getReservationById",
       "getAllUsers",
-      "getAllGames",
+      "getAllApparts",
       "getModifyReservationResponse"
       
     ]),
@@ -346,7 +346,7 @@ import { mapActions, mapGetters } from "vuex";
   created() {
     this.fetchAllReservations();
     this.fetchAllUsers();
-    this.fetchAllGames();
+    this.fetchAllApparts();
     this.modifySuccess = null;
     this.modifyError = null;
     },

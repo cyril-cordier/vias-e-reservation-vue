@@ -52,16 +52,16 @@
           <form @submit.prevent="registerSubmit">
             <input required v-model="username" type="text" name="username" placeholder="Nom d'Utilisateur"
               autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
             <input required v-model="email" type="email" name="email" placeholder="votre@email.fr" autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
             
             <input required v-model="password" type="password" name="password" placeholder="Mot de Passe"
               autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
             <input required v-model="c_password" type="password" name="password_conf"
               placeholder="Confirmation du Mot de Passe" autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded">
             <button type="submit"
               class="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded text-lg focus:outline-none mt-5 shadow">Créer
               son Compte</button>
@@ -69,7 +69,7 @@
           <br>
           <router-link to='/login'>
             <div class="border-t flex flex-row justify-center">
-              <div class="text-xs mt-2 mr-3 text-gray-600">J'ai déjà un compte</div>
+              <div class="text-xs mt-2 mr-3 text-blue-600">J'ai déjà un compte</div>
               <button type="submit"
                 class="bg-transparent  text-orange-500 font-semibold hover:text-orange-600 py-1 px-1 rounded">
                 Me connecter
@@ -77,9 +77,9 @@
             </div>
           </router-link>
           <router-link to='/'>
-            <div class="w-full text-xs text-gray-600">ou</div>
+            <div class="w-full text-xs text-blue-600">ou</div>
             <button type="submit"
-              class="w-full bg-gray-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-5 shadow">
+              class="w-full bg-blue-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-5 shadow">
               Retourner sur le site
             </button>
           </router-link>

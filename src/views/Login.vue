@@ -60,7 +60,7 @@
               name="email"
               placeholder="Email"
               autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded"
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded"
             />
             <input
               v-model="password"
@@ -69,7 +69,7 @@
               required
               placeholder="Mot de Passe"
               autocomplete="off"
-              class="shadow-md border w-full h-10 px-3 py-2 text-gray-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded"
+              class="shadow-md border w-full h-10 px-3 py-2 text-blue-700 focus:outline-none focus:border-orange-500 focus:shadow-inner hover:shadow-inner mb-3 rounded"
             />
             <button
               type="submit"
@@ -79,17 +79,17 @@
             </button>
           </form>
          <br>  
-         <div class="w-full border-t pt-1 text-xs text-gray-600">Nouveau sur Vias e-Réservation</div>
+         <div class="w-full border-t pt-1 text-xs text-blue-600">Nouveau sur Vias e-Réservation</div>
                    
         <router-link to='/register'>
-        <button  type="submit" class="w-full bg-gray-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-4 shadow">
+        <button  type="submit" class="w-full bg-blue-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-4 shadow">
           Créer mon compte
         </button>
       </router-link>
       <br><br>
-      <div class="w-full text-xs text-gray-600">Ou</div>
+      <div class="w-full text-xs text-blue-600">Ou</div>
       <router-link to='/'>
-        <button  type="submit" class="w-full bg-gray-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-5 shadow">
+        <button  type="submit" class="w-full bg-blue-400 hover:bg-orange-500 text-white px-3 py-1 rounded text-lg focus:outline-none mt-5 shadow">
           Retourner sur le site
         </button>  
       </router-link>

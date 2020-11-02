@@ -1,14 +1,14 @@
 <template>
-  <div class="gamePage">
+  <div class="appartPage">
     <Navbar />
     <div class="">
-      <div class="text-gray-700 body-font overflow-hidden bg-white">
+      <div class="text-blue-700 body-font overflow-hidden bg-white">
         <div class="container px-5 py-10 mx-auto">
             <!-- MODAL  -->     
         <button v-if="getUserMe.profile != null"
             class="  hover:text-red-400  text-xs text-red-600 sm:font-bold lg:w-2/4 mx-auto rounded mb-3 text-center"
             @click="Modal = !Modal"
-            >Signaler un contenu inapproprié
+            >Signaler un problème avec l'appartement
         </button>
         <div 
         class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
@@ -16,7 +16,7 @@
         >
         <div class="relative mx-auto w-1/2 max-w-5xl">
 
-       <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+       <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
 
          <div class="text-2xl font-bold text-center mt-2"> Signalement
                       <button class="rounded bg-red-600 hover:bg-red-400 text-white text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modal=false">X</button> 
@@ -44,17 +44,17 @@
                     </svg>
                     </div>
                     <div>
-                    <p class="font-bold">Signalement envoyé au modérateur</p>
+                    <p class="font-bold">Signalement envoyé au gestionnaire</p>
                     </div>
                 </div>
                 </div>
             <div class="mb-4 ">
-                <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="warning">
-                Signalement d'un contenu de jeu inapproprié
+                <label class="block text-blue-700 text-sm font-bold mb-2 text-center" for="warning">
+                Signalement d'un problème avec l'appartement
                 </label>
                 <textarea   
                 v-model="content"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
                 id="warning" 
                 type="text"
                 required 
@@ -65,7 +65,7 @@
               <button 
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 w-full rounded focus:outline-none focus:shadow-outline" 
               type="submit">
-              Envoyer le signalement au modérateur
+              Envoyer le signalement au gestionnaire
             </button>
 
          </form>       
@@ -79,7 +79,7 @@
           <div class="lg:w-4/5 mx-auto flex flex-wrap" >
                <div class=" w-1/6"  >
                       <!-- MODAL IMAGE -->
-                              <div v-for="image in getGameById.game.images.slice(1,getGameById.game.images.length)" :key="image.id">
+                              <div v-for="image in getAppartById.appart.images.slice(1,getAppartById.appart.images.length)" :key="image.id">
               <img :src="image" alt="" class=" w-1/2 border mx-auto m-1 " @click="Modalimg = !Modalimg">
               </div>
                           <div 
@@ -88,12 +88,12 @@
                           >
                               <div class="relative mx-auto w-3/4 max-w-full max-h-full">
 
-                            <div class=" bg-opacity-25 bg-gray-900 w-full rounded shadow-2xl flex flex-col">
+                            <div class=" bg-opacity-25 bg-blue-900 w-full rounded shadow-2xl flex flex-col">
 
                               <div class="text-2xl font-bold text-center m-2"> 
-                                <button class="rounded  hover:bg-gray-700 text-white font-bold text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modalimg=false">X</button> 
+                                <button class="rounded  hover:bg-blue-700 text-white font-bold text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modalimg=false">X</button> 
                               </div >
-                                <div v-for="image in getGameById.game.images.slice(1,length)" :key="image.id">
+                                <div v-for="image in getAppartById.appart.images.slice(1,length)" :key="image.id">
                                 <img :src="image" alt="" class=" w-1/2 border mx-auto m-1 " >
                                 </div>
                               </div>
@@ -105,8 +105,8 @@
             </div>
             
             <img
-              class=" lg:w-1/3 w-full object-cover object-center rounded border border-gray-200"
-              :src="getGameById.game.images[0]"
+              class=" lg:w-1/3 w-full object-cover object-center rounded border border-blue-200"
+              :src="getAppartById.appart.images[0]"
             />
             <div  class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               
@@ -116,60 +116,55 @@
                 <div class="flex items-center">
 
 
-                  <div class="text-gray-600 ml-3">{{reviewOfGame.length}} Avis</div>
+                  <div class="text-blue-600 ml-3">{{reviewOfAppart.length}} Avis</div>
 
                 </div>
-                <div v-if="markResult >= 3"
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg">
-                  Note Moyenne : {{markResult}} </div>
-                <div v-if="markResult < 3 && markResult != 0"
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-red-800 px-6 py-2 shadow-lg">
-                  Note Moyenne : {{markResult}} </div>
+                
                 <!-- STAR REVIEWS FINISH -->
 
               </div>
 
-              <h2 class="text-sm title-font text-gray-500 mt-2 tracking-widest">
+              <h2 class="text-sm title-font text-blue-500 mt-2 tracking-widest">
                 categorie
               </h2>
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-                {{ getGameById.game.name }}
+              <h1 class="text-blue-900 text-3xl title-font font-medium mb-1">
+                {{ getAppartById.appart.name }}
               </h1>
               <div class="flex mb-4">
                 
                   
               
-                  <div class="text-gray-600 ">
-                    Proprietaire du jeu: <router-link class="font-bold text-orange-500" :to="'/reviews/'+getGameById.game.userId._id">{{ getGameById.game.userId.username }}</router-link>
+                  <div class="text-blue-600 ">
+                    Proprietaire du jeu: <router-link class="font-bold text-orange-500" :to="'/reviews/'+getAppartById.appart.userId._id">{{ getAppartById.appart.userId.username }}</router-link>
                   </div>
                 
               </div>
               <div
-                v-html="getGameById.game.description"
+                v-html="getAppartById.appart.description"
                 class="leading-relaxed"
               ></div>
               <div
-                class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"
+                class="flex mt-6 items-center pb-5 border-b-2 border-blue-200 mb-5"
               ></div>
               <div class="flex content-around items-center">
                 <div
-                  class="flex-1 title-font font-medium text-md text-gray-900 m-2 border-r-2 border-orange-300"
+                  class="flex-1 title-font font-medium text-md text-blue-900 m-2 border-r-2 border-orange-300"
                 >
-                  {{ getGameById.game.status }}
+                  {{ getAppartById.appart.status }}
                 </div>
                 <div
-                  class="flex-1 title-font font-medium text-md text-gray-900 m-2 border-r-2 border-orange-300"
+                  class="flex-1 title-font font-medium text-md text-blue-900 m-2 border-r-2 border-orange-300"
                 >
-                  Joueur(s) : {{ getGameById.game.nbPlayers }}
+                  Joueur(s) : {{ getAppartById.appart.nbPlayers }}
                 </div>
                 <div
-                  class="flex-1 title-font font-medium text-md text-gray-900 m-2"
+                  class="flex-1 title-font font-medium text-md text-blue-900 m-2"
                 >
-                  {{ getGameById.game.minAge }} Ans
+                  {{ getAppartById.appart.minAge }} Ans
                 </div>
 
                 <button
-                 v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"
+                 v-if="getUserMe.profile != null && getAppartById.appart.userId._id != getUserMe.profile._id"
                   @click="isClick = !isClick"
                   class="flex ml-auto text-white font-bold bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-500 hover:inner-shadow shadow rounded"
                 >
@@ -200,7 +195,7 @@
                             </div>
                         </div>
 
-                        <!-- MESSAGE GAME ERROR  -->
+                        <!-- MESSAGE APPART ERROR  -->
 
                         <div v-if="getCreateReservationResponse.error" role="alert">
                             <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -223,21 +218,21 @@
               class="w-full flex content-between items-center rounded p-2 my-3"
             >
                   
-              <form @submit.prevent="reservationForm()" class="w-1/2 border p-3 bg-gray-200 mx-auto">
+              <form @submit.prevent="reservationForm()" class="w-1/2 border p-3 bg-blue-200 mx-auto">
                 <label
-                  class="block text-gray-700 text-lg font-bold mb-2 text-center"
+                  class="block text-blue-700 text-lg font-bold mb-2 text-center"
                   for="nomdujeu"
                 >
-                  J'aimerai emprunter votre jeu: {{getGameById.game.name}} </label
+                  J'aimerai emprunter votre jeu: {{getAppartById.appart.name}} </label
                 ><label
-                  class="block bg-white text-gray-700 text-sm font-bold text-center h-12 mb-2"
+                  class="block bg-white text-blue-700 text-sm font-bold text-center h-12 mb-2"
                   for="nomdujeu"
                 >
                   Mon pseudo: {{ getUserMe.profile.username }} <br />
                   Mon Email: {{ getUserMe.profile.email }}
                 </label>
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2 text-center"
+                  class="block text-blue-700 text-sm font-bold mb-2 text-center"
                   for=""
                 >
                   selection de la date de début:
@@ -252,7 +247,7 @@
                   />
                 </label>
                  <label
-                  class="block text-gray-700 text-sm font-bold mb-2 text-center"
+                  class="block text-blue-700 text-sm font-bold mb-2 text-center"
                   for=""
                 >
                   selection de la date de fin:
@@ -279,9 +274,9 @@
 
             <div v-show="isClickAvis" 
               class="w-full flex content-between items-center rounded p-2 my-3">
-              <div class="flex flex-col w-full bg-gray-200">
+              <div class="flex flex-col w-full bg-blue-200">
 
-                <form @submit.prevent="postReview" v-if="getUserMe.profile != null && getGameById.game.userId._id != getUserMe.profile._id"  class="border p-3 m-4 bg-white" action="">
+                <form @submit.prevent="postReview" v-if="getUserMe.profile != null && getAppartById.appart.userId._id != getUserMe.profile._id"  class="border p-3 m-4 bg-white" action="">
 
                   <!-- MESSAGE CREATE SUCCESS  -->
                   <div v-if="createReviewSuccess != null"
@@ -339,7 +334,7 @@
                 <div class="text-center ">
                   <h2>Les avis</h2>
                 </div>
-                <div v-for="review in reviewOfGame" :key="review._id" class="border p-3 mt-3">
+                <div v-for="review in reviewOfAppart" :key="review._id" class="border p-3 mt-3">
 
                   <div>{{review.mark}}/ 5</div>
                   <div>{{review.userId.username}} </div>
@@ -379,7 +374,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 
 export default {
-  name: "GamePage",
+  name: "AppartPage",
   components: {
     Navbar,
      Footer,
@@ -415,7 +410,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      "fetchGameById",
+      "fetchAppartById",
       "fetchUserMe",
       "createReservation",
       "createWarning",
@@ -428,7 +423,7 @@ export default {
     reservationForm(){
 
       this.getAllReservations.Reservation.forEach((element)=>{
-        if(element.gameId._id == this.$route.params.id){
+        if(element.appartId._id == this.$route.params.id){
 
           // CHECK START 
           var dateFrom = element.start;
@@ -487,13 +482,13 @@ export default {
 
     if(this.error == false){
       var obj = {
-                "ownerId":this.getGameById.game.userId._id,
+                "ownerId":this.getAppartById.appart.userId._id,
                 "borrowerId":this.getUserMe.profile._id,
                 "start":this.start,
                 "end":this.end,
                 "title":this.getUserMe.profile.username,
                 "status": "0",
-                "gameId":this.getGameById.game._id
+                "appartId":this.getAppartById.appart._id
                 }
                 this.createReservation(obj);
 }
@@ -510,7 +505,7 @@ export default {
        
           this.calendarOptions.events = resp.data.Reservation.filter(
             (reservation) =>
-              reservation.gameId._id.includes(this.$route.params.id) && 
+              reservation.appartId._id.includes(this.$route.params.id) && 
               (reservation.status == "2" || reservation.status == "0")
           );
 
@@ -526,7 +521,7 @@ export default {
     createWarningSubmit(){
           var obj = {
         userId: this.getUserMe.profile._id,
-        targetId: this.getGameById.game.userId._id,
+        targetId: this.getAppartById.appart.userId._id,
         content: this.content,
         subject: "Jeu inapproprié",
         
@@ -550,7 +545,7 @@ export default {
           "comment": this.comment,
           "mark": this.mark,
           "userId": this.getUserMe.profile._id,
-          "gameId": this.$route.params.id,
+          "appartId": this.$route.params.id,
           "profileId": null
         }
         this.createReview(obj);
@@ -572,8 +567,8 @@ export default {
   created() {
     this.fetchAllReviews();
 
-    this.fetchGameById(this.$route.params.id);
-    if(window.localStorage.getItem(this.token)){
+    this.fetchAppartById(this.$route.params.id);
+    if(window.localStorage.getItem(this.viastoken)){
 
       this.fetchUserMe();
     }
@@ -593,7 +588,7 @@ export default {
   },
    computed: {
       ...mapGetters([
-        "getGameById",
+        "getAppartById",
         "getUserMe",
         "getAllReviews",
         "getCreateReservationResponse",
@@ -602,12 +597,12 @@ export default {
         "getCreateReviewResponse"
 
       ]),
-      reviewOfGame() {
+      reviewOfAppart() {
         //console.log(this.$route.params.id);
 
         return this.getAllReviews.Review.filter((review) => {
-            if(review.profileId == null && review.gameId != null){
-            return review.gameId._id
+            if(review.profileId == null && review.appartId != null){
+            return review.appartId._id
           .toLowerCase()
           .includes(this.$route.params.id.toLowerCase())
             }

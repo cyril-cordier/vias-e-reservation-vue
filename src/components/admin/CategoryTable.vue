@@ -12,7 +12,7 @@
     >
         <div class="relative mx-auto w-auto max-w-2xl">
 
-       <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+       <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
 
          <div class="text-2xl font-bold text-center mt-2"> NouvelleCatégorie
            <button class="rounded bg-red-600 hover:bg-red-400 text-white text-center px-2 py-1 text-sm absolute top-0 right-0 m-2" @click="Modal=false">X</button> 
@@ -52,13 +52,13 @@
          class="bg-white shadow-md rounded px-8 pt-6 pb-8 m-2 " >
            
            <div class="mb-4 ">
-              <label class="block text-gray-700 text-sm font-bold mb-2 " for="nomdujeu">
+              <label class="block text-blue-700 text-sm font-bold mb-2 " for="nomdujeu">
                Nom de la categorie
               </label>
               <input 
               v-model="name"
               required
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categorie" type="text" placeholder="nom de la categorie">
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" id="categorie" type="text" placeholder="nom de la categorie">
            </div>
           
 
@@ -76,56 +76,56 @@
 
         <div class="flex flex-col m-2 shadow-lg">
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-blue-200">
           <table class="min-w-full">
             <thead>
               <tr>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Catégories</th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   </th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
+                <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="category in getAllCategories.Category" :key="category._id">
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">{{category.name}} </div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{category.name}} </div>
 
                     </div>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900"></div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900"></div>
 
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900"></div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
+                  <div class="text-sm leading-5 text-blue-900"></div>
 
                 </td>
 <!-- v-if="user.admin == true" -->
-                <td  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><span
+                <td  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"><span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"></span>
                 </td>
 <!-- v-if="user.admin == false" -->
-                      <td  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><span
+                      <td  class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"><span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"></span>
                 </td>
 <!-- début du modal -->
 <td 
-  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium">
           <button 
           class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
           @click="toggleModal = !toggleModal, categoryToEdit = category"
@@ -138,7 +138,7 @@
         > 
         <div class="relative mx-auto w-auto max-w-2xl">
 
-       <div class="bg-gray-500 w-full rounded shadow-2xl flex flex-col">
+       <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
          <div class="text-2xl font-bold text-center mt-2 mr-1"> Modifier Catégorie
 
            <button 
@@ -179,11 +179,11 @@
             @submit.prevent="modifyCategorySubmit()"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 m-2 " >
            <div class="mb-4 ">
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="nomdujeu">
+              <label class="block text-blue-700 text-sm font-bold mb-2 text-left" for="nomdujeu">
                Nom de la categorie
               </label>
               <input 
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
               id="categorie" 
               type="text" 
               required
@@ -207,7 +207,7 @@
   </td>                
 <!--  modal modification finish-->
                 <td
-                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                  class="px-6 py-4 whitespace-no-wrap text-right border-b border-blue-200 text-sm leading-5 font-medium">
                   <button 
                     class=" bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center w-40" 
                     style="cursor:pointer;" 
@@ -237,10 +237,10 @@ import { mapActions, mapGetters } from "vuex";
         toggleModal: false,
         name: "",
         categoryToEdit:"",
-        createSuccess:"",
-        createError:"",
-        modifySuccess:"",
-        modifyError:"",
+        createSuccess:null,
+        createError:null,
+        modifySuccess:null,
+        modifyError:null,
       };
     },
     methods: {

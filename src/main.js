@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 
 
 router.beforeEach((to, from, next) => {
-  const isLogged = localStorage.getItem('token');
+  const isLogged = localStorage.getItem('viastoken');
    
     if (isLogged ) {
       if((jwt_decode(isLogged).exp-(Math.round(+new Date() / 100)))>=0){
