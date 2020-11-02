@@ -4,7 +4,9 @@
   <div>
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
       <div class="p-5 w-0.3 rounded-l-lg bg-blue-200 shadow-lg">
-        <img class="w-64 rounded-full mx-10" :src="getUserMe.profile.avatar" alt="" />
+        <div class="flex justify-around">
+          <img class="w-1/2 rounded-full mx-10" :src="getUserMe.profile.avatar" alt="" />
+        </div>
         <div class="text-center font-bold text-xl text-blue-800 my-3">
           Espace Profil de<br>
           {{ getUserMe.profile.username }}<br />

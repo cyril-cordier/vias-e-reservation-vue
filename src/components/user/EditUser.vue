@@ -38,9 +38,11 @@
 
 
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
-            <div class="p-5 w-0.3 rounded-lg bg-blue-200 shadow-lg text-center">
+            <div class="p-5 w-0.3 rounded-lg bg-blue-200 shadow-lg text-center ">
+      <div class="flex justify-around">
 
-      <img class="w-64 rounded-full mx-10" :src="userToEdit.avatar" alt="" />
+      <img class="w-1/2  rounded-full mx-10" :src="userToEdit.avatar" alt="" />
+      </div>
       <div class="mt-5 font-semibold text-blue-700">
       Modifier mon avatar
       </div>
@@ -51,19 +53,18 @@
         id="avatar"
       >
         <option value="null" disabled>Modifier mon avatar</option>
-        <option value="https://i.imgur.com/Iy4cKcy.jpg">Biberon</option>
-        <option value="https://i.imgur.com/agitBxt.jpg">
-          Chapeau Monopoly
-        </option>
-        <option value="https://i.imgur.com/JPvXKnL.jpg">Chuck Norris</option>
-        <option value="https://i.imgur.com/brQltz5.jpg">Couche</option>
-        <option value="https://i.imgur.com/2mBk1xz.jpg">Dada</option>
-        <option value="https://i.imgur.com/yEUJJ1p.jpg">Dés</option>
-        <option value="https://i.imgur.com/TG5TOVq.jpg">Echecs</option>
-        <option value="https://i.imgur.com/LzpX9hs.jpg">Joker</option>
-        <option value="https://i.imgur.com/eY1nsZQ.jpg">Mister Monop'</option>
-        <option value="https://i.imgur.com/BgDlomB.jpg">Ordinateur</option>
-        <option value="https://i.imgur.com/EBHd5RU.jpg">Sablier</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Brutos_d2cxjy.png">Brutos</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Footy_xbo8ym.png">Footy</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Froggy_qtx0no.png">Froggy</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Glassos_xsctlx.png">Glassos</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Halloween_btinm7.png">Halloween</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Mask_zx8vs5.png">Mask</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Monstro_xawghs.png">Monstro</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Piranha_weiqnn.png">Piranha</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Porky_dymi0r.png">Porky</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Speedy_smvmc4.png">Speedy</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Sporty_q828pp.png">Sporty</option>
+        <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Tiger_yvhufc.png">Tiger</option>
       </select>
 </div>
       

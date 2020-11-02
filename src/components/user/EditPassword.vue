@@ -38,12 +38,13 @@
     </div>
         <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
           <div class="p-5 w-1/4 rounded-lg bg-blue-200 shadow-lg text-center">
-
+        <div class="flex justify-around">
           <img
-            class="w-64 rounded-full mx-10"
+            class="w-1/2 rounded-full mx-10 my-auto"
             :src="getUserMe.profile.avatar"
             alt=""
           />
+        </div>
           </div>
 
           <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-blue-200">
