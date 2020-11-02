@@ -173,13 +173,13 @@ export default {
             contentTable: false,
             reviewTable: false,
             appartReviewTable:false,
-            token: null
+            viastoken: null
       }
   },
    methods: {
        ...mapActions(["fetchUserMe"]),
       getToken() {
-        this.token = localStorage.getItem('viastoken');
+        this.viastoken = localStorage.getItem('viastoken');
       },
       logout() {
         localStorage.removeItem('viastoken');

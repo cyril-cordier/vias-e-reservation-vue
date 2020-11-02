@@ -21,14 +21,14 @@
             <router-link to="/" class="block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white">Accueil</router-link>
             <router-link to="/rechercheappart" class="mt-1 block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white md:mt-0 md:ml-4">Recherche</router-link>
             
-        <router-link v-if="this.token != null" to="/reservation" class="mt-1 block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white md:mt-0 md:ml-4">Reservations</router-link>
+        <router-link v-if="this.viastoken != null" to="/reservation" class="mt-1 block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white md:mt-0 md:ml-4">Reservations</router-link>
 
         </div>
         <div :class="isOpen ? 'block' : 'hidden'" class="px-1 pt-2 pb-4 md:pb-2 md:flex">
             <router-link to="/profile" class="block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white">Mon compte</router-link>
             <div
             class="block md:inline-block px-2 py-1 text-blue-700 font-semibold rounded hover:bg-orange-400 hover:text-white cursor-pointer"
-            @click="logout()" v-if="this.token != null"
+            @click="logout()" v-if="this.viastoken != null"
             >Déconnexion</div>
         </div>
     </header>
@@ -39,12 +39,12 @@
         data() {
             return {
                 isOpen: false,
-                token: null
+                viastoken: null
             }
         },
         methods: {
       getToken() {
-        this.token = localStorage.getItem('viastoken');
+        this.viastoken = localStorage.getItem('viastoken');
       },
       logout() {
         localStorage.removeItem('viastoken');

@@ -64,7 +64,7 @@
 
 
 
-        <!-- Modal Ajout d'un jeu -->
+        <!-- Modal Ajout d'un appart -->
         <div class="fixed overflow-x-hidden inset-0 flex justify-center items-center z-50 " v-if="AddAppart_modal">
             <div class="relative mx-auto w-auto max-w-2xl h-full overflow-auto">
                 <div class="bg-blue-200 w-full rounded shadow-2xl flex flex-col ">
@@ -139,7 +139,7 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="inventaire"
                     type="text"
-                    placeholder="inventaire"
+                    placeholder="Inventaire"
                     />
                 </div>
                 <div class="flex flex-row">
@@ -156,7 +156,7 @@
                         id="number"
                         type="text"
                         required
-                        placeholder="nombre de joueur"
+                        placeholder="Nombre de couchages"
                     />
                     </div>
                     
@@ -219,7 +219,7 @@
             class="absolute inset-0 z-40 opacity-25 bg-black"
         ></div>
 
-        <!-- Modal Edit d'un jeu -->
+        <!-- Modal Edit d'un appart -->
         <div
             class="fixed overflow-x-hidden inset-0 flex justify-center items-center z-50"
             v-if="EditAppart_modal"
@@ -321,8 +321,7 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="inventaire"
                     type="text"
-                    placeholder="inventaire"
-                    required
+                    placeholder="Inventaire"
                     v-model="appartToEdit.inventory"
 
                     />
@@ -333,13 +332,13 @@
                         class="block text-blue-700 text-sm font-bold mb-1"
                         for="number"
                     >
-                        Nbr de couchages
+                        Nombre de couchages
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-2/3 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="number"
                         type="text"
-                        placeholder="nombre de joueur"
+                        placeholder="Nombre de couchages"
                         required
                     v-model="appartToEdit.nbPlayers"
 
