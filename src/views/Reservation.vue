@@ -21,7 +21,7 @@
                 (emprunt_toggle = true)
             "
           >
-            Mes Emprunts
+            Mes Locations
           </button>
         </div>
             </div>

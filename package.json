@@ -16,6 +16,7 @@
     "emailjs-com": "^2.6.3",
     "jwt-decode": "^3.0.0",
     "vue": "^2.6.11",
+    "vue-cli": "^2.9.6",
     "vue-router": "^3.2.0",
     "vue2-editor": "^2.10.2",
     "vue2-google-maps": "^0.10.7",
