@@ -351,7 +351,7 @@ import { mapActions, mapGetters } from "vuex";
 import Footer from "../components/Footer";
 import Fullcalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
-//import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 
 
 import axios from "axios";
@@ -389,9 +389,12 @@ export default {
         eventClick: this.showEvent,
         locale: "fr",
       },
-      serviceId:"service_7ohfsts",
-      templateId:"template_fe688sj",
-      yourUserId:"user_Q5bLLmAtm9xDAiHMnDmmn",
+      email_template: {
+        demandeReservation:"template_fe688sj",
+        message:"template_zdzj1jd",
+
+      }
+      
     };
   },
   methods: {
@@ -472,8 +475,7 @@ export default {
 
         }
       })
-      console.log("this getcreatereservationresp.error : "+this.getCreateReservationResponse.error)
-      console.log("this error : "+this.error)
+      
       if(this.error == false && this.getCreateReservationResponse.error != true){
         var obj = {
                   "ownerId":this.getAppartById.appart.userId._id,
@@ -485,21 +487,21 @@ export default {
                   "appartId":this.getAppartById.appart._id
                   }
                   this.createReservation(obj);
-      /* var templateParams = {
+      var demandeResaParams = {
         from_name : this.getUserMe.profile.username,
         reply_to : this.getUserMe.profile.email,
         message : this.getUserMe.profile.username+" aimerai louer l'appartement du "+this.start+" au "+this.end+".",
-        to_email : "cyril.cordier@gmail.com"
+        to_email : process.env.VUE_APP_TO_EMAIL,
       }
 
-      emailjs.send("service_7ohfsts", "template_fe688sj", templateParams, "user_Q5bLLmAtm9xDAiHMnDmmn")
+      emailjs.send(process.env.VUE_APP_SERVICE_ID, this.email_template.demandeReservation, demandeResaParams, process.env.VUE_APP_USER_ID)
         .then((result) => {
             console.log('SUCCESS!', result.status, result.text);
         }, (error) => {
             console.log('FAILED...', error);
-        }); */
+        });
         
-        console.log("mail envoyé")
+        
         setTimeout(function () {
           window.location.href = "/reservation";
         }, 1200);
@@ -538,16 +540,31 @@ export default {
         userId: this.getUserMe.profile._id,
         targetId: this.getAppartById.appart.userId._id,
         content: this.content,
-        subject: "Jeu inapproprié",
+        subject: "Signalement",
         
       };
       
       this.createWarning(obj);
       if (this.getCreateWarningResponse.success) {
         this.createSuccess = this.getCreateWarningResponse.success;
+
+        var warningParams = {
+        from_name : this.getUserMe.profile.username,
+        reply_to : this.getUserMe.profile.email,
+        message : "Signalement : \n"+this.content,
+        to_email : process.env.VUE_APP_TO_EMAIL,
+        title : "Signalement"
+      }
+
+      emailjs.send(process.env.VUE_APP_SERVICE_ID, this.email_template.message, warningParams, process.env.VUE_APP_USER_ID)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        });
         setTimeout(function () {
           location.reload();
-        }, 2000);
+        }, 1200);
       }
     },
       deleteReviewButton(id) {
@@ -567,6 +584,20 @@ export default {
         if (this.getCreateReviewResponse.success) {
           this.createReviewError = null;
           this.createReviewSuccess = this.getCreateReviewResponse.success;
+          var warningParams = {
+        from_name : this.getUserMe.profile.username,
+        reply_to : this.getUserMe.profile.email,
+        message : "Commentaire posté : "+this.comment,
+        to_email : process.env.VUE_APP_TO_EMAIL,
+        title : "Commentaire"
+      }
+
+      emailjs.send(process.env.VUE_APP_SERVICE_ID, this.email_template.message, warningParams, process.env.VUE_APP_USER_ID)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        });
           setTimeout(function () {
             location.reload();
           }, 1200);
