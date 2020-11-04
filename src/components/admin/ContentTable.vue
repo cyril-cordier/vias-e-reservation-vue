@@ -127,13 +127,13 @@
                 <td v-if="content.visible == true"
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center">
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Visible</span>
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-300 text-green-800">Visible</span>
                 </td>
 
                 <td v-if="content.visible == false"
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center">
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Masqué</span>
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-300 text-red-800">Masqué</span>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">

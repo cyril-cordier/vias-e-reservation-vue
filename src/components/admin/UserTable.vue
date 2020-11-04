@@ -48,7 +48,7 @@
                           </svg>
                         </div>
                         <div>
-                          <p class="font-bold">Utilisateur crée avec succès</p>
+                          <p class="font-bold">Utilisateur créé avec succès</p>
                         </div>
                       </div>
                     </div>
@@ -134,7 +134,7 @@
                 class="block text-blue-700 text-sm font-bold mb-2"
                 for="pasword"
               >
-                Confirmez votre Mot de passe
+                Confirmez le Mot de passe
               </label>
               <input
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -145,74 +145,7 @@
                 v-model="c_password"
               />
             </div>
-            <div class="flex flex-row">
-              <div class="mb-4">
-                <label
-                  class="block text-blue-700 text-sm font-bold mb-2"
-                  for="number"
-                >
-                  Numéro
-                </label>
-                <input
-                  class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="number"
-                  type="text"
-                  placeholder="N°"
-                  required
-                  v-model="number"
-                />
-              </div>
-              <div class="mb-4 w-full">
-                <label
-                  class="block text-blue-700 text-sm font-bold mb-2"
-                  for="streetname"
-                >
-                 Avenue, Rue
-                </label>
-                <input
-                  class="shadow appearance-none border w-full rounded py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="street"
-                  type="text"
-                  placeholder="Nom de rue"
-                  required
-                  v-model="street"
-                />
-              </div>
-            </div>
-            <div class="flex flex-row">
-              <div class="mb-4">
-                <label
-                  class="block text-blue-700 text-sm font-bold mb-2"
-                  for="zip"
-                >
-                  Code postal
-                </label>
-                <input
-                  class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="zip"
-                  type="text"
-                  placeholder="Code postal"
-                  required
-                  v-model="zip"
-                />
-              </div>
-              <div class="mb-4">
-                <label
-                  class="block text-blue-700 text-sm font-bold mb-2"
-                  for="city"
-                >
-                  Statut
-                </label>
-                <input
-                  class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="city"
-                  type="text"
-                  placeholder="Ville"
-                  required
-                  v-model="city"
-                />
-              </div>
-            </div>
+            
             <button
               class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
               type="submit"
@@ -284,8 +217,30 @@
                 <td
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200"
                 >
-                  <div class="text-sm leading-5 text-blue-900">
+                  <div 
+                  v-if="user.who_is == 'Administrateur'"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-300 text-green-800">
                     {{ user.who_is }}
+                  </div>
+                  <div 
+                  v-if="user.who_is == 'Gestionnaire'"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-800">
+                    {{ user.who_is }}
+                  </div>
+                  <div 
+                  v-if="user.who_is == 'Famille'"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-300 text-yellow-800">
+                    {{ user.who_is }}
+                  </div>
+                  <div 
+                  v-if="user.who_is == 'Amis'"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-300 text-orange-800">
+                    {{ user.who_is }}
+                  </div>
+                  <div 
+                  v-if="user.who_is == 'ND'"
+                  class="px-2 inline-flex text-xs leading-5 font-semibold">
+                    Compte Non Activé
                   </div>
                 </td>
                 <td
@@ -293,7 +248,7 @@
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-300 text-green-800"
                     >Admin</span
                   >
                 </td>
@@ -302,7 +257,7 @@
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-300 text-pink-800"
                     >Utilisateur</span
                   >
                 </td>
@@ -319,6 +274,7 @@
                   <button
                     class="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-2 rounded-full text-center"
                     @click="(editModal = !editModal), (userToEdit = user)"
+                    v-if="getUserMe.profile.who_is == 'Administrateur' || (getUserMe.profile.who_is == 'Gestionnaire' && user.is_admin == false) || (getUserMe.profile._id == user._id)"
                   >
 
                     Modification
@@ -406,78 +362,49 @@
                             />
                           </div>
                         
-                          <div class="flex flex-row">
-                            <div class="mb-4">
-                              <label
-                                class="block text-blue-700 text-sm font-bold mb-2"
-                                for="number"
-                              >
-                                Numéro
-                              </label>
-                              <input
-                                v-model="userToEdit.number"
-                                class="shadow appearance-none border rounded w-20 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="number"
-                                type="text"
-                                required
-                                placeholder="N°"
-                              />
-                            </div>
-                            <div class="mb-4 w-full">
-                              <label
-                                class="block text-blue-700 text-sm font-bold mb-2"
-                                for="streetname"
-                              >
-                                Avenue, rue
-                              </label>
-                              <input
-                                v-model="userToEdit.street"
-                                class="shadow appearance-none border w-full rounded py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="Streetname"
-                                type="text"
-                                required
-                                placeholder="Nom de rue"
-                              />
-                            </div>
+                          <div class="mb-4">
+                            <label
+                              class="block text-blue-700 text-sm font-bold mb-2"
+                              for="password"
+                            >
+                              Mot de passe
+                            </label>
+                            <input
+                              v-model="userToEdit.password"
+                              class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
+                              id="password"
+                              type="password"
+                              placeholder="Modifier le mot de passe"
+                            />
                           </div>
-                          <div class="flex flex-row">
-                            <div class="mb-4">
-                              <label
-                                class="block text-blue-700 text-sm font-bold mb-2"
-                                for="zip"
-                              >
-                                Code postal
-                              </label>
-                              <input
-                                v-model="userToEdit.zip"
-                                class="shadow appearance-none border rounded w-2/3 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="zip"
-                                type="text"
-                                required
-                                placeholder="Code postal"
-                              />
-                            </div>
-                            <div class="mb-4">
-                              <label
-                                class="block text-blue-700 text-sm font-bold mb-2"
-                                for="city"
-                              >
-                               Ville
-                              </label>
-                              <input
-                                v-model="userToEdit.city"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="city"
-                                type="text"
-                                required
-                                placeholder="Ville"
-                              />
-                            </div>
-                          </div>
+                          
+                            
+                          
                           <div class="mb-4">
                             <label
                               class="block text-blue-700 text-sm font-bold mb-2"
                               for="admin"
+                            >
+                              Statut
+                            </label>
+                            <select
+                                v-model="userToEdit.who_is"
+                                required
+                                class="block appearance-none w-full bg-blue-200 border border-blue-200 text-blue-700  py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                                id="who_is"
+                            >
+                                <option value="null" disabled>Choisir une option</option>
+                                <option value= "ND">Non Activé</option>
+                                <option value= "Famille">Famille</option>
+                                <option value= "Amis">Amis</option>
+                                <option v-if="getUserMe.profile.who_is == 'Administrateur'" value= "Gestionnaire">Gestionnaire</option>
+                                <option v-if="getUserMe.profile.who_is == 'Administrateur'" value= "Administrateur">Administrateur</option>
+                            </select>
+                            <div v-if="getUserMe.profile.who_is == 'Administrateur'">
+
+                            <label
+                              class="block text-blue-700 text-sm font-bold mb-2"
+                              for="who_is"
                             >
                               Admin
                             </label>
@@ -488,9 +415,10 @@
                                 id="admin"
                             >
                                 <option value="null" disabled>Choisir une option</option>
-                                <option value= true>true</option>
-                                <option value= false>false</option>
+                                <option value= true>Droits admin</option>
+                                <option value= false>Visiteur</option>
                             </select>
+                            </div>
                           </div>
                           <button
                             class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
@@ -516,6 +444,7 @@
                     class="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-2 rounded-full text-center"
                     style="cursor: pointer"
                     @click="deleteUserButton(user._id)"
+                    v-if="getUserMe.profile.who_is == 'Administrateur' || user.is_admin == false"
                   >
                     Supprimer
                   </div>
@@ -539,22 +468,17 @@ export default {
       password: "",
       c_password: "",
       username: "",
-      street: "",
-      zip: "",
-      number: "",
-      city: "",
+      who_is: "",
       error: null,
       success: null,
       avatar: "",
-      lat: "",
-      lng: "",
       toggleModal: false,
       editModal: false,
       userToEdit: "",
     };
   },
   methods: {
-    ...mapActions(["fetchAllUsers", "deleteUser", "register","modifyUser"]),
+    ...mapActions(["fetchUserMe", "fetchAllUsers", "deleteUser", "register","modifyUser"]),
     deleteUserButton(id) {
       this.fetchAllUsers();
       this.deleteUser(id);
@@ -572,50 +496,11 @@ export default {
           this.error =
             "Le mot de passe doit contenir minimum 5 char maximum 20";
           // VERIF ZIP
-        } else if (isNaN(this.zip)) {
-          this.error = "Le code postal doit être un nombre";
-        } else if (isNaN(this.number)) {
-          this.error = "Le numero de rue doit être un nombre";
-        } else {
-          var requestOptions = {
-            method: "GET",
-            redirect: "follow",
-          };
-          // FETCH GOOGLE API POUR RECUPERER LA LNG et LAT
-
-          fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${
-              this.street + this.zip + this.city
-            }&key=${process.env.VUE_APP_ENV_GOOGLE_API}`,
-            requestOptions
-          )
-          //  fetch(
-          //   `https://maps.googleapis.com/maps/api/geocode/json?address=${
-          //     this.street + this.zip + this.city
-          //   }&key=AIzaSyAs3BJtjP6MMUmpkRMPrMvHFq0_YaotfjM`,
-          //   requestOptions
-          // )
-            .then((response) => response.json())
-            .then((result) => {
-              if (
-                result.status === "ZERO_RESULTS" ||
-                result.status === "INVALID_REQUEST"
-              ) {
-                this.error = "Message de renseigner une adresse valide";
-              } else {
-                console.log(result);
-                this.lat = result.results[0].geometry.location.lat;
-                this.lng = result.results[0].geometry.location.lng;
+        }
                 var obj = {
                   email: this.email,
                   password: this.password,
                   username: this.username,
-                  street: this.street,
-                  zip: this.zip,
-                  number: this.number,
-                  city: this.city,
-                  lat: this.lat,
-                  lng: this.lng,
                 };
 
                 this.register(obj);
@@ -627,84 +512,41 @@ export default {
                   }, 2000);
                 }
               }
-            })
-            .catch((error) => console.log("error", error));
-        }
+            
+        
          if (this.getRegisterResponse.success) {
                   setTimeout(function () {
                     window.location.href = "/admin";
                   }, 2000);
                 }
-      }
+      
     },
 
     //EDIT D'UN USER 
 
     editUserSubmit(){
 
-    if (isNaN(this.userToEdit.zip)) {
-          this.error = "Le code postal doit être un nombre";
-        } else if (isNaN(this.userToEdit.number)) {
-          this.error = "Le numero de rue doit être un nombre";
-        } else {
-          var requestOptions = {
-            method: "GET",
-            redirect: "follow",
-          };
-          // FETCH GOOGLE API POUR RECUPERER LA LNG et LAT
-
-          // fetch(
-          //   `https://maps.googleapis.com/maps/api/geocode/json?address=${
-          //     this.userToEdit.street + this.userToEdit.zip + this.userToEdit.city
-          //   }&key=${process.env.VUE_APP_ENV_GOOGLE_API}`,
-          //   requestOptions
-          // )
-          fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${
-              this.userToEdit.street + this.userToEdit.zip + this.userToEdit.city
-            }&key=AIzaSyAs3BJtjP6MMUmpkRMPrMvHFq0_YaotfjM`,
-            requestOptions
-          )
-            .then((response) => response.json())
-            .then((result) => {
-              if (
-                result.status === "ZERO_RESULTS" ||
-                result.status === "INVALID_REQUEST"
-              ) {
-                this.error = "Message de renseigner une adresse valide";
-              } else {
-                console.log(result);
-                this.lat = result.results[0].geometry.location.lat;
-                this.lng = result.results[0].geometry.location.lng;
+    
                 var obj = {
                   email: this.userToEdit.email,
                   password: this.userToEdit.password,
                   username: this.userToEdit.username,
-                  street: this.userToEdit.street,
-                  zip: this.userToEdit.zip,
-                  number: this.userToEdit.number,
-                  city: this.userToEdit.city,
-                  lat: this.lat,
-                  lng: this.lng,
+                  is_admin: this.userToEdit.is_admin,
+                  who_is: this.userToEdit.who_is,
                   id:this.userToEdit._id,
                   avatar:this.userToEdit.avatar,
-                  is_admin:this.userToEdit.is_admin
                 };
 
                 this.modifyUser(obj);
                 this.fetchAllUsers();
-
-               
-              }
-            })
-            .catch((error) => console.log("error", error));
+            
            if (this.getModifyResponse.success) {
                     setTimeout(function () {
                       window.location.href = "/admin";
                     }, 2000);
                   }
         }
-      }
+      
 
     
   },
@@ -716,7 +558,7 @@ export default {
     this.getRegisterResponse.error = null;
     this.getModifyResponse.error = null;
   },
-  computed: mapGetters(["getAllUsers", "getRegisterResponse","getModifyResponse"]),
+  computed: mapGetters(["getUserMe", "getAllUsers", "getRegisterResponse","getModifyResponse"]),
 };
 </script>
 

@@ -38,7 +38,7 @@
 
 
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
-            <div class="p-5 w-0.3 rounded-lg bg-blue-200 shadow-lg text-center ">
+            <div class="p-5 w-1/4 rounded-lg bg-blue-200 shadow-lg text-center ">
       <div class="flex justify-around">
 
       <img class="w-1/2  rounded-full mx-10" :src="userToEdit.avatar" alt="" />
@@ -47,7 +47,7 @@
       Modifier mon avatar
       </div>
       <select
-        class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
+        class="px-5 py-1 mt-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
         v-model="userToEdit.avatar"
         required
         id="avatar"

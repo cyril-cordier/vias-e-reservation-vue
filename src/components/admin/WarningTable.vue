@@ -12,7 +12,7 @@
                   Nom de l'utilisateur</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
-                  Utilisateur signalé</th>
+                  Appartement</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-left text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider">
                   Sujet</th>
@@ -38,10 +38,10 @@
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10"><img
-                        :src="warning.targetId.avatar"
+                        :src="warning.targetId.images[0]"
                         alt="" class="h-10 w-10 rounded-full"></div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-blue-900">{{warning.targetId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{warning.targetId.name}}</div>
 
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-300 text-green-800"
                     >{{ warning.status }}</span
                   >
                 </td>
@@ -70,7 +70,7 @@
                   class="px-6 py-4 whitespace-no-wrap border-b border-blue-200 text-center"
                 >
                   <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-300 text-red-800"
                     >{{ warning.status }}</span
                   >
                 </td>
@@ -90,10 +90,10 @@
 
                   </button>
                   <div
-                    class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
+                    class="fixed overflow-x-hidden  overflow-y-auto inset-0 flex justify-center items-center z-50"
                     v-if="editModal"
                   >
-                    <div class="relative mx-auto w-auto max-w-2xl">
+                    <div class="relative mx-auto w-full max-w-2xl">
                       <div
                         class="bg-blue-500 w-full rounded shadow-2xl flex flex-col"
                       >
@@ -141,7 +141,7 @@
                           <div class="m-2 "><span class="font-bold">Sujet: </span>{{ warningToEdit.subject }}</div>
                           
                           <div class="m-2 "><span class="font-bold">Origine : </span>{{ warningToEdit.userId.username }}</div>
-                          <div class="m-2 "><span class="font-bold">A propos de : </span>{{ warningToEdit.targetId.username }}</div>
+                          <div class="m-2 "><span class="font-bold">A propos de : </span>{{ warningToEdit.targetId.name }}</div>
                           <p class="m-2 font-bold"> Signalement :</p>
                           <div v-html="warningToEdit.content" 
                           class="border-2 border-orange-500 bg-orange-100 p-3 overflow-auto sm:overflow-visible md:overflow-hidden lg:overflow-x-scroll xl:overflow-y-scroll leading-5 h-32 rounded-md whitespace-normal text-justify m-2">

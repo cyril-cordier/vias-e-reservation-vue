@@ -1,4 +1,5 @@
 <template>
+
   <div class="home" v-if="this.getUserMe.profile.is_admin == true">
 
 <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-blue-200">
@@ -26,6 +27,7 @@
             
 
                 <button class="flex cursor-pointer items-center w-full mt-4 py-2 px-6 border-l-4 transition duration-500 ease-in-out border-blue-700 hover:bg-blue-500 text-white hover:border-orange-500 focus:bg-orange-500 focus:text-white focus:outline-none focus:border-white hover:text-blue-100" 
+                 v-if="this.getUserMe.profile.who_is == 'Administrateur'"
                 @click="userTable = false, appartTable = true, categoryTable = false, warningTable = false, reservationTable = false, contentTable = false, reviewTable = false, appartReviewTable = false">
 
  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,6 +123,8 @@
                     
                 </div>             
             </header>
+            Connecté en tant que : {{this.getUserMe.profile.username}} ({{this.getUserMe.profile.who_is}})
+
             <UserTable v-if="userTable == true"/>
             <AppartTable v-if="appartTable == true"/>
             <CategoryTable v-if="categoryTable == true"/>

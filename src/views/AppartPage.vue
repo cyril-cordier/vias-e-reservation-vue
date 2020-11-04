@@ -551,9 +551,8 @@ export default {
         var warningParams = {
         from_name : this.getUserMe.profile.username,
         reply_to : this.getUserMe.profile.email,
-        message : "Signalement : \n"+this.content,
+        message : "Signalement : "+this.content,
         to_email : process.env.VUE_APP_TO_EMAIL,
-        title : "Signalement"
       }
 
       emailjs.send(process.env.VUE_APP_SERVICE_ID, this.email_template.message, warningParams, process.env.VUE_APP_USER_ID)

@@ -16,7 +16,7 @@
                         <span>+ Ajouter un appartement</span>
                     </button>
 
-                    <div v-for="appart in appartOfUser" :key="appart._id" class="max-w-sm w-full   lg:max-w-full lg:flex mb-5">
+                    <div v-for="appart in getAllApparts.apparts" :key="appart._id" class="max-w-sm w-full   lg:max-w-full lg:flex mb-5">
 
                         <img :src="appart.images[0]"
                             class="h-auto lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"

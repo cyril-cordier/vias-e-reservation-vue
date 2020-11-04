@@ -35,13 +35,6 @@ register({commit},obj){
             "email":obj.email,
             "password":obj.password,
             "username":obj.username,
-            "street":obj.street,
-            "zip":obj.zip,
-            "number":obj.number,
-            "city":obj.city,
-            "avatar":obj.image,
-            "lat": obj.lat,
-            "lng": obj.lng
         });
 
         var requestOptions = {
@@ -166,13 +159,8 @@ var raw = JSON.stringify(
     [
     {"propName":"username","value":obj.username},
     {"propName":"email","value":obj.email},
-    {"propName":"street","value":obj.street},
-    {"propName":"zip","value":obj.zip},
-    {"propName":"number","value":obj.number},
-    {"propName":"city","value":obj.city},
+    {"propName":"who_is","value":obj.who_is},
     {"propName":"avatar","value":obj.avatar},
-    {"propName":"lat","value":obj.lat},
-    {"propName":"lng","value":obj.lng},
     {"propName":"is_admin","value":obj.is_admin},
     ]
 );

@@ -13,16 +13,13 @@
               <tr>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Utilisateur noteur
+                  Locataire
                 </th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Utilisateur noté
+                  Appartement
                 </th>
-                <th
-                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Note
-                </th>
+                
 
                 <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
