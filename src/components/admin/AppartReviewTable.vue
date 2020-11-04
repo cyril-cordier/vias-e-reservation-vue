@@ -13,16 +13,13 @@
               <tr>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Utilisateur noteur
+                  Utilisateur
                 </th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Jeu noté
+                  Appartement
                 </th>
-                <th
-                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Note
-                </th>
+                
 
                 <th class="px-6 py-3 border-b border-blue-200 bg-blue-50"></th>
               </tr>
@@ -63,18 +60,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-
-                    </div>
-                    <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-blue-900">
-                        {{ review.mark }} / 5
-                      </div>
-                    </div>
-                  </div>
-                </td>
+                
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="text-sm leading-5 text-blue-900 text-center"></div>
                 </td>
@@ -94,7 +80,7 @@
                     class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
                     v-if="showModal"
                   >
-                    <div class="relative mx-auto w-auto max-w-2xl">
+                    <div class="relative mx-auto w-full max-w-2xl">
                       <div
                         class="bg-blue-500 w-full rounded shadow-2xl flex flex-col"
                       >
@@ -116,7 +102,7 @@
                         >
 
                                                  
-                          <div class="m-2 "><span class="font-bold">Utilisateur noteur: 
+                          <div class="m-2 "><span class="font-bold">Utilisateur : 
                             </span><div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
@@ -132,7 +118,7 @@
                     </div>
                   </div></div>
                           
-                          <div class="m-2 "><span class="font-bold">Jeu noté : 
+                          <div class="m-2 "><span class="font-bold">Appartement : 
                             </span><div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
@@ -147,7 +133,7 @@
                       </div>
                     </div>
                   </div></div>
-                          <div class="m-2 "><span class="font-bold">Note : </span>{{ review.mark }}/ 5</div>
+                          
                           <p class="m-2 font-bold"> Commentaire :</p>
                           <div v-html="review.comment" 
                           class="border-2 border-orange-500 bg-orange-100 p-3 overflow-auto sm:overflow-visible md:overflow-hidden lg:overflow-x-scroll xl:overflow-y-scroll leading-5 h-32 rounded-md whitespace-normal text-justify m-2">

@@ -21,14 +21,12 @@
 				</div>
 
 				<h2 class="mt-4 font-bold text-xl text-center">Gestionnaires :<br>C. PRAVDA / M. PUGIN	
-        <div class="inline-flex shadow-lg border border-blue-200 rounded-full overflow-hidden h-10 w-10">
-					<img :src="reservation.ownerId.avatar" class="h-full w-full">
-				</div>
+        
         </h2>
-				<h6 class="mt-2 text-normal font-medium">Nom du Jeu: {{reservation.appartId.name}}</h6>
+				<h6 class="mt-2 text-normal font-medium">Appartement : {{reservation.appartId.name}}</h6>
         <router-link :to="'/appartements/'+reservation.appartId._id"  
         class="px-3 py-1 m-5 w-2.5/6 font-semibold transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow">
-        Details du jeu</router-link>
+        Détails Appart.</router-link>
 
 				<p class="text-sm text-blue-500 text-center mt-3">
 					Debut: {{reservation.start}}
@@ -44,8 +42,8 @@
                 >
                   <p
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg"
-                    >{{reservation.ownerId.username}} a accepté de vous prêter<br>{{reservation.appartId.name}}</p>
-                    <h4 class="mt-4 text-normal text-center">Vous pouvez contacter le prêteur : <br><a :href="'mailto:'+reservation.ownerId.email">{{reservation.ownerId.email}}</a></h4>
+                    >{{reservation.ownerId.username}} a accepté de vous louer<br>{{reservation.appartId.name}}</p>
+                    <h4 class="mt-4 text-normal text-center">Vous pouvez contacter les gestionnaires : <br><a :href="'mailto:'+gestionnaires">Envoyer un mail</a></h4>
 						</div>
             <div v-if="reservation.status == 1"
                   class="px-6 py-4 whitespace-no-wrap text-center"
@@ -105,13 +103,13 @@
                     </svg>
                     </div>
                     <div>
-                    <p class="font-bold">Signalement envoyé au modérateur</p>
+                    <p class="font-bold">Signalement envoyé au gestionnaire</p>
                     </div>
                 </div>
                 </div>
                       <div class="mb-4 ">
                           <label class="block text-blue-700 text-sm font-bold mb-2 " for="warning">
-                          Signalement d'un problème avec un emprunteur
+                          Signalement d'un problème avec une location
                           </label>
                           <textarea   
                           v-model="content"
@@ -126,7 +124,7 @@
                         <button 
                         class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 w-full rounded focus:outline-none focus:shadow-outline" 
                         type="submit">
-                        Envoyer le signalement au modérateur
+                        Envoyer le signalement au gestionnaire
                         </button>
 
                     </form>       
@@ -187,11 +185,18 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import emailjs from 'emailjs-com';
+
 export default {
   data(){
     return{
       Modal:"",
       createSuccess:null,
+      gestionnaires : process.env.VUE_APP_TO_EMAIL,
+      email_template: {
+        message:"template_zdzj1jd",
+
+      }
     }
   },
   methods:{
@@ -203,18 +208,31 @@ export default {
     createWarningSubmit(reservation){
           var obj = {
         userId: reservation.borrowerId._id,
-        targetId: reservation.ownerId._id,
+        targetId: reservation.appartId._id,
         content: this.content,
-        subject: "Pb avec un emprunteur",
+        subject: "Pb avec la location",
         
       };
       
       this.createWarning(obj);
       if (this.getCreateWarningResponse.success) {
         this.createSuccess = this.getCreateWarningResponse.success;
+        var warningParams = {
+        from_name : this.getUserMe.profile.username,
+        reply_to : this.getUserMe.profile.email,
+        message : "Signalement : "+this.content,
+        to_email : process.env.VUE_APP_TO_EMAIL,
+      }
+
+      emailjs.send(process.env.VUE_APP_SERVICE_ID, this.email_template.message, warningParams, process.env.VUE_APP_USER_ID)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        });
         setTimeout(function () {
           location.reload();
-        }, 2000);
+        }, 1200);
       }
     },
   },

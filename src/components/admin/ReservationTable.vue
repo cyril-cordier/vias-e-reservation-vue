@@ -18,19 +18,17 @@
               <tr>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Emprunteur</th>
+                  Locataire</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Prêteur</th>
+                  Appartement</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Date début</th>
                   <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Date fin</th>
-                  <th
-                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Jeu</th>
+                  
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Statut</th>
@@ -57,13 +55,13 @@
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
-                        :src="reservation.ownerId.avatar"
+                        :src="reservation.appartId.images[0]"
                         alt=""
                         class="h-10 w-10 rounded-full"
                       />
                     </div>
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-blue-900">{{reservation.ownerId.username}}</div>
+                      <div class="text-sm leading-5 font-medium text-blue-900">{{reservation.appartId.name}}</div>
                     </div>
                   </div>
                 </td>
@@ -78,7 +76,15 @@
                   <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.end}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
-                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.appartId.name}}</div>
+                  <div 
+                  class="text-sm leading-5 text-center "
+                  v-if="reservation.status == 0">En attente</div>
+                  <div 
+                  class="text-sm leading-5 text-center font-semibold rounded-full bg-red-300 text-red-800"
+                  v-if="reservation.status == 1">Refusée</div>
+                  <div 
+                  class="text-sm leading-5 text-center font-semibold rounded-full bg-green-300 text-green-800"
+                  v-if="reservation.status == 2">Acceptée</div>
                 </td>
                 <td
                   class="px-1 py-4 whitespace-no-wrap  border-b border-blue-200 text-sm leading-5 font-medium">
