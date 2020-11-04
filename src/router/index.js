@@ -65,7 +65,7 @@ const routes = [
     path:'/reviews/:id',
     name:'Review',
     component:Review,
-    meta:{requiresVisitor: true},
+    meta:{requiresVisitor: false},
   },
 ]
 

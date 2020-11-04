@@ -7,9 +7,9 @@
     <div class="flex flex-col mx-20">
   
   <div class="mb-6 p-3 bg-orange-300 shadow rounded text-blue-700">
-    <h2 class="text-center font-bold text-xl">Mes Emprunts</h2>
+    <h2 class="text-center font-bold text-xl">Mes locations</h2>
 
-    <h5 class="text-center ">Retrouvez ici tous les jeux que vous avez empruntés et les demandes en attente</h5>
+    <h5 class="text-center ">Retrouvez ici toutes vos locations et les demandes en attente</h5>
 </div>
 
 
@@ -20,7 +20,7 @@
 					<img :src="reservation.appartId.images[0]" class="h-full w-full">
 				</div>
 
-				<h2 class="mt-4 font-bold text-xl text-center">Preteur:<br>{{reservation.ownerId.username}}	
+				<h2 class="mt-4 font-bold text-xl text-center">Gestionnaires :<br>C. PRAVDA / M. PUGIN	
         <div class="inline-flex shadow-lg border border-blue-200 rounded-full overflow-hidden h-10 w-10">
 					<img :src="reservation.ownerId.avatar" class="h-full w-full">
 				</div>

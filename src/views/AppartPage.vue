@@ -262,6 +262,7 @@
                   Envoyer
                 </button>
               </form>
+
             </div>
              <!-- AVIS -->
 
@@ -350,6 +351,7 @@ import { mapActions, mapGetters } from "vuex";
 import Footer from "../components/Footer";
 import Fullcalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
+//import emailjs from 'emailjs-com';
 
 
 import axios from "axios";
@@ -378,14 +380,18 @@ export default {
       createSuccess:null,
       createReviewSuccess: null,
       createReviewError: null,
+      createReservationError: null,
         comment: "",
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: "dayGridMonth",
         events: "",
         eventClick: this.showEvent,
-        locale: "en",
+        locale: "fr",
       },
+      serviceId:"service_7ohfsts",
+      templateId:"template_fe688sj",
+      yourUserId:"user_Q5bLLmAtm9xDAiHMnDmmn",
     };
   },
   methods: {
@@ -401,7 +407,7 @@ export default {
     ]),
     
     reservationForm(){
-
+      
       this.getAllReservations.Reservation.forEach((element)=>{
         if(element.appartId._id == this.$route.params.id){
 
@@ -415,7 +421,6 @@ export default {
           var dateFrom2 = element.start;
           var dateTo2 = element.end;
           var dateCheck2 = this.end;
-
 
         // CONVERT START 
 
@@ -445,36 +450,66 @@ export default {
           var check2 = new Date(cEnd[2], parseInt(cEnd[1])-1, cEnd[0]);
 
         // ERROR 
-          if(check >= from && check <= to ){
+          if(this.start == "" || this.end == ""){
+            console.log('yop')
+            this.getCreateReservationResponse.error = true;
+            setTimeout(function () {
+          location.reload();
+        }, 1200);
+          }else if(check >= from && check <= to ){
+            console.log('ici')
             this.error = true;
+            setTimeout(function () {
+          location.reload();
+        }, 1200);
           }else if (check2 >= from2 && check2 <= to2 ){
+            console.log('la')
              this.error = true;
+             setTimeout(function () {
+          location.reload();
+        }, 1200);
           }
 
-          
-                  
-          
-      
-    
-          
         }
       })
+      console.log("this getcreatereservationresp.error : "+this.getCreateReservationResponse.error)
+      console.log("this error : "+this.error)
+      if(this.error == false && this.getCreateReservationResponse.error != true){
+        var obj = {
+                  "ownerId":this.getAppartById.appart.userId._id,
+                  "borrowerId":this.getUserMe.profile._id,
+                  "start":this.start,
+                  "end":this.end,
+                  "title":this.getUserMe.profile.username,
+                  "status": "0",
+                  "appartId":this.getAppartById.appart._id
+                  }
+                  this.createReservation(obj);
+      /* var templateParams = {
+        from_name : this.getUserMe.profile.username,
+        reply_to : this.getUserMe.profile.email,
+        message : this.getUserMe.profile.username+" aimerai louer l'appartement du "+this.start+" au "+this.end+".",
+        to_email : "cyril.cordier@gmail.com"
+      }
 
-    if(this.error == false){
-      var obj = {
-                "ownerId":this.getAppartById.appart.userId._id,
-                "borrowerId":this.getUserMe.profile._id,
-                "start":this.start,
-                "end":this.end,
-                "title":this.getUserMe.profile.username,
-                "status": "0",
-                "appartId":this.getAppartById.appart._id
-                }
-                this.createReservation(obj);
-}
+      emailjs.send("service_7ohfsts", "template_fe688sj", templateParams, "user_Q5bLLmAtm9xDAiHMnDmmn")
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        }); */
+        
+        console.log("mail envoyé")
+        setTimeout(function () {
+          window.location.href = "/reservation";
+        }, 1200);
+      }
      
 
      
+    
+
+    
     },
     
   
