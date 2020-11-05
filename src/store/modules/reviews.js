@@ -27,7 +27,8 @@ const viastoken = window.localStorage.getItem('viastoken') || "";
 
     createReview({commit},obj){
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
+        myHeaders.append( "Authorization", `Bearer ${viastoken}`);
+        myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify(
         {
@@ -92,7 +93,8 @@ var raw = JSON.stringify(
 
     modifyReview({commit},obj){
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
+        myHeaders.append( "Authorization", `Bearer ${viastoken}`);
+        myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify(
             [
