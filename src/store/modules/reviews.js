@@ -1,4 +1,4 @@
- // const token = window.localStorage.getItem('token') || ""; 
+const viastoken = window.localStorage.getItem('viastoken') || ""; 
  const url = "https://vias-e-reservation.herokuapp.com";
 
 
@@ -27,7 +27,7 @@
 
     createReview({commit},obj){
         var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
 var raw = JSON.stringify(
         {
@@ -55,8 +55,12 @@ var raw = JSON.stringify(
     // GET ALL REVIEWS 
 
     fetchAllReviews({commit}){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
         var requestOptions = {
             method: 'GET',
+            headers: myHeaders,
             redirect: 'follow'
           };
           
@@ -69,8 +73,12 @@ var raw = JSON.stringify(
     // GET REVIEW BY ID 
 
     fetchReviewById({commit},id){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
         var requestOptions = {
             method: 'GET',
+            headers: myHeaders,
             redirect: 'follow'
           };
           
@@ -84,7 +92,7 @@ var raw = JSON.stringify(
 
     modifyReview({commit},obj){
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
         var raw = JSON.stringify(
             [
@@ -110,8 +118,12 @@ var raw = JSON.stringify(
         .catch(error => console.log('error', error));
     },
     deleteReview({commit},id){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
         var requestOptions = {
             method: 'DELETE',
+            headers: myHeaders,
             redirect: 'follow'
           };
           

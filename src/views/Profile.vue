@@ -108,12 +108,14 @@
       
       
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import UserInfo from "../components/user/UserInfo";
 import EditUser from "../components/user/EditUser";
 import EditPassword from "../components/user/EditPassword";
@@ -127,6 +129,7 @@ export default {
   name: "Profile",
   components: {
     Navbar,
+    Footer,
     UserInfo,
     EditUser, 
     EditPassword, 

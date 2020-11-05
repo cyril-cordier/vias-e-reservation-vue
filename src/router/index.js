@@ -9,6 +9,7 @@ import FindAppart from '../views/FindAppart.vue'
 import Jeux from '../views/AppartPage.vue'
 import Reservation from '../views/Reservation.vue'
 import Review from '../views/Review.vue'
+import ActiveUser from '../views/ActiveUser.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,12 @@ const routes = [
     name:'Review',
     component:Review,
     meta:{requiresVisitor: false},
+  },
+  {
+    path: '/activeuser/:email',
+    name: 'ActiveUser',
+    component: ActiveUser,
+    meta:{requiresVisitor: true},
   },
 ]
 
