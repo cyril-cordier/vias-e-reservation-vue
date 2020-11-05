@@ -1,4 +1,4 @@
- // const token = window.localStorage.getItem('token') || ""; 
+const viastoken = window.localStorage.getItem('viastoken') || ""; 
  const url = "https://vias-e-reservation.herokuapp.com";
 
 
@@ -29,7 +29,7 @@
 
     createContent({commit},obj){
         var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 console.log(obj);
 var raw = JSON.stringify(
         {
@@ -84,7 +84,7 @@ console.log(raw);
 
     modifyContent({commit},obj){
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
         var raw = JSON.stringify(
             [
@@ -107,8 +107,12 @@ console.log(raw);
         .catch(error => console.log('error', error));
     },
     deleteContent({commit},id){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
         var requestOptions = {
             method: 'DELETE',
+            headers: myHeaders,
             redirect: 'follow'
           };
           

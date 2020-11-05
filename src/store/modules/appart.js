@@ -1,4 +1,4 @@
- // const token = window.localStorage.getItem('token') || ""; 
+const viastoken = window.localStorage.getItem('viastoken') || ""; 
  const url = "https://vias-e-reservation.herokuapp.com";
 
  const state = {
@@ -28,7 +28,8 @@
 
     createAppart({commit},obj){
         var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
+
 
     var raw = JSON.stringify(
         {"name":obj.name,
@@ -70,8 +71,13 @@ myHeaders.append("Content-Type", "application/json");
     // GET APPART BY ID 
 
     fetchAppartById({commit},id){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
+        
         var requestOptions = {
             method: 'GET',
+            headers: myHeaders,
             redirect: 'follow'
           };
           
@@ -85,7 +91,7 @@ myHeaders.append("Content-Type", "application/json");
 
     modifyAppart({commit},obj){
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
         var raw = JSON.stringify(
             [
@@ -113,8 +119,12 @@ myHeaders.append("Content-Type", "application/json");
         .catch(error => console.log('error', error));
     },
     deleteAppart({commit},id){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
         var requestOptions = {
             method: 'DELETE',
+            headers: myHeaders,
             redirect: 'follow'
           };
           

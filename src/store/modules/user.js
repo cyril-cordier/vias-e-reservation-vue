@@ -75,7 +75,7 @@ login({commit},obj){
                 localStorage.setItem('viastoken',result.viastoken);
 
                 setTimeout(function () {
-    window.location.href="/"
+    window.location.href="/profile"
     }); 
             }
            
@@ -87,8 +87,12 @@ login({commit},obj){
 // RETRIEVE ALL USERS  
 
 fetchAllUsers({commit}){
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${viastoken}`);
+    
     var requestOptions = {
         method: 'GET',
+        headers: myHeaders,
         redirect: 'follow'
       };
       
@@ -120,9 +124,12 @@ fetchUserMe({commit}){
 // FETCH USER BY ID 
 
 fetchUserById({commit},id){
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${viastoken}`);
 
     var requestOptions = {
         method: 'GET',
+        headers: myHeaders,
         redirect: 'follow'
       };
       
@@ -137,8 +144,12 @@ fetchUserById({commit},id){
 // DELETE USER BY ID 
 
 deleteUser({commit},id){
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${viastoken}`);
+
     var requestOptions = {
         method: 'DELETE',
+        headers: myHeaders,
         redirect: 'follow'
       };
       
@@ -153,7 +164,7 @@ deleteUser({commit},id){
 
 modifyUser({commit},obj){
     var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
 var raw = JSON.stringify(
     [
@@ -162,6 +173,7 @@ var raw = JSON.stringify(
     {"propName":"who_is","value":obj.who_is},
     {"propName":"avatar","value":obj.avatar},
     {"propName":"is_admin","value":obj.is_admin},
+    {"propName":"is_active","value":obj.is_active},
     ]
 );
 
@@ -183,7 +195,7 @@ fetch(`${url}/users/${obj.id}`, requestOptions)
 
 modifyPwd({commit},obj){
     var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-Type", "application/json", "Authorization", `Bearer ${viastoken}`);
 
 var raw = JSON.stringify(
     [
