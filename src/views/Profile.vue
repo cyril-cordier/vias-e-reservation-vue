@@ -2,6 +2,7 @@
   <div class="Profile">
     <Navbar />
 
+<Activation v-if="getUserMe.profile.is_active === false"/>
     <div class="h-full m-10">
       <div class="p-3 m-5 w-85 mx-auto">
         <div class="grid grid-flow-col grid-rows-6 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-6">
@@ -101,11 +102,11 @@
       </div>
 
       
+      
       <UserInfo v-show="user_toggle" />
       <EditUser v-show="update_toggle" />
       <EditPassword v-show="password_toggle" />
       <Appartement v-show="appart_toggle" />
-      
       
     </div>
     <Footer />
@@ -120,6 +121,7 @@ import UserInfo from "../components/user/UserInfo";
 import EditUser from "../components/user/EditUser";
 import EditPassword from "../components/user/EditPassword";
 import Appartement from "../components/user/Appartement";
+import Activation from "../components/activation/Activation.vue"
 
 import { mapActions, mapGetters } from "vuex";
 // import jwt_decode from 'jwt-decode';
@@ -134,6 +136,7 @@ export default {
     EditUser, 
     EditPassword, 
     Appartement,
+    Activation
     
   },
 

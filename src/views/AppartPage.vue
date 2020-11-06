@@ -1,7 +1,18 @@
 <template>
   <div class="appartPage">
     <Navbar />
-    <div class="">
+    <div v-if="getUserMe.profile.who_is == 'ND'">
+      <div class="mt-20 text-center font-bold text-xl text-blue-800 my-3">Votre compte n'a pas encoré été validé par le
+        gestionnaire.</div>
+      <div class="my-10 text-center font-bold text-l text-blue-800 my-3">Vous serez informé par mail sur l'adresse
+        {{getUserMe.profile.email}} dès que votre compte sera actif.</div>
+      
+        
+        <Activation v-if="getUserMe.profile.is_active === false"/>
+
+      
+    </div>
+    <div v-if="getUserMe.profile.who_is != 'ND'">
       <div class="text-blue-700 body-font overflow-hidden bg-white">
         <div class="container px-5 py-10 mx-auto">
             <!-- MODAL  -->     
@@ -352,7 +363,7 @@ import Footer from "../components/Footer";
 import Fullcalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import emailjs from 'emailjs-com';
-
+import Activation from "../components/activation/Activation.vue"
 
 import axios from "axios";
 import Navbar from "../components/Navbar";
@@ -363,6 +374,7 @@ export default {
     Navbar,
      Footer,
     Fullcalendar,
+    Activation
   },
   data() {
     return {

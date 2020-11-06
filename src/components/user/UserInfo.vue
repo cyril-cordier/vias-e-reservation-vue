@@ -1,7 +1,8 @@
 <template>
-
+  
   <!-- toggle user Info -->
   <div>
+
     <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
       <div class="p-5 w-1/4 rounded-l-lg bg-blue-200 shadow-lg">
         <div class="flex justify-around">
@@ -33,12 +34,14 @@
       </div>
 
     </div>
+    
   </div>
 
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+
 
 export default {
   name: "UserInfo",
@@ -59,7 +62,6 @@ export default {
       lng: "",
       userToEdit: "",
       successUpdate: null,
-
     };
   },
   methods: {

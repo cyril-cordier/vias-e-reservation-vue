@@ -98,7 +98,7 @@
     mapActions,
     mapGetters
   } from "vuex";
-  import emailjs from 'emailjs-com';
+  
 
   export default {
     name: "Register",
@@ -111,11 +111,7 @@
         username: "",
         error: "",
         success:"",
-        email_template: {
-          activation:"template_4jsuuic",
-          
-
-      }
+        
 
       };
     },
@@ -151,19 +147,7 @@
             
             
             if (this.getRegisterResponse.success != null) {
-             var demandeResaParams = {
-        from_name : this.username,
-        reply_to : process.env.VUE_APP_TO_EMAIL,
-        message : "Merci de cliquer sur ce lien pour activer votre adresse email : http://192.168.1.49:8080/activeuser/"+this.email,
-        to_email : this.email,
-      }
-
-       emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.activation, demandeResaParams, process.env.VUE_APP_USER_ID_RESPONSE)
-        .then((result) => {
-            console.log('SUCCESS!', result.status, result.text);
-        }, (error) => {
-            console.log('FAILED...', error);
-        }); 
+             
                 this.$router.push('login');
             }
 
