@@ -461,6 +461,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import emailjs from 'emailjs-com';
 
 export default {
   data() {
@@ -476,6 +477,9 @@ export default {
       toggleModal: false,
       editModal: false,
       userToEdit: "",
+      email_template: {
+          informUser:"template_4jsuuic",
+      }
     };
   },
   methods: {
@@ -540,12 +544,26 @@ export default {
 
                 this.modifyUser(obj);
                 this.fetchAllUsers();
-            
-           if (this.getModifyResponse.success) {
+            if(this.userToEdit.who_is != "ND"){
+              var activeParams = {
+        from_name : this.userToEdit.username,
+        reply_to : process.env.VUE_APP_TO_EMAIL,
+        message : "Votre compte a été validé, vous pouvez accéder à l'espace de réservation : "+process.env.VUE_APP_URL+"/appartements/5fa066cbdb3ee70017fa88ed",
+        to_email : this.userToEdit.email
+      }
+
+       emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.informUser, activeParams, process.env.VUE_APP_USER_ID_RESPONSE)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        });
+            }
+           /* if (this.getModifyResponse.success) { */
                     setTimeout(function () {
                       window.location.href = "/admin";
-                    }, 2000);
-                  }
+                    }, 1200);
+                  //}
         }
       
 

@@ -107,7 +107,7 @@ export default {
             this.modifySuccess = this.getModifyResponse.success;
 
            var activeParams = {
-        from_name : this.iUser[0].username,
+        from_name : "Gestionnaire",
         reply_to : this.iUser[0].email,
         message : this.iUser[0].username +" a créé un compte ou modifié son adresse email. Vérifiez son statut et activez son compte si besoin sur l'espace d'administration : "+process.env.VUE_APP_URL+"/admin",
         to_email : process.env.VUE_APP_TO_EMAIL
