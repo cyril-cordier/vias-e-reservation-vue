@@ -97,6 +97,7 @@
 </template>
 
 <script>
+import emailjs from 'emailjs-com';
  import { mapActions, mapGetters } from "vuex";
 export default {
   data(){
@@ -104,6 +105,12 @@ export default {
       Modal:"",
       content:"",
       createSuccess:null,
+      email_template: {
+          reponseReservation:"template_4jsuuic",
+      },
+      responseMessage:"",
+      start:"",
+      end:"",
       
     }
   },
@@ -112,7 +119,6 @@ export default {
       "fetchAllReservations",
       "fetchUserMe",
       "modifyReservation",
-      "createWarning",
     ]),
      acceptReservation(reservation){
           var obj = {
@@ -128,6 +134,9 @@ export default {
       
       this.modifyReservation(obj);
       this.fetchAllReservations();
+
+      this.sendResponse(reservation.start, reservation.end, "acceptée")
+
       setTimeout(function () {
           location.reload();
         }, 1000);
@@ -147,30 +156,30 @@ export default {
       
       this.modifyReservation(obj);
       this.fetchAllReservations();
+
+      this.sendResponse(reservation.start, reservation.end, "refusée")
+
       setTimeout(function () {
           location.reload();
         }, 1000);
     },
 
-    createWarningSubmit(reservation){
-          var obj = {
-        userId: reservation.ownerId._id,
-        targetId: reservation.borrowerId._id,
-        content: this.content,
-        subject: "Pb avec un prêteur",
-        
-      };
-      
-      this.createWarning(obj);
-      
-      if (this.getCreateWarningResponse.success) {
-        this.createSuccess = this.getCreateWarningResponse.success;
-        setTimeout(function () {
-          location.reload();
-        }, 2000);
+    sendResponse(start, end, responseMessage){
+      var responseParams = {
+        from_name : this.getUserMe.profile.username,
+        reply_to : process.env.VUE_APP_TO_EMAIL,
+        message : "Votre demande de réservation du "+start+" au "+end+" a été "+responseMessage+". Accéder à vos demandes de location : "+process.env.VUE_APP_URL+"/reservation",
+        to_email : this.getUserMe.profile.email,
       }
 
-    },
+       emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.responseReservation, responseParams, process.env.VUE_APP_USER_ID_RESPONSE)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        }); 
+    }
+
   },
   computed: {
     ...mapGetters([
@@ -179,16 +188,7 @@ export default {
       "getCreateWarningResponse"
             
     ]),
-    /* reservationOfUser() {
-      if(this.getAllReservations.Reservation){
-      return this.getAllReservations.Reservation.filter((reservation) =>
-        reservation.ownerId._id
-          .toLowerCase()
-          .includes(this.getUserMe.profile._id.toLowerCase())
-      );
-      }
-      return false;
-    }, */
+
    
     
   },

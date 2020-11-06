@@ -2,7 +2,7 @@
   <div class="Profile">
     <Navbar />
 
-<Activation v-if="getUserMe.profile.is_active === false"/>
+<Activation v-if="getUserMe.profile.is_active == 'No'"/>
     <div class="h-full m-10">
       <div class="p-3 m-5 w-85 mx-auto">
         <div class="grid grid-flow-col grid-rows-6 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-6">

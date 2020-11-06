@@ -104,12 +104,12 @@
               required
             />
           </div>
-          <div class="form-group w-3/12 inline-block p-auto m-auto row">
-            <label for="InputNumber" class="font-semibold text-blue-800 text-l ml-2"
-              >Statut : {{userToEdit.who_is}}</label
-            >
-            
-          </div>
+          <p class="m-10 font-semibold text-l text-blue-800 mt-3" v-if="getUserMe.profile.who_is == 'ND'">
+            Statut : Compte en attente de validation par le gestionnaire
+          </p>
+          <p class="m-10 font-semibold text-l text-blue-800 mt-3" v-if="getUserMe.profile.who_is != 'ND'">
+            Statut : {{getUserMe.profile.who_is}}
+          </p>
          
 
           <br />
@@ -149,7 +149,11 @@ export default {
     //EDIT D'UN USER
 
     editUser() {
-  
+      var emailActive = this.userToEdit.is_active
+      if(this.userToEdit.email != this.userToEdit.is_active){
+        emailActive = "No";
+      }
+
           var obj = {
             email: this.userToEdit.email,
             username: this.userToEdit.username,
@@ -157,6 +161,7 @@ export default {
             id: this.userToEdit._id,
             avatar: this.userToEdit.avatar,
             is_admin: this.userToEdit.is_admin,
+            is_active: emailActive
           };
 
           this.modifyUser(obj);

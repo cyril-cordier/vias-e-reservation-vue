@@ -41,7 +41,7 @@ methods: {
       var demandeResaParams = {
         from_name : this.getUserMe.profile.username,
         reply_to : process.env.VUE_APP_TO_EMAIL,
-        message : "Merci de cliquer sur ce lien pour activer votre adresse email : http://192.168.1.49:8080/activeuser/"+this.getUserMe.profile.email,
+        message : "Merci de cliquer sur ce lien pour activer votre adresse email : "+process.env.VUE_APP_URL+"/activeuser/"+this.getUserMe.profile.email,
         to_email : this.getUserMe.profile.email,
       }
 

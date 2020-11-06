@@ -57,6 +57,7 @@
 import { mapActions, mapGetters } from "vuex";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import emailjs from 'emailjs-com';
 
 export default {
   name: "ActiveUser",
@@ -76,6 +77,11 @@ export default {
       error: "",
       
       successUpdate: null,
+
+      //TEMPLATE DE MAIL
+      email_template: {
+          informGestionnaire:"template_4jsuuic",
+      }
     };
   },
   methods: {
@@ -92,14 +98,27 @@ export default {
             who_is: this.iUser[0].who_is,
             avatar: this.iUser[0].avatar,
             is_admin: this.iUser[0].is_admin,
-            is_active: true,
+            is_active: this.iUser[0].email,
           };
 
           this.modifyUser(obj);
           console.log(this.getModifyResponse.success);
           if (this.getModifyResponse.success) {
             this.modifySuccess = this.getModifyResponse.success;
-           
+
+           var activeParams = {
+        from_name : this.iUser[0].username,
+        reply_to : this.iUser[0].email,
+        message : this.iUser[0].username +" a créé un compte ou modifié son adresse email. Vérifiez son statut et activez son compte si besoin sur l'espace d'administration : "+process.env.VUE_APP_URL+"/admin",
+        to_email : process.env.VUE_APP_TO_EMAIL
+      }
+
+       emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.informGestionnaire, activeParams, process.env.VUE_APP_USER_ID_RESPONSE)
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text);
+        }, (error) => {
+            console.log('FAILED...', error);
+        });
          
               /* setTimeout(function () {
             window.location.href = "/";

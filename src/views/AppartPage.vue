@@ -8,7 +8,7 @@
         {{getUserMe.profile.email}} dès que votre compte sera actif.</div>
       
         
-        <Activation v-if="getUserMe.profile.is_active === false"/>
+        <Activation v-if="getUserMe.profile.is_active == 'No'"/>
 
       
     </div>
@@ -502,7 +502,7 @@ export default {
       var demandeResaParams = {
         from_name : this.getUserMe.profile.username,
         reply_to : this.getUserMe.profile.email,
-        message : this.getUserMe.profile.username+" aimerai louer l'appartement du "+this.start+" au "+this.end+".",
+        message : this.getUserMe.profile.username+" aimerait louer l'appartement du "+this.start+" au "+this.end+".",
         to_email : process.env.VUE_APP_TO_EMAIL,
       }
 

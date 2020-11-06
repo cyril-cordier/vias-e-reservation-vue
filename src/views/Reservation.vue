@@ -8,7 +8,7 @@
         {{getUserMe.profile.email}} dès que votre compte sera actif.</div>
       
         
-        <Activation v-if="getUserMe.profile.is_active === false"/>
+        <Activation v-if="getUserMe.profile.is_active == 'No'"/>
 
       
     </div>
