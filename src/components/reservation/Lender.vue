@@ -43,7 +43,7 @@
                   <p
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg"
                     >{{reservation.ownerId.username}} a accepté de vous louer<br>{{reservation.appartId.name}}</p>
-                    <h4 class="mt-4 text-normal text-center">Vous pouvez contacter les gestionnaires : <br><a :href="'mailto:'+gestionnaires">Envoyer un mail</a></h4>
+                    <h4 class="mt-4 text-xs text-center">Contacter le gestionnaire :<br><a :href="'mailto:'+gestionnaires">{{gestionnaires}}</a></h4>
 						</div>
             <div v-if="reservation.status == 1"
                   class="px-6 py-4 whitespace-no-wrap text-center"

@@ -471,15 +471,15 @@ export default {
             setTimeout(function () {
           location.reload();
         }, 1200);
-          }else if(check >= from && check <= to ){
+          }else if(check > from && check < to ){
             console.log('ici')
-            this.error = true;
+            //this.error = true;
             setTimeout(function () {
           location.reload();
         }, 1200);
-          }else if (check2 >= from2 && check2 <= to2 ){
+          }else if (check2 > from2 && check2 < to2 ){
             console.log('la')
-             this.error = true;
+             //this.error = true;
              setTimeout(function () {
           location.reload();
         }, 1200);

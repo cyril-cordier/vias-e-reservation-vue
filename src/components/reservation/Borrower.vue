@@ -45,7 +45,7 @@
                   <p
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg"
                     >Vous avez accepté de louer<br>{{reservation.appartId.name}}<br>à {{reservation.borrowerId.username}}</p>
-                    <h4 class="mt-4 text-normal text-center">Vous pouvez contacter le locataire : <br><a :href="'mailto:'+reservation.borrowerId.email">{{reservation.borrowerId.email}}</a></h4>
+                    <h4 class="mt-4 text-normal text-center">Contacter le locataire : <br><a :href="'mailto:'+reservation.borrowerId.email">{{reservation.borrowerId.email}}</a></h4>
 						</div>
             <div v-if="reservation.status == 1"
                   class="px-6 py-4 whitespace-no-wrap text-center"
@@ -135,7 +135,19 @@ export default {
       this.modifyReservation(obj);
       this.fetchAllReservations();
 
-      this.sendResponse(reservation.start, reservation.end, "acceptée")
+      var responseParams = {
+              from_name : this.getUserMe.profile.username,
+              reply_to : process.env.VUE_APP_TO_EMAIL,
+              message : "Votre demande de réservation du "+reservation.start+" au "+reservation.end+" a été acceptée. Accéder à vos demandes de location : "+process.env.VUE_APP_URL+"/reservation",
+              to_email : this.getUserMe.profile.email,
+            }
+
+            emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.responseReservation, responseParams, process.env.VUE_APP_USER_ID_RESPONSE)
+              .then((result) => {
+                  console.log('SUCCESS!', result.status, result.text);
+              }, (error) => {
+                  console.log('FAILED...', error);
+              }); 
 
       setTimeout(function () {
           location.reload();
@@ -157,28 +169,28 @@ export default {
       this.modifyReservation(obj);
       this.fetchAllReservations();
 
-      this.sendResponse(reservation.start, reservation.end, "refusée")
+      var responseParams = {
+              from_name : this.getUserMe.profile.username,
+              reply_to : process.env.VUE_APP_TO_EMAIL,
+              message : "Votre demande de réservation du "+reservation.start+" au "+reservation.end+" a été refusée. Accéder à vos demandes de location : "+process.env.VUE_APP_URL+"/reservation",
+              to_email : this.getUserMe.profile.email,
+            }
+
+            emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.responseReservation, responseParams, process.env.VUE_APP_USER_ID_RESPONSE)
+              .then((result) => {
+                  console.log('SUCCESS!', result.status, result.text);
+              }, (error) => {
+                  console.log('FAILED...', error);
+              }); 
 
       setTimeout(function () {
           location.reload();
         }, 1000);
     },
 
-    sendResponse(start, end, responseMessage){
-      var responseParams = {
-        from_name : this.getUserMe.profile.username,
-        reply_to : process.env.VUE_APP_TO_EMAIL,
-        message : "Votre demande de réservation du "+start+" au "+end+" a été "+responseMessage+". Accéder à vos demandes de location : "+process.env.VUE_APP_URL+"/reservation",
-        to_email : this.getUserMe.profile.email,
-      }
-
-       emailjs.send(process.env.VUE_APP_SERVICE_ID_RESPONSE, this.email_template.responseReservation, responseParams, process.env.VUE_APP_USER_ID_RESPONSE)
-        .then((result) => {
-            console.log('SUCCESS!', result.status, result.text);
-        }, (error) => {
-            console.log('FAILED...', error);
-        }); 
-    }
+    
+      
+    
 
   },
   computed: {

@@ -133,7 +133,7 @@
          class="bg-white shadow-md rounded px-8 pt-6 pb-8 m-2 " >
            <div class="mb-4">
               <label class="block text-blue-700 text-sm font-bold mb-2" for="borrowerId">
-               Emprunteur
+               Locataire
               </label>
               <select
                   v-model="reservToEdit.borrowerId._id"
@@ -141,7 +141,7 @@
                   class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                   id="grid-state"
                 >
-                  <option :value="null" disabled>Selectionner l'emprunteur</option>
+                  <option :value="null" disabled>Selectionner le locataire</option>
                   <option v-for="user in getAllUsers.users" :key="user._id" :value="user._id">
                     {{user.username}}
                   </option>
