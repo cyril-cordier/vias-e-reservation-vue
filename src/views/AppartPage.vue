@@ -528,8 +528,9 @@ export default {
     
   
     getEvents() {
+      const viastoken = window.localStorage.getItem('viastoken');
       axios
-        .get("https://vias-e-reservation.herokuapp.com/reservations")
+        .get("https://vias-e-reservation.herokuapp.com/reservations", {headers: { Authorization: `Bearer ${viastoken}` }})
         .then((resp) => {
        
           this.calendarOptions.events = resp.data.Reservation.filter(
