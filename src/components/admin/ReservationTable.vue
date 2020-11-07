@@ -148,23 +148,7 @@
               
                 </select>
            </div>
-           <div class="mb-4">
-              <label class="block text-blue-700 text-sm font-bold mb-2" for="ownerId">
-                Prêteur
-              </label>
-              <select
-                  v-model="reservToEdit.ownerId._id"
-                  required
-                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                  id="grid-state"
-                >
-                  <option :value="null" disabled>Selectionner le prêteur</option>
-                  <option v-for="user in getAllUsers.users" :key="user._id" :value="user._id">
-                    {{user.username}}
-                  </option>
-              
-                </select>
-           </div>
+           
            <div class="mb-4">
               <label class="block text-blue-700 text-sm font-bold mb-2" for="startDate">
                 Date début
@@ -189,45 +173,22 @@
            </div>
            <div class="mb-4">
               <label class="block text-blue-700 text-sm font-bold mb-2" for="appartId">
-                Jeu
+                Statut de la demande de location
               </label>
               <select
-                  v-model="reservToEdit.appartId._id"
+                  v-model="reservToEdit.status"
                   required
                   class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                   id="grid-state"
                 >
-                  <option :value="null" disabled>Selectionner l'emprunteur</option>
-                  <option v-for="appart in getAllApparts.apparts" :key="appart._id" :value="appart._id">
-                    {{appart.name}}
-                  </option>
+                  <option :value="null" disabled>Choisir la réponse</option>
+                  <option value=0>En attente</option>
+                  <option value=1>Refusée</option>
+                  <option value=2>Acceptée</option>
               
                 </select>
            </div>
-           <div class="mb-4">
-              <label class="block text-blue-700 text-sm font-bold mb-2" for="status">
-                Statut
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
-                id="status" 
-                type="text" 
-                placeholder="Statut"
-                required
-                v-model="reservToEdit.status"/>            
-              
-            </div>
-            <div class="mb-4">
-              <label class="block text-blue-700 text-sm font-bold mb-2" for="title">
-                Titre
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline" 
-                id="title" 
-                type="text" 
-                placeholder="Title"
-                required
-                v-model="reservToEdit.title"/>            
-              
-            </div>
+           
             <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline" 
             type="submit"
             >Modifier</button>
