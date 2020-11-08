@@ -72,7 +72,7 @@
               <div class="text-blue-700 font-bold text-xl mb-2">
                 {{ apparts.name }}
               </div>
-              <div class="text-blue-700 text-base" v-html="apparts.description"></div>
+              <div class="text-blue-700 text-base" v-html="apparts.description.substr(0,55)+'[...]'"></div>
             </div>
             <div class="flex items-center">
               <div class="text-sm">
