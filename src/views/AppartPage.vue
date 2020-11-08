@@ -148,8 +148,8 @@
                 
                   
               
-                  <div class="text-blue-600  ">Gestionnaires de l'appartement :</div>
-                 <div class="font-bold text-orange-500 m-2 mb-4" >Christel PRAVDA-STAROV / Mireille PUGIN</div>
+                  <div class="text-blue-600  ">Gestionnaire de l'appartement :</div>
+                 <div class="font-bold text-orange-500 mx-2" >Carol PRAVDA-STAROV</div>
                 
               </div>
               <div

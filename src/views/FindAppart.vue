@@ -76,8 +76,8 @@
             </div>
             <div class="flex items-center">
               <div class="text-sm">
-                <div class="text-blue-600  ">Gestionnaires de l'appartement :</div>
-                 <div class="font-bold text-orange-500 m-2 mb-4" >Christel PRAVDA-STAROV / Mireille PUGIN</div>
+                <div class="text-blue-600  ">Gestionnaire :</div>
+                 <div class="font-bold text-orange-500 m-2 mb-4" >Carol PRAVDA-STAROV</div>
                 
                 <!-- <p class="text-blue-600 text-center font-bold p-1 bg-blue-200 rounded-full m-2 shadow">
                   categories

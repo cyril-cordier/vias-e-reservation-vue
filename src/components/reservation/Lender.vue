@@ -20,7 +20,7 @@
 					<img :src="reservation.appartId.images[0]" class="h-full w-full">
 				</div>
 
-				<h2 class="mt-4 font-bold text-xl text-center">Gestionnaires :<br>C. PRAVDA / M. PUGIN	
+				<h2 class="mt-4 font-bold text-xl text-center">Gestionnaire :<br>C. PRAVDA	
         
         </h2>
 				<h6 class="mt-2 text-normal font-medium">Appartement : {{reservation.appartId.name}}</h6>

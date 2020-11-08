@@ -130,16 +130,16 @@
                 <div class="mb-1">
                     <label
                     class="block text-blue-700 text-sm font-bold mb-1"
-                    for="inventaire"
+                    for="Tarifs"
                     >
-                    Inventaire
+                    Tarifs
                     </label>
                     <textarea
                     v-model="inventory"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="inventaire"
+                    id="Tarifs"
                     type="text"
-                    placeholder="Inventaire"
+                    placeholder="Tarifs"
                     />
                 </div>
                 <div class="flex flex-row">
@@ -313,15 +313,15 @@
                 <div class="mb-1">
                     <label
                     class="block text-blue-700 text-sm font-bold mb-1"
-                    for="inventaire"
+                    for="Tarifs"
                     >
-                    Inventaire
+                    Tarifs
                     </label>
                     <textarea
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="inventaire"
+                    id="Tarifs"
                     type="text"
-                    placeholder="Inventaire"
+                    placeholder="Tarifs"
                     v-model="appartToEdit.inventory"
 
                     />
