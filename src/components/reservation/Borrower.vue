@@ -14,7 +14,7 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-3">
 
-			<div v-for="reservation in getAllReservations.Reservation" :key="reservation._id" class="flex flex-col items-center justify-center bg-white p-4 shadow-lg rounded-lg">
+			<div v-for="reservation in getAllReservations.Reservation" :key="reservation._id" class="flex flex-col items-center  bg-white p-4 shadow-lg rounded-lg">
 				<div class="inline-flex  overflow-hidden h-40 w-40">
 					<img :src="reservation.appartId.images[0]" class="h-full w-full">
 				</div>

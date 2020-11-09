@@ -19,10 +19,11 @@
                     <div v-for="appart in getAllApparts.apparts" :key="appart._id" class="max-w-sm w-full   lg:max-w-full lg:flex mb-5">
 
                         <img :src="appart.images[0]"
-                            class="h-auto lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                            class="h-auto lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                             alt="appart image" />
                         <div
-                        class="p-5 bg-white w-full rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-center leading-normal">                            <div class="mb-8">
+                        class="p-5 bg-white w-full rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-center leading-normal">  
+                             <div class="mb-8">
                                 <div class="pl-6 text-blue-900 font-bold text-xl mb-2">
                                     {{ appart.name }}
                                 </div>

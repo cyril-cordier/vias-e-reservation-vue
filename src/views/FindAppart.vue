@@ -56,17 +56,20 @@
 
        <div>                               <!-- CARD PRESENTATION D'UN JEU  -->
         <div
-          class="w-full flex lg:flex my-5"
+          class="max-w-sm w-full lg:max-w-full lg:flex my-5"
           v-for="apparts in filtredApparts"
           :key="apparts._id"
         >
-          <div
-            class="h-48 lg:h-auto lg:w-4/12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          <img :src="apparts.images[0]"
+                            class="h-auto lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                            alt="appart image" />
+          <!-- <div
+            class="h-auto lg:h-auto lg:w-4/12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
             :style="'background-image: url('+apparts.images[0]+');'"
             
-          ></div>
+          ></div> -->
           <div
-            class="w-8/12 border-r border-b border-l border-blue-400 lg:border-l-0 lg:border-t lg:border-blue-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between"
+            class="w-full border-r border-b border-l border-blue-400 lg:border-l-0 lg:border-t lg:border-blue-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between"
           >
             <div class="mb-8">
               <div class="text-blue-700 font-bold text-xl mb-2">

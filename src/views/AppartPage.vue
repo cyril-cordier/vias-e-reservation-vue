@@ -169,10 +169,10 @@
                 
                 <button
                  v-if="getUserMe.profile != null && getAppartById.appart.available == true"
-                  @click="isClick = !isClick"
+                  @click="isClick = !isClick, isClickAvis =false"
                   class="flex ml-auto text-white font-bold bg-orange-400 border-0 py-2 px-6 focus:outline-none hover:bg-orange-500 hover:inner-shadow shadow rounded"
                 >
-                  Reservation
+                  Réservation
                 </button>
                   <button @click="isClickAvis = !isClickAvis, isClick=false"
                   class="flex mr-auto text-orange-500 hover:text-white font-bold  border-0 ml-1 py-2 px-6 focus:outline-none hover:bg-orange-400 hover:inner-shadow rounded">
@@ -217,6 +217,17 @@
                                 <p>Une demande est en attente pour cette date merci de bien vouloir choisir une autre date. </p>
                             </div>
                         </div>
+                        <!-- <div v-if="getUserMe.profile != null"
+              v-show="isClick"
+              class="w-full flex content-between items-center rounded p-2 my-3">
+              <div class="w-1/2 border p-3 bg-blue-200 mx-auto block text-blue-700 text-lg font-bold mb-2 text-center">
+
+              Tarifs :
+              </div>
+              <div class="block bg-white text-blue-700 text-sm font-bold text-center h-12 mb-2">
+                {{getAppartById.appart.inventory}}
+              </div>
+            </div> -->
             <div v-if="getUserMe.profile != null"
               v-show="isClick"
               class="w-full flex content-between items-center rounded p-2 my-3"
@@ -235,12 +246,16 @@
                   Mon pseudo: {{ getUserMe.profile.username }} <br />
                   Mon Email: {{ getUserMe.profile.email }}
                 </label>
+                
                 <label
                   class="block text-blue-700 text-sm font-bold mb-2 text-center"
                   for=""
                 >
-                  selection de la date de début:
+                  Sélection de la date d'arrivée :
+                  </label>
+                  <div class="flex justify-around">
                   <input
+                    class="block text-blue-700 text-sm font-bold mb-2 text-center"
                     type="date"
                     id="start"
                     name="date-début"
@@ -249,22 +264,28 @@
                     max=""
                     v-model="start"
                   />
-                </label>
+                  </div>
+                
                  <label
                   class="block text-blue-700 text-sm font-bold mb-2 text-center"
                   for=""
                 >
-                  selection de la date de fin:
-                  <input
-                    type="date"
-                    id="start"
-                    name="date-début"
-                    value="2020-07-22"
-                    min="2020-01-01"
-                    max=""
-                    v-model="end"
-                  />
-                </label>
+                  Sélection de la date de la dernière nuitée <br>(départ le lendemain) :
+                  </label>
+                  <div class="flex justify-around">
+                    <input
+                      class="block text-blue-700 text-sm font-bold mb-2 text-center"
+                      type="date"
+                      id="start"
+                      name="date-début"
+                      value="2020-07-22"
+                      min="2020-01-01"
+                      max=""
+                      v-model="end"
+                      
+                    />
+                  </div>
+                
                
                 <button
                   class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-2 mt-2 rounded text-center w-full"
@@ -421,6 +442,31 @@ export default {
         "deleteReview"
     ]),
     
+    tarif(){
+
+      if(this.start.substr(5,2)>=9 || this.start.substr(5,2)<=6){
+        console.log("basse saison");
+      }else if((this.start.substr(5,2)==7 && this.start.substr(8,2)<15) || (this.start.substr(5,2)==8 && this.start.substr(8,2)>15)){
+        console.log("moyenne saison");
+      }else{
+        console.log("haute saison");
+      }
+      /* var d1 = this.start.getTime() / 86400000;
+      var d2 = this.end.getTime() / 86400000; */
+        var debut = this.start.split("-")
+        var fin = this.end.split("-")
+          var from = new Date(debut[0], parseInt(debut[1])-1, debut[2]).getTime() / 86400000; 
+          var to   = new Date(fin[0], parseInt(fin[1])-1, fin[2]).getTime() / 86400000;
+      var diff = parseInt(new Number(to - from).toFixed(0))+1;
+     
+      //console.log(to)
+      console.log(new Date(debut[0], parseInt(debut[1])-1, debut[2]))
+      console.log(new Date(fin[0], parseInt(fin[1])-1, fin[2]))
+      //console.log(parseInt(fin[])-1)
+      console.log(diff)
+
+    },
+
     reservationForm(){
       
       this.getAllReservations.Reservation.forEach((element)=>{
@@ -430,6 +476,7 @@ export default {
           var dateFrom = element.start;
           var dateTo = element.end;
           var dateCheck = this.start;
+          
 
           // CHECK END 
           
@@ -455,7 +502,9 @@ export default {
           var from = new Date(d1[2], parseInt(d1[1])-1, d1[0]); 
           var to   = new Date(d2[2], parseInt(d2[1])-1, d2[0]);
           var check = new Date(c[2], parseInt(c[1])-1, c[0]);
-
+          console.log(from);
+          console.log(to);
+          console.log(check);
 
         // PARSE IN END 
 
