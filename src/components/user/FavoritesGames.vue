@@ -68,7 +68,7 @@ export default {
       name: "",
       categoryId: "",
       description: "",
-      inventory: "",
+      amount: "",
       images: "",
       minAge: "",
       profilUserId: "",

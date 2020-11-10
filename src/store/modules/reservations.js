@@ -40,6 +40,8 @@ var raw = JSON.stringify(
             "end":obj.end,
             "title":obj.title,
             "status": obj.status,
+            "price":obj.price,
+            "nbdays":obj.nbdays,
             "appartId":obj.appartId
     });
 
@@ -112,6 +114,8 @@ var raw = JSON.stringify(
             {"propName":"appartId","value":obj.appartId},
             {"propName":"status","value":obj.status},
             {"propName":"title","value":obj.title},
+            {"propName":"price","value":obj.price},
+            {"propName":"nbdays","value":obj.nbdays},
 
 
             ]);

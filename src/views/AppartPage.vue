@@ -217,23 +217,23 @@
                                 <p>Une demande est en attente pour cette date merci de bien vouloir choisir une autre date. </p>
                             </div>
                         </div>
-                        <!-- <div v-if="getUserMe.profile != null"
+                        <div v-if="getUserMe.profile != null"
               v-show="isClick"
               class="w-full flex content-between items-center rounded p-2 my-3">
-              <div class="w-1/2 border p-3 bg-blue-200 mx-auto block text-blue-700 text-lg font-bold mb-2 text-center">
+              <div class="md:w-2/3 lg:w-1/2 w-full border p-3 bg-blue-200 mx-auto block text-blue-700 text-lg font-bold mb-2 text-center">
 
               Tarifs :
               </div>
               <div class="block bg-white text-blue-700 text-sm font-bold text-center h-12 mb-2">
-                {{getAppartById.appart.inventory}}
+                {{getAppartById.appart.amount}}
               </div>
-            </div> -->
+            </div>
             <div v-if="getUserMe.profile != null"
               v-show="isClick"
               class="w-full flex content-between items-center rounded p-2 my-3"
             >
                   
-              <form @submit.prevent="reservationForm()" class="w-1/2 border p-3 bg-blue-200 mx-auto">
+              <form @submit.prevent="reservationForm()" class="md:w-2/3 lg:w-1/2 w-full border p-3 bg-blue-200 mx-auto">
                 <label
                   class="block text-blue-700 text-lg font-bold mb-2 text-center"
                   for="nomdujeu"
@@ -263,6 +263,7 @@
                     min="2020-01-01"
                     max=""
                     v-model="start"
+                    @change.prevent="tarif()"
                   />
                   </div>
                 
@@ -282,11 +283,11 @@
                       min="2020-01-01"
                       max=""
                       v-model="end"
-                      
+                      @change.prevent="tarif()"
                     />
                   </div>
                 
-               
+                <div>Réservation : {{this.diff}} jours | Montant : {{this.montant}} €</div>
                 <button
                   class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-2 mt-2 rounded text-center w-full"
                   type="submit"
@@ -339,7 +340,7 @@
                     
                     <button type="submit"
                       class=" bg-orange-300 hover:bg-orange-500 hover:text-white px-3 my-auto h-8 rounded text-lg focus:outline-none shadow">
-                      Donnez votre avis sur l'appartement
+                      Donnez votre avis
                     </button>
                   </div>
                 </form>
@@ -414,7 +415,9 @@ export default {
       createReviewSuccess: null,
       createReviewError: null,
       createReservationError: null,
-        comment: "",
+      comment: "",
+      montant:0,
+      diff:0,
       calendarOptions: {
         plugins: [dayGridPlugin],
         initialView: "dayGridMonth",
@@ -443,27 +446,38 @@ export default {
     ]),
     
     tarif(){
-
-      if(this.start.substr(5,2)>=9 || this.start.substr(5,2)<=6){
-        console.log("basse saison");
-      }else if((this.start.substr(5,2)==7 && this.start.substr(8,2)<15) || (this.start.substr(5,2)==8 && this.start.substr(8,2)>15)){
-        console.log("moyenne saison");
-      }else{
-        console.log("haute saison");
-      }
-      /* var d1 = this.start.getTime() / 86400000;
-      var d2 = this.end.getTime() / 86400000; */
+      
         var debut = this.start.split("-")
         var fin = this.end.split("-")
           var from = new Date(debut[0], parseInt(debut[1])-1, debut[2]).getTime() / 86400000; 
           var to   = new Date(fin[0], parseInt(fin[1])-1, fin[2]).getTime() / 86400000;
-      var diff = parseInt(new Number(to - from).toFixed(0))+1;
-     
-      //console.log(to)
-      console.log(new Date(debut[0], parseInt(debut[1])-1, debut[2]))
-      console.log(new Date(fin[0], parseInt(fin[1])-1, fin[2]))
-      //console.log(parseInt(fin[])-1)
-      console.log(diff)
+      this.diff = parseInt(new Number(to - from).toFixed(0))+1;
+      this.montant=0;
+      
+          
+      
+      var datefor ="";
+      
+      for(var i=1; i <= this.diff; i++){
+        
+        datefor = new Date(debut[0], parseInt(debut[1])-1, parseInt(debut[2])+i);
+       var ladate = datefor.toJSON().substr(0,10)
+       
+        console.log(ladate);
+        
+      if(ladate.substr(5,2)>=9 || ladate.substr(5,2)<=6){
+        console.log("basse saison");
+        this.montant = this.montant +30 
+      }else if((ladate.substr(5,2)==7 && ladate.substr(8,2)<15) || (ladate.substr(5,2)==8 && ladate.substr(8,2)>15)){
+        console.log("moyenne saison");
+        this.montant = this.montant +65
+      }else{
+        console.log("haute saison");
+        this.montant = this.montant +75
+      }
+      }
+      
+      return this.montant, this.diff;
 
     },
 
@@ -517,27 +531,27 @@ export default {
           if(this.start == "" || this.end == ""){
             console.log('yop')
             this.getCreateReservationResponse.error = true;
-            setTimeout(function () {
+            /* setTimeout(function () {
           location.reload();
-        }, 1200);
+        }, 1200); */
           }else if(check > from && check < to ){
             console.log('ici')
             //this.error = true;
-            setTimeout(function () {
+            /* setTimeout(function () {
           location.reload();
-        }, 1200);
+        }, 1200); */
           }else if (check2 > from2 && check2 < to2 ){
             console.log('la')
              //this.error = true;
-             setTimeout(function () {
+             /* setTimeout(function () {
           location.reload();
-        }, 1200);
+        }, 1200); */
           }
 
         }
       })
       
-      if(this.error == false && this.getCreateReservationResponse.error != true){
+      /* if(this.error == false && this.getCreateReservationResponse.error != true){
         var obj = {
                   "ownerId":this.getAppartById.appart.userId._id,
                   "borrowerId":this.getUserMe.profile._id,
@@ -545,13 +559,15 @@ export default {
                   "end":this.end,
                   "title":this.getUserMe.profile.username,
                   "status": "0",
-                  "appartId":this.getAppartById.appart._id
+                  "appartId":this.getAppartById.appart._id,
+                  "price":this.montant,
+                  "nbdays":this.diff
                   }
                   this.createReservation(obj);
       var demandeResaParams = {
         from_name : this.getUserMe.profile.username,
         reply_to : this.getUserMe.profile.email,
-        message : this.getUserMe.profile.username+" aimerait louer l'appartement du "+this.start+" au "+this.end+".",
+        message : this.getUserMe.profile.username+" aimerait louer l'appartement "+this.diff+"jours, du "+this.start+" au "+this.end+".",
         to_email : process.env.VUE_APP_TO_EMAIL,
       }
 
@@ -567,7 +583,7 @@ export default {
           window.location.href = "/reservation";
         }, 1200);
       }
-     
+      */
 
      
     

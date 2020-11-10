@@ -136,7 +136,7 @@
                     Tarifs
                     </label>
                     <textarea
-                    v-model="inventory"
+                    v-model="amount"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="Tarifs"
                     type="text"
@@ -323,7 +323,7 @@
                     id="Tarifs"
                     type="text"
                     placeholder="Tarifs"
-                    v-model="appartToEdit.inventory"
+                    v-model="appartToEdit.amount"
 
                     />
                 </div>
@@ -425,7 +425,7 @@ export default {
       // APPART
       name: "",
       description: "",
-      inventory: "",
+      amount: "",
       images: "",
       url:[],
       userId: "",
@@ -456,7 +456,7 @@ export default {
       var obj = {
         name: this.name,
         description: this.description,
-        inventory: this.inventory,
+        amount: this.amount,
         images: this.url,
         nbPlayers: this.nbPlayers,
         userId: this.userId,
@@ -496,7 +496,7 @@ export default {
       var obj = {
         name: this.appartToEdit.name,
         description: this.appartToEdit.description,
-        inventory: this.appartToEdit.inventory,
+        amount: this.appartToEdit.amount,
         images: imagesEdited,
         nbPlayers: this.appartToEdit.nbPlayers,
         userId: this.appartToEdit.userId,

@@ -35,7 +35,7 @@ const viastoken = window.localStorage.getItem('viastoken') || "";
     var raw = JSON.stringify(
         {"name":obj.name,
         "description":obj.description,
-        "inventory":obj.inventory,
+        "amount":obj.amount,
         "images":obj.images,
         "nbPlayers":obj.nbPlayers,
         "userId":obj.userId,
@@ -99,7 +99,7 @@ const viastoken = window.localStorage.getItem('viastoken') || "";
             [
             {"propName":"name","value":obj.name},
             {"propName":"description","value":obj.description},
-            {"propName":"inventory","value":obj.inventory},
+            {"propName":"amount","value":obj.amount},
             {"propName":"images","value":obj.images},
             {"propName":"nbPlayers","value":obj.nbPlayers},
             {"propName":"userId","value":obj.userId},
