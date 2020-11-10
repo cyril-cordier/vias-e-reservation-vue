@@ -21,7 +21,7 @@
                   Locataire</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Appartement</th>
+                  Montant</th>
                 <th
                   class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Date début</th>
@@ -53,27 +53,21 @@
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img
-                        :src="reservation.appartId.images[0]"
-                        alt=""
-                        class="h-10 w-10 rounded-full"
-                      />
-                    </div>
+                    
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-blue-900">{{reservation.appartId.name}}</div>
+                      <div class="text-xs leading-5 font-medium text-blue-900">{{reservation.price}} €</div>
                     </div>
                   </div>
                 </td>
                 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
-                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.start}}</div>
+                  <div class="text-xs leading-5 text-blue-900 text-center">{{reservation.start}}</div>
 
                 </td>
 
                 
                    <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
-                  <div class="text-sm leading-5 text-blue-900 text-center">{{reservation.end}}</div>
+                  <div class="text-xs leading-5 text-blue-900 text-center">{{reservation.end}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-200">
                   <div 
@@ -170,6 +164,28 @@
                 placeholder="Date fin"
                 required
                 v-model="reservToEdit.end"/>
+           </div>
+           <div class="mb-4">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="appartId">
+                Montant total (€)
+              </label>
+              <input
+                  v-model="reservToEdit.price"
+                  required
+                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  id="grid-state"
+                />
+           </div>
+           <div class="mb-4">
+              <label class="block text-blue-700 text-sm font-bold mb-2" for="appartId">
+                Nombre de jours
+              </label>
+              <input
+                  v-model="reservToEdit.nbdays"
+                  required
+                  class="bg-white block shadow appearance-none w-full border border-blue-200 text-blue-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  id="grid-state"
+                />
            </div>
            <div class="mb-4">
               <label class="block text-blue-700 text-sm font-bold mb-2" for="appartId">
@@ -273,7 +289,9 @@ import { mapActions, mapGetters } from "vuex";
         end:this.reservToEdit.end,
         title:this.reservToEdit.title,
         status:this.reservToEdit.status,
-        appartId:this.reservToEdit.appartId._id
+        appartId:this.reservToEdit.appartId._id,
+        price:this.reservToEdit.price,
+        nbdays:this.reservToEdit.nbdays
       };
       
       this.modifyReservation(obj);

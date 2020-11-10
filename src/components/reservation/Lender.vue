@@ -15,17 +15,13 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-3">
 
-			<div v-for="reservation in reservationOfUser" :key="reservation._id" class="flex flex-col items-center justify-center bg-white p-4 shadow-lg rounded-lg">
-				<div class="inline-flex  overflow-hidden h-40 w-40">
+			<div v-for="reservation in reservationOfUser" :key="reservation._id" class="flex flex-col items-center bg-white p-4 shadow-lg rounded-lg">
+				<div class="inline-flex  overflow-hidden h-20 w-32">
 					<img :src="reservation.appartId.images[0]" class="h-full w-full">
 				</div>
-
-				<h2 class="mt-4 font-bold text-xl text-center">Gestionnaire :<br>C. PRAVDA	
-        
-        </h2>
 				<h6 class="mt-2 text-normal font-medium">Appartement : {{reservation.appartId.name}}</h6>
         <router-link :to="'/appartements/'+reservation.appartId._id"  
-        class="px-3 py-1 m-5 w-2.5/6 font-semibold transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow">
+        class="px-3 py-1 mt-1 w-2.5/6 font-semibold transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-xs focus:outline-none shadow">
         Détails Appart.</router-link>
 
 				<p class="text-sm text-blue-500 text-center mt-3">
@@ -34,15 +30,17 @@
 				<p class="text-sm text-blue-500 text-center mt-3">
 					Fin: {{reservation.end}}
 				</p>
-
-				<ul class="flex flex-col mt-4">
+        <p class="text-xs text-blue-500 text-center mt-3">
+          {{reservation.nbdays}} jours | {{reservation.price}} €
+        </p>
+				<ul class="flex flex-col mt-1">
 					<li>
 						<div v-if="reservation.status == 2"
-                  class="px-6 py-4 whitespace-no-wrap text-center"
+                  class="px-6 py-2 whitespace-no-wrap text-center"
                 >
                   <p
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800 px-6 py-2 shadow-lg"
-                    >{{reservation.ownerId.username}} a accepté de vous louer<br>{{reservation.appartId.name}}</p>
+                    >{{reservation.ownerId.username}} a validé la location</p>
                     <h4 class="mt-4 text-xs text-center">Contacter le gestionnaire :<br><a :href="'mailto:'+gestionnaires">{{gestionnaires}}</a></h4>
 						</div>
             <div v-if="reservation.status == 1"

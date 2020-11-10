@@ -37,22 +37,29 @@
     </div>
 
 
-    <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 flex flex-wrap">
-            <div class="p-5 w-1/4 rounded-lg bg-blue-200 shadow-lg text-center ">
-      <div class="flex justify-around">
+    
 
-      <img class="w-1/2  rounded-full mx-10" :src="userToEdit.avatar" alt="" />
-      </div>
-      <div class="mt-5 font-semibold text-blue-700">
+
+    <div class="rounded-lg text-light w-85 mx-auto p-10 bg-blue-300 row">
+      <div class="w-full inline-block p-auto m-auto">
+
+
+
+        <div class="max-w-sm w-full lg:max-w-full lg:flex mb-5">
+          <div
+            class="lg:mr-5  flex justify-around h-auto flex flex-wrap lg:h-auto lg:w-64 flex-none bg-cover  bg-blue-200 shadow-lg mb-5 rounded text-center overflow-hidden">
+
+            <img :src="userToEdit.avatar" class="ptrl-5 mt-5 h-32 rounded-full " alt="appart image" />
+            <div class="mt-2 p-10 font-semibold text-blue-700">
       Modifier mon avatar
       </div>
       <select
-        class="px-5 py-1 mt-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
+        class="px-2 py-1 mb-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 px-2 py-1 rounded text-lg focus:outline-none shadow-lg"
         v-model="userToEdit.avatar"
         required
         id="avatar"
       >
-        <option value="null" disabled>Modifier mon avatar</option>
+        <option value="null" disabled>Choix avatar</option>
         <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Brutos_d2cxjy.png">Brutos</option>
         <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Footy_xbo8ym.png">Footy</option>
         <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356551/vias-e-reservation/avatars/Froggy_qtx0no.png">Froggy</option>
@@ -66,62 +73,71 @@
         <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Sporty_q828pp.png">Sporty</option>
         <option value="https://res.cloudinary.com/dcp7bq2a1/image/upload/v1604356552/vias-e-reservation/avatars/Tiger_yvhufc.png">Tiger</option>
       </select>
-</div>
-      
-
-      <div class="w-8/12 inline-block p-auto m-auto shadow-lg py-6 px-8 rounded-lg bg-blue-200">
-        <div class="mb-4 mx-8 border-b-2 border-blue-400">
+          </div>
+          <div
+            class="inline-block mb-5 p-auto m-auto shadow-lg py-6 ld:px-8 rounded-lg bg-blue-200 bg-white w-full  flex flex-col justify-center leading-normal">
+            <div class="mb-4 mx-8 border-b-2 border-blue-400">
           <h3 class="text-center text-blue-800 font-bold text-xl">
             Modifier mes Informations
           </h3>
         </div>
-
-        <form @submit.prevent="editUser">
-          <div class="form-group w-6/12 inline-block p-auto m-auto row">
+            <div class="mt-2">
+              <form @submit.prevent="editUser">
+          <div class="form-group w-2/3 ml-10 inline-block p-auto m-auto flex-wrap">
             <label for="InputUsername" class="font-semibold text-blue-800 text-l ml-2"
               >Nom d'utilisateur :
             </label>
             <input
               type="text"
               v-model="userToEdit.username"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg p-2 mr-8 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
+              class="form-input block w-full  sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
               id="InputUsername"
               placeholder="Nom d'utilisateur"
               required
             />
           </div>
-          <div class="form-group w-6/12 inline-block p-auto m-auto row">
+          <div class="form-group w-2/3 mt-3 ml-10 inline-block p-auto m-auto row">
             <label for="InputEmail" class="font-semibold text-blue-800 text-l ml-2"
               >Email :</label
             >
             <input
               type="email"
               v-model="userToEdit.email"
-              class="form-input block w-full pl-7 pr-12 sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
+              class="form-input block w-full   sm:text-xl sm:leading-5 rounded-lg m-2 p-2 focus:outline-none focus:bg-white bg-orange-200 transition duration-500 ease-in-out text-blue-700"
               id="InputEmail"
               aria-describedby="emailHelp"
               placeholder="Email"
               required
             />
           </div>
-          <p class="m-10 font-semibold text-l text-blue-800 mt-3" v-if="getUserMe.profile.who_is == 'ND'">
+          <div class="form-group w-1/2 mb-5 mt-2 ml-10 inline-block p-auto m-auto row">
+          <p class="font-semibold text-blue-800 text-l ml-2" v-if="getUserMe.profile.who_is == 'ND'">
             Statut : Compte en attente de validation par le gestionnaire
           </p>
-          <p class="m-10 font-semibold text-l text-blue-800 mt-3" v-if="getUserMe.profile.who_is != 'ND'">
+          <p class="font-semibold text-blue-800 text-l ml-2" v-if="getUserMe.profile.who_is != 'ND'">
             Statut : {{getUserMe.profile.who_is}}
           </p>
+          </div>
          
 
           <br />
           <button
-            class="px-5 py-1 m-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow-md"
+            class="px-5 py-1 ml-10 font-semibold transform hover:scale-105 bg-blue-400 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow text-blue-800 hover:text-blue-100 rounded text-lg focus:outline-none shadow-md"
             type="submit"
           >
             <span>Enregistrer</span>
           </button>
         </form>
+            </div>
+          </div>
+
+
+
+        </div>
       </div>
     </div>
+
+
   </div>
 </template>
 <script>

@@ -5,7 +5,7 @@
 <Activation v-if="getUserMe.profile.is_active == 'No'"/>
     <div class="h-full m-10">
       <div class="p-3 m-5 w-85 mx-auto">
-        <div class="grid grid-flow-col grid-rows-6 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-6">
+        <div class="grid grid-flow-col grid-rows-3 xl:grid-rows-1 lg:grid-rows-1 md:grid-rows-2 sm:grid-rows-3">
           <div class="dropdown relative z-50 px-4 py-2 m-4 text-blue-700 text-center transition duration-500 ease-in-out transform hover:scale-105 bg-blue-200 hover:bg-orange-400 focus:scale-105 focus:bg-orange-400 focus:text-blue-700 hover:inner-shadow hover:text-blue-100 rounded text-lg focus:outline-none shadow">
             <button
               class="text-blue-700 inline-flex items-center font-semibold focus:outline-none"

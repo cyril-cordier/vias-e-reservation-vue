@@ -99,9 +99,7 @@ var raw = JSON.stringify(
         var raw = JSON.stringify(
             [
             {"propName":"comment","value":obj.comment},
-            {"propName":"mark","value":obj.mark},
             {"propName":"userId","value":obj.userId},
-            {"propName":"profileId","value":obj.profileId},
             {"propName":"appartId","value":obj.appartId},
 
 

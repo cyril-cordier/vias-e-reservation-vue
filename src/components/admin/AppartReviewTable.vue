@@ -12,12 +12,12 @@
             <thead>
               <tr>
                 <th
-                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
+                  class=" py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
                   Utilisateur
                 </th>
                 <th
-                  class="px-6 py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
-                  Appartement
+                  class=" py-3 border-b border-blue-200 bg-blue-50 text-xs leading-4 font-medium text-blue-500 uppercase tracking-wider text-center">
+                  Date de publication
                 </th>
                 
 
@@ -46,16 +46,10 @@
                   <div class="flex items-center">
                     
                    
-                      <div class="flex-shrink-0 h-10 w-10">
-                      <img
-                        :src="review.appartId.images[0]"
-                        alt=""
-                        class="h-10 w-10 rounded-full"
-                      />
-                    </div> 
+                       
                     <div class="ml-4">
                       <div class="text-sm leading-5 font-medium text-blue-900">
-                        {{ review.appartId.name }}
+                        {{ review.created_at }}
                       </div>
                     </div>
                   </div>
@@ -132,6 +126,21 @@
                         {{ review.appartId.name }}
                       </div>
                     </div>
+                    
+                    
+                  </div></div>
+                  <div class="m-2 "><span class="font-bold">Date de publication : 
+                            </span><div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm leading-5 font-medium text-blue-900">
+                        {{ review.created_at }}
+                      </div>
+                    </div>
+                    
+                    
                   </div></div>
                           
                           <p class="m-2 font-bold"> Commentaire :</p>

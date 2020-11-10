@@ -27,7 +27,7 @@
                                 <div class="pl-6 text-blue-900 font-bold text-xl mb-2">
                                     {{ appart.name }}
                                 </div>
-                                <div class=" pl-6 text-blue-700 text-base" v-html="appart.description"></div>
+                                <div class=" pl-3 text-blue-700 text-base" v-html="appart.description"></div>
                             </div>
                             <div class="flex items-center">
                                 <div class="text-sm">
