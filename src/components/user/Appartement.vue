@@ -128,21 +128,7 @@
                                 id="description" type="text" required placeholder="description"></vue-editor>
                         </div>
                         
-                <div class="mb-1">
-                    <label
-                    class="block text-blue-700 text-sm font-bold mb-1"
-                    for="Tarifs"
-                    >
-                    Tarifs
-                    </label>
-                    <textarea
-                    v-model="amount"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="Tarifs"
-                    type="text"
-                    placeholder="Tarifs"
-                    />
-                </div>
+                
                 <div class="flex flex-row">
                     <div class="mb-1">
                     <label
@@ -152,7 +138,7 @@
                         Nbr de couchages
                     </label>
                     <input
-                        v-model="nbPlayers"
+                        v-model="nbBeds"
                         class="shadow appearance-none border rounded w-2/3 mr-4 py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="number"
                         type="text"
@@ -311,22 +297,7 @@
                     ></vue-editor>
                 </div>
                         
-                <div class="mb-1">
-                    <label
-                    class="block text-blue-700 text-sm font-bold mb-1"
-                    for="Tarifs"
-                    >
-                    Tarifs
-                    </label>
-                    <textarea
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="Tarifs"
-                    type="text"
-                    placeholder="Tarifs"
-                    v-model="appartToEdit.amount"
-
-                    />
-                </div>
+                
                 <div class="flex flex-row">
                     <div class="mb-1">
                     <label
@@ -341,7 +312,7 @@
                         type="text"
                         placeholder="Nombre de couchages"
                         required
-                    v-model="appartToEdit.nbPlayers"
+                    v-model="appartToEdit.nbBeds"
 
                     />
                     </div>
@@ -425,12 +396,11 @@ export default {
       // APPART
       name: "",
       description: "",
-      amount: "",
       images: "",
       url:[],
       userId: "",
       available: "",
-      nbPlayers: "",
+      nbBeds: "",
       appartToEdit:"",
      
       cat:null,
@@ -456,9 +426,8 @@ export default {
       var obj = {
         name: this.name,
         description: this.description,
-        amount: this.amount,
         images: this.url,
-        nbPlayers: this.nbPlayers,
+        nbBeds: this.nbBeds,
         userId: this.userId,
         available: this.available,
       };
@@ -496,9 +465,8 @@ export default {
       var obj = {
         name: this.appartToEdit.name,
         description: this.appartToEdit.description,
-        amount: this.appartToEdit.amount,
         images: imagesEdited,
-        nbPlayers: this.appartToEdit.nbPlayers,
+        nbBeds: this.appartToEdit.nbBeds,
         userId: this.appartToEdit.userId,
         available: this.appartToEdit.available,
         id: this.appartToEdit._id

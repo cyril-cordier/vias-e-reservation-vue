@@ -141,7 +141,7 @@
               <div class="flex content-around items-center">
 
                 <div class="flex-1 title-font font-medium text-md text-blue-900 m-2 border-r-2 border-orange-300">
-                  Nb de couchages : {{ getAppartById.appart.nbPlayers }}
+                  Nb de couchages : {{ getAppartById.appart.nbBeds }}
                 </div>
 
                 <button v-if="getUserMe.profile != null && getAppartById.appart.available == true"

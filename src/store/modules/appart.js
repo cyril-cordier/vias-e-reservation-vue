@@ -35,9 +35,8 @@ const viastoken = window.localStorage.getItem('viastoken') || "";
     var raw = JSON.stringify(
         {"name":obj.name,
         "description":obj.description,
-        "amount":obj.amount,
         "images":obj.images,
-        "nbPlayers":obj.nbPlayers,
+        "nbBeds":obj.nbBeds,
         "userId":obj.userId,
         "available":obj.available,
     });
@@ -99,9 +98,8 @@ const viastoken = window.localStorage.getItem('viastoken') || "";
             [
             {"propName":"name","value":obj.name},
             {"propName":"description","value":obj.description},
-            {"propName":"amount","value":obj.amount},
             {"propName":"images","value":obj.images},
-            {"propName":"nbPlayers","value":obj.nbPlayers},
+            {"propName":"nbBeds","value":obj.nbBeds},
             {"propName":"userId","value":obj.userId},
             {"propName":"available","value":obj.available},
 

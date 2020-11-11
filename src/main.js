@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 
 
 
+
 router.beforeEach((to, from, next) => {
   const isLogged = localStorage.getItem('viastoken');
    
