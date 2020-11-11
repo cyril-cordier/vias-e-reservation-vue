@@ -12,7 +12,7 @@
       class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
       v-if="toggleModal"
     >
-      <div class="relative mx-auto w-auto max-w-2xl">
+      <div class="relative mx-auto w-full max-w-2xl">
        
 
         <div class="bg-blue-500 w-full rounded shadow-2xl flex flex-col">
@@ -285,7 +285,7 @@
                     class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50"
                     v-if="editModal"
                   >
-                    <div class="relative mx-auto w-auto max-w-2xl">
+                    <div class="relative mx-auto w-full max-w-2xl">
                       <div
                         class="bg-blue-500 w-full rounded shadow-2xl flex flex-col"
                       >
