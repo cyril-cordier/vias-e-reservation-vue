@@ -8,7 +8,7 @@
                 <router-link to="/"><img class="h-16" src="../assets/logo_vias-e-reservation.png" alt="Logo"></router-link>
                 </div>
                 <div>
-                <small class="d-block mb-3 text-muted">© 2020 - Cyril CORDIER - Dernière mise à jour : 07/11/2020</small>
+                <small class="d-block mb-3 text-muted">© 2020 - Cyril CORDIER - Dernière mise à jour : 12/11/2020</small>
                 </div>
                 <div class="flex mt-4 md:m-0">
                     <div class="-mx-4">

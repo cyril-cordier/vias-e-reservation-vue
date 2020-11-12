@@ -193,6 +193,14 @@
                 <p>Une demande est en attente pour cette date merci de bien vouloir choisir une autre date. </p>
               </div>
             </div>
+            <div v-if="this.errordate == true" role="alert" class="w-full m-5">
+              <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                Erreur
+              </div>
+              <div class="text-center border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <p>Erreur dans la sélection de la date. </p>
+              </div>
+            </div>
             <div v-if="getUserMe.profile != null" v-show="isClick"
               class="w-full  content-between items-center rounded p-2 my-3">
               <div
@@ -290,8 +298,11 @@
                     @change.prevent="tarif()" />
                 </div>
 
-                <div class="block text-blue-700 text-sm font-bold mb-2 text-center">Réservation : <br>{{this.diff}}
-                  jours | Montant : {{this.montant}} €</div>
+                <div class="block text-blue-700 text-sm font-bold mb-2 text-center">Réservation : <br>
+                  <div v-if="this.diff != NaN && this.diff>0">
+                    {{this.diff}} jour(s)
+                  </div>
+                  Montant : {{this.montant}} €</div>
                 <button
                   class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-2 mt-2 rounded text-center w-full"
                   type="submit">
@@ -417,6 +428,7 @@
         Modalimg: "",
         Modal: "",
         error: false,
+        errordate:false,
         search: "",
         start: "",
         end: "",
@@ -460,7 +472,7 @@
       ]),
 
       tarif() {
-
+        this.errordate=false;
         var debut = this.start.split("-")
         var fin = this.end.split("-")
         var from = new Date(debut[0], parseInt(debut[1]) - 1, debut[2]).getTime() / 86400000;
@@ -491,8 +503,12 @@
             this.montant = this.montant + 75
           }
         }
-
-        return this.montant, this.diff;
+        if (this.diff<=0) {
+              this.errordate = true;
+        }else{
+          return this.montant, this.diff;
+        }
+        
 
       },
 
@@ -566,7 +582,7 @@
           }
         })
 
-        if (this.error == false && this.getCreateReservationResponse.error != true) {
+        if (this.error == false && this.errordate == false && this.getCreateReservationResponse.error != true) {
           var obj = {
             "ownerId": this.getAppartById.appart.userId._id,
             "borrowerId": this.getUserMe.profile._id,
