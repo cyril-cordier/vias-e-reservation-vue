@@ -175,6 +175,7 @@ var raw = JSON.stringify(
     {"propName":"avatar","value":obj.avatar},
     {"propName":"is_admin","value":obj.is_admin},
     {"propName":"is_active","value":obj.is_active},
+    {"propName":"password","value":obj.password},
     ]
 );
 

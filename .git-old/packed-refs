@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+c352366d7c088533bebce441521247eccab8f4df refs/remotes/origin/compte_gestionnaire
+0a2a349e923453ec7a941c95378568490e548865 refs/remotes/origin/confirm_email
+8b79821e794e7ce7397d11c659f8aa0a19d508d0 refs/remotes/origin/emailstouser
+19190c5fdebc32a398356b0d148c956e787dbf2c refs/remotes/origin/master

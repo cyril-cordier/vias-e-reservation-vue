@@ -13,7 +13,7 @@
         </div>
         <div>
           <small class="d-block mb-3 text-muted"
-            >© 2021 - Cyril CORDIER - Dernière mise à jour : 13/03/2021</small
+            >© 2021 - Cyril CORDIER - Dernière mise à jour : 01/05/2021</small
           >
         </div>
         <div class="flex mt-4 md:m-0">
