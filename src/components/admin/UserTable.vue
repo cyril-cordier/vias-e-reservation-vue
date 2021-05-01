@@ -371,7 +371,7 @@
                               Mot de passe
                             </label>
                             <input
-                              v-model="userToEdit.password"
+                              v-model="newpassword"
                               class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="password"
                               type="password"
@@ -489,6 +489,7 @@ export default {
   data() {
     return {
       email: "",
+      newpassword: "",
       password: "",
       c_password: "",
       username: "",
@@ -566,11 +567,14 @@ export default {
         avatar: this.userToEdit.avatar,
       };
       var objPwd = {
-        password: this.userToEdit.password,
+        id: this.userToEdit._id,
+        password: this.newpassword,
       };
 
       this.modifyUser(obj);
-      this.modifyUser(objPwd);
+      if (this.newpassword) {
+        this.modifyPwd(objPwd);
+      }
       this.fetchAllUsers();
       if (this.userToEdit.who_is != "ND") {
         var activeParams = {
